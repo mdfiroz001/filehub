@@ -93,7 +93,6 @@
             font-family: 'Outfit', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--text-main);
         }
         .nav-link {
             display: flex;
@@ -101,56 +100,33 @@
             gap: 12px;
             padding: 12px 15px;
             border-radius: 8px;
-            text-decoration: none;
             color: var(--text-sub);
             font-weight: 500;
             transition: 0.2s;
             margin-bottom: 8px;
             cursor: pointer;
+            text-decoration: none;
         }
-        .nav-link:hover {
-            background: var(--primary-light);
-            color: var(--primary);
-        }
-        .nav-link.active {
-            background: var(--primary);
-            color: white;
-        }
-        .nav-link i {
-            font-size: 1.2rem;
-            width: 24px;
-            text-align: center;
-        }
-        .main-content {
-            flex-grow: 1;
-            padding: 20px;
-            transition: margin-left 0.3s ease;
-        }
+        .nav-link:hover { background: var(--primary-light); color: var(--primary); }
+        .nav-link.active { background: var(--primary); color: white; }
+        .nav-link i { font-size: 1.2rem; width: 24px; text-align: center; }
+        .main-content { flex-grow: 1; padding: 20px; }
         .card {
-            background: var(--surface);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            background: var(--surface); border-radius: 12px;
+            padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             margin-bottom: 20px;
         }
         .card-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-main);
+            font-size: 1.3rem; font-weight: 700;
             margin-bottom: 15px;
         }
         .btn {
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            border: none;
+            padding: 8px 16px; border-radius: 8px;
+            font-weight: 600; cursor: pointer;
+            transition: 0.2s; border: none;
             font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            display: inline-flex; align-items: center; justify-content: center;
         }
         .btn-primary { background: var(--primary); color: white; }
         .btn-primary:hover { opacity: 0.9; }
@@ -162,35 +138,42 @@
         .btn-warning:hover { opacity: 0.9; }
         .btn-sm { padding: 6px 10px; font-size: 0.8rem; }
         .form-group { margin-bottom: 15px; }
-        .form-label { display: block; font-weight: 600; margin-bottom: 5px; color: var(--text-main); }
+        .form-label { display: block; font-weight: 600; margin-bottom: 5px; }
         .form-input, .form-textarea, .form-select { 
-            width: 100%; padding: 10px; border: 1px solid var(--border); 
-            border-radius: 8px; background: var(--bg); color: var(--text-main);
+            width: 100%; padding: 10px;
+            border: 1px solid var(--border); border-radius: 8px;
+            background: var(--bg); color: var(--text-main);
             box-sizing: border-box;
         }
-        .form-input:focus, .form-textarea:focus, .form-select:focus { 
-            outline: none; border-color: var(--primary); 
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none; border-color: var(--primary);
         }
-        .status-badge { padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: capitalize; }
+        .status-badge {
+            padding: 4px 10px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 600; text-transform: capitalize;
+        }
         .status-active { background: #e0e7ff; color: #4f46e5; }
         .status-inactive { background: #fee2e2; color: #dc2626; }
         .status-approved { background: #dcfce7; color: #16a34a; }
         .status-pending { background: #fef3c7; color: #d97706; }
         .status-rejected { background: #fee2e2; color: #dc2626; }
-        .modal-overlay { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0, 0, 0, 0.5); z-index: 2000; 
-            display: none; justify-content: center; align-items: center; 
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000; display: none;
+            justify-content: center; align-items: center;
         }
         .modal-overlay.active { display: flex; }
-        .modal-box { 
-            background: var(--surface); width: 90%; max-width: 600px; 
-            max-height: 90vh; overflow-y: auto; border-radius: 12px; 
-            padding: 24px; position: relative; 
+        .modal-box {
+            background: var(--surface); width: 90%; max-width: 600px;
+            max-height: 90vh; overflow-y: auto;
+            border-radius: 12px; padding: 24px;
+            position: relative;
         }
-        .modal-close { 
-            position: absolute; top: 15px; right: 15px; 
-            cursor: pointer; font-size: 1.2rem; color: var(--text-sub); 
+        .modal-close {
+            position: absolute; top: 15px; right: 15px;
+            cursor: pointer; font-size: 1.2rem;
+            color: var(--text-sub);
         }
         .alert { padding: 12px; border-radius: 8px; margin-bottom: 15px; }
         .alert-success { background: #dcfce7; color: #16a34a; border: 1px solid #16a34a; }
@@ -198,15 +181,18 @@
         .hidden { display: none; }
         .stat-card { background: var(--surface); padding: 20px; border-radius: 12px; text-align: center; }
         .stat-icon { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
-        .stat-value { font-size: 2rem; font-weight: 700; color: var(--text-main); }
+        .stat-value { font-size: 2rem; font-weight: 700; }
         .stat-label { color: var(--text-sub); font-size: 0.9rem; }
         .data-table { width: 100%; border-collapse: collapse; white-space: nowrap; }
         .data-table th { text-align: left; padding: 12px; background: var(--bg); color: var(--text-sub); font-weight: 600; }
         .data-table td { padding: 12px; border-bottom: 1px solid var(--border); }
         .data-table tr:hover { background: var(--bg); }
         .info-badge {
-            background: #dbeafe; color: #1e40af; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem;
-            display: inline-flex; align-items: center; gap: 6px; margin-bottom: 15px;
+            background: #dbeafe; color: #1e40af;
+            padding: 6px 12px; border-radius: 8px;
+            font-size: 0.85rem;
+            display: inline-flex; align-items: center; gap: 6px;
+            margin-bottom: 15px;
         }
         [data-theme="dark"] .info-badge { background: rgba(59,130,246,0.2); color: #93c5fd; }
         .slug-preview {
@@ -221,9 +207,7 @@
             margin-top: 5px;
         }
         .slug-input-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            display: flex; align-items: center; gap: 5px;
             background: var(--bg);
             border: 1px solid var(--border);
             border-radius: 8px;
@@ -231,35 +215,24 @@
         }
         .slug-input-wrapper:focus-within { border-color: var(--primary); }
         .slug-input-wrapper .prefix {
-            color: var(--text-sub);
-            font-size: 0.85rem;
-            white-space: nowrap;
-            font-family: monospace;
+            color: var(--text-sub); font-size: 0.85rem;
+            white-space: nowrap; font-family: monospace;
         }
         .slug-input-wrapper input {
-            border: none;
-            background: transparent;
-            padding: 10px 0;
-            outline: none;
-            width: 100%;
-            color: var(--text-main);
-            font-family: monospace;
-            font-size: 0.9rem;
+            border: none; background: transparent;
+            padding: 10px 0; outline: none;
+            width: 100%; color: var(--text-main);
+            font-family: monospace; font-size: 0.9rem;
         }
         .prompt-thumb {
-            width: 70px;
-            height: 70px;
-            object-fit: cover;
-            border-radius: 10px;
+            width: 70px; height: 70px;
+            object-fit: cover; border-radius: 10px;
             border: 2px solid var(--border);
         }
         .prompt-text-cell {
-            font-family: monospace;
-            font-size: 0.78rem;
-            line-height: 1.4;
-            max-width: 240px;
+            font-family: monospace; font-size: 0.78rem;
+            line-height: 1.4; max-width: 240px;
             white-space: normal;
-            color: var(--text-main);
         }
         .step-badge {
             background: var(--primary-light);
@@ -269,22 +242,42 @@
             font-size: 0.72rem;
             font-weight: 700;
             display: inline-flex;
-            align-items: center;
-            gap: 4px;
+            align-items: center; gap: 4px;
         }
         .step-badge.step-zero { background: #dcfce7; color: #16a34a; }
         .detail-photos-preview {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
+            display: flex; gap: 8px; flex-wrap: wrap;
             margin-top: 10px;
         }
         .detail-photos-preview img {
-            width: 65px;
-            height: 65px;
-            object-fit: cover;
-            border-radius: 8px;
+            width: 65px; height: 65px;
+            object-fit: cover; border-radius: 8px;
             border: 2px solid var(--border);
+        }
+        .social-input-row {
+            display: flex; align-items: center; gap: 8px;
+            background: var(--bg); border: 1px solid var(--border);
+            border-radius: 8px; padding: 0 12px;
+            margin-bottom: 10px;
+        }
+        .social-input-row .icon-box {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .social-input-row .icon-box.telegram { background: #0088cc; }
+        .social-input-row .icon-box.facebook { background: #1877f2; }
+        .social-input-row .icon-box.youtube { background: #ff0000; }
+        .social-input-row .icon-box.whatsapp { background: #25d366; }
+        .social-input-row .icon-box.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .social-input-row .icon-box.twitter { background: #000000; }
+        .social-input-row .icon-box.email { background: #ea4335; }
+        .social-input-row input {
+            flex: 1; border: none; background: transparent;
+            padding: 12px 0; outline: none; color: var(--text-main);
+            font-size: 0.9rem; box-sizing: border-box;
         }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
@@ -341,6 +334,9 @@
                 </div>
                 <div class="nav-link" data-page="ai-prompts" onclick="loadPage('ai-prompts')">
                     <i class="fas fa-magic"></i> AI Prompts
+                </div>
+                <div class="nav-link" data-page="admin-info" onclick="loadPage('admin-info')">
+                    <i class="fas fa-user-shield"></i> Admin Info
                 </div>
                 <div class="nav-link" data-page="users" onclick="loadPage('users')">
                     <i class="fas fa-users"></i> Users
@@ -511,6 +507,7 @@
             case 'files': renderFiles(); break;
             case 'banners': renderBanners(); break;
             case 'ai-prompts': renderAIPrompts(); break;
+            case 'admin-info': renderAdminInfo(); break;
             case 'users': renderUsers(); break;
             case 'notifications': renderNotifications(); break;
             case 'settings': renderSettings(); break;
@@ -553,7 +550,6 @@
     }
     function closeConfirmModal() { document.getElementById('confirm-modal').classList.remove('active'); }
 
-    // ==================== ESCAPE HTML ====================
     function esc(str) {
         if (!str) return '';
         return String(str)
@@ -575,7 +571,6 @@
             .replace(/^-+|-+$/g, '')
             .substring(0, 60);
     }
-
     window.autoGenerateSlug = function() {
         const titleInput = document.getElementById('file-title');
         const slugInput = document.getElementById('file-slug');
@@ -584,7 +579,6 @@
         slugInput.value = generateSlugFromTitle(titleInput.value);
         updateSlugPreview();
     };
-
     window.sanitizeSlugInput = function() {
         const slugInput = document.getElementById('file-slug');
         if (!slugInput) return;
@@ -597,7 +591,6 @@
         slugInput.dataset.userEdited = 'true';
         updateSlugPreview();
     };
-
     window.updateSlugPreview = function() {
         const slugInput = document.getElementById('file-slug');
         const previewEl = document.getElementById('slug-preview');
@@ -605,7 +598,6 @@
         const slug = slugInput.value.trim() || 'auto-generated';
         previewEl.textContent = window.location.origin + '/file/' + slug;
     };
-
     async function getUniqueSlug(baseSlug, excludeFileId) {
         let slug = baseSlug;
         let counter = 1;
@@ -700,7 +692,7 @@
         } catch(e) { console.error(e); alert("Error: " + e.message); }
     }
 
-    // ==================== BANNERS (No Description) ====================
+    // ==================== BANNERS ====================
     function renderBanners() {
         let rows = '';
         allBanners.forEach(function(banner) {
@@ -720,7 +712,7 @@
                 '<h1 class="text-3xl font-bold">Sliders & Banners</h1>' +
                 '<button class="btn btn-primary" onclick="openBannerForm()"><i class="fas fa-plus mr-2"></i> Add Slider</button>' +
             '</div>' +
-            '<div class="info-badge"><i class="fas fa-info-circle"></i><span>ব্যানার আনলিমিটেড। শুধু ছবি + লিংক — কোনো Description নেই।</span></div>' +
+            '<div class="info-badge"><i class="fas fa-info-circle"></i><span>ব্যানার আনলিমিটেড। শুধু ছবি + লিংক।</span></div>' +
             '<div class="card"><div class="overflow-x-auto">' +
                 '<table class="data-table"><thead><tr><th>Thumbnail</th><th>Title</th><th>Target Link</th><th>Actions</th></tr></thead>' +
                 '<tbody>' + rows + '</tbody></table>' +
@@ -932,6 +924,137 @@
             await loadData();
         });
     };
+
+    // ==================== ADMIN INFO (NEW!) ====================
+    function renderAdminInfo() {
+        const adminSettings = appSettings.admin || {};
+        const adminName = adminSettings.name || 'FILE HUB এডমিন';
+        const adminBio = adminSettings.bio || '';
+        const social = adminSettings.social || {};
+
+        document.getElementById('page-content').innerHTML = 
+            '<div class="flex justify-between items-center mb-6">' +
+                '<h1 class="text-3xl font-bold"><i class="fas fa-user-shield text-indigo-500 mr-2"></i> Admin Info</h1>' +
+            '</div>' +
+            '<div class="info-badge">' +
+                '<i class="fas fa-info-circle"></i>' +
+                '<span>এই তথ্যগুলো AI Chat এ ব্যবহার হবে। ইউজার যখন এডমিন সম্পর্কে জিজ্ঞেস করবে, AI এই তথ্য দেবে।</span>' +
+            '</div>' +
+
+            '<div class="card mb-6">' +
+                '<h3 class="card-title">👤 Admin Basic Info</h3>' +
+                '<div id="admin-info-alert" class="alert hidden"></div>' +
+                '<form id="admin-info-form">' +
+                    '<div class="form-group">' +
+                        '<label class="form-label">Admin Display Name</label>' +
+                        '<input type="text" id="admin-name" class="form-input" value="' + esc(adminName) + '" placeholder="e.g., FILE HUB এডমিন" required>' +
+                        '<p style="font-size:0.75rem;color:var(--text-sub);margin-top:5px;">AI এই নামটি ইউজারকে বলবে।</p>' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                        '<label class="form-label">About Admin (Optional)</label>' +
+                        '<textarea id="admin-bio" class="form-textarea" rows="4" placeholder="Write something about the admin...">' + esc(adminBio) + '</textarea>' +
+                        '<p style="font-size:0.75rem;color:var(--text-sub);margin-top:5px;">AI এটাও ইউজারকে জানাবে।</p>' +
+                    '</div>' +
+                    '<button type="submit" class="btn btn-primary">' +
+                        '<i class="fas fa-save mr-2"></i> Save Admin Info' +
+                    '</button>' +
+                '</form>' +
+            '</div>' +
+
+            '<div class="card">' +
+                '<h3 class="card-title">🌐 Social Media Links</h3>' +
+                '<div id="admin-social-alert" class="alert hidden"></div>' +
+                '<p style="color:var(--text-sub);font-size:0.9rem;margin-bottom:20px;">' +
+                    'এই সোশ্যাল মিডিয়া লিংকগুলো AI চ্যাটে দেখাবে যখন ইউজার এডমিন সম্পর্কে জিজ্ঞেস করবে।' +
+                '</p>' +
+                '<form id="admin-social-form">' +
+                    '<div class="form-group">' +
+                        '<label class="form-label">📱 Telegram</label>' +
+                        '<div class="social-input-row">' +
+                            '<div class="icon-box telegram"><i class="fab fa-telegram-plane"></i></div>' +
+                            '<input type="url" id="social-telegram" value="' + esc(social.telegram || '') + '" placeholder="https://t.me/username">' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                        '<label class="form-label">📘 Facebook</label>' +
+                        '<div class="social-input-row">' +
+                            '<div class="icon-box facebook"><i class="fab fa-facebook-f"></i></div>' +
+                            '<input type="url" id="social-facebook" value="' + esc(social.facebook || '') + '" placeholder="https://facebook.com/yourpage">' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                        '<label class="form-label">📺 YouTube</label>' +
+                        '<div class="social-input-row">' +
+                            '<div class="icon-box youtube"><i class="fab fa-youtube"></i></div>' +
+                            '<input type="url" id="social-youtube" value="' + esc(social.youtube || '') + '" placeholder="https://youtube.com/@yourchannel">' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                        '<label class="form-label">💬 WhatsApp</label>' +
+                        '<div class="social-input-row">' +
+                            '<div class="icon-box whatsapp"><i class="fab fa-whatsapp"></i></div>' +
+                            '<input type="url" id="social-whatsapp" value="' + esc(social.whatsapp || '') + '" placeholder="https://wa.me/8801234567890">' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                        '<label class="form-label">📸 Instagram</label>' +
+                        '<div class="social-input-row">' +
+                            '<div class="icon-box instagram"><i class="fab fa-instagram"></i></div>' +
+                            '<input type="url" id="social-instagram" value="' + esc(social.instagram || '') + '" placeholder="https://instagram.com/yourpage">' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                        '<label class="form-label">🐦 Twitter / X</label>' +
+                        '<div class="social-input-row">' +
+                            '<div class="icon-box twitter"><i class="fab fa-twitter"></i></div>' +
+                            '<input type="url" id="social-twitter" value="' + esc(social.twitter || '') + '" placeholder="https://twitter.com/yourhandle">' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                        '<label class="form-label">📧 Email</label>' +
+                        '<div class="social-input-row">' +
+                            '<div class="icon-box email"><i class="fas fa-envelope"></i></div>' +
+                            '<input type="email" id="social-email" value="' + esc(social.email || '') + '" placeholder="admin@filehub.com">' +
+                        '</div>' +
+                    '</div>' +
+                    '<button type="submit" class="btn btn-primary">' +
+                        '<i class="fas fa-save mr-2"></i> Save Social Media' +
+                    '</button>' +
+                '</form>' +
+            '</div>';
+
+        document.getElementById('admin-info-form').addEventListener('submit', saveAdminInfo);
+        document.getElementById('admin-social-form').addEventListener('submit', saveAdminSocial);
+    }
+
+    async function saveAdminInfo(e) {
+        e.preventDefault();
+        try {
+            await settingsRef.child('admin').update({
+                name: document.getElementById('admin-name').value.trim() || 'FILE HUB এডমিন',
+                bio: document.getElementById('admin-bio').value.trim()
+            });
+            showAlert('admin-info-alert', '✅ Admin info saved!', 'success');
+            await loadData();
+        } catch (error) { showAlert('admin-info-alert', error.message, 'error'); }
+    }
+
+    async function saveAdminSocial(e) {
+        e.preventDefault();
+        try {
+            await settingsRef.child('admin').child('social').update({
+                telegram: document.getElementById('social-telegram').value.trim(),
+                facebook: document.getElementById('social-facebook').value.trim(),
+                youtube: document.getElementById('social-youtube').value.trim(),
+                whatsapp: document.getElementById('social-whatsapp').value.trim(),
+                instagram: document.getElementById('social-instagram').value.trim(),
+                twitter: document.getElementById('social-twitter').value.trim(),
+                email: document.getElementById('social-email').value.trim()
+            });
+            showAlert('admin-social-alert', '✅ Social media links saved!', 'success');
+            await loadData();
+        } catch (error) { showAlert('admin-social-alert', error.message, 'error'); }
+    }
 
     // ==================== USERS ====================
     function renderUsers() {
@@ -1274,7 +1397,7 @@
         });
     }
 
-    // ==================== BANNER FORM (No Description) ====================
+    // ==================== BANNER FORM ====================
     function openBannerForm(bannerId) {
         const banner = bannerId ? allBanners.find(function(b) { return b.id === bannerId; }) : {};
         document.getElementById('modal-title').textContent = bannerId ? '✏️ Edit Slider' : '➕ Add Slider';
