@@ -8,7 +8,6 @@
     <meta name="keywords" content="file storage, secure downloads, premium resources, cloud sharing, file manager">
     <meta name="author" content="FileHub Team">
     
-    <!-- Default Open Graph Tags (will be updated dynamically) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://filehub.vercel.app/">
     <meta property="og:title" content="FileHub Premium - Secure Storage & Sharing">
@@ -28,7 +27,6 @@
     <link rel="apple-touch-icon" href="https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png">
     <title>FileHub - Secure File Sharing</title>
     
-    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
@@ -102,7 +100,7 @@
             -webkit-touch-callout: none;
         }
 
-        input, textarea, .profile-avatar, .brand-img, .ai-avatar, .ai-loading-img {
+        input, textarea, .profile-avatar, .brand-img, .ai-avatar, .ai-loading-img, .prompt-text-box, .detail-desc, .notif-detail-content {
             -webkit-user-select: auto;
             -moz-user-select: auto;
             -ms-user-select: auto;
@@ -118,45 +116,26 @@
         }
 
         .markdown-body img, .detail-desc img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            display: block;
-            margin: 20px auto;
-            box-shadow: var(--shadow-sm);
+            max-width: 100%; height: auto; border-radius: 12px;
+            display: block; margin: 20px auto; box-shadow: var(--shadow-sm);
         }
 
         .scrolling-notice-container {
-            background: var(--primary);
-            color: #ffffff;
-            padding: 8px 16px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            box-shadow: var(--shadow-md);
-            position: relative;
-            z-index: 10;
+            background: var(--primary); color: #ffffff;
+            padding: 8px 16px; font-size: 0.9rem; font-weight: 500;
+            display: flex; align-items: center; overflow: hidden;
+            border-radius: 12px; margin-bottom: 15px;
+            box-shadow: var(--shadow-md); position: relative; z-index: 10;
         }
         .scrolling-notice-container i {
-            margin-right: 10px;
-            font-size: 1rem;
-            flex-shrink: 0;
-            color: #facc15;
+            margin-right: 10px; font-size: 1rem;
+            flex-shrink: 0; color: #facc15;
         }
 
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
         .skeleton {
             background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: 6px;
+            background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 6px;
         }
         .sk-img { width: 100%; aspect-ratio: 16/9; border-radius: 12px; margin-bottom: 10px; }
         .sk-title { height: 20px; width: 80%; margin-bottom: 8px; }
@@ -185,8 +164,7 @@
             font-size: 0.65rem; font-weight: 700;
             width: 16px; height: 16px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            border: 2px solid var(--surface);
-            display: none;
+            border: 2px solid var(--surface); display: none;
         }
         .notif-badge.active { display: flex; }
 
@@ -209,7 +187,6 @@
         .sheet-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.2rem; text-align: center; justify-self: center; }
         .sheet-btn { background: none; border: none; cursor: pointer; color: var(--text-sub); padding: 5px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
         .sheet-btn:hover { background: var(--bg); color: var(--text-main); }
-        .sheet-left-btn { visibility: visible; opacity: 1; }
         .sheet-body { flex: 1; overflow-y: auto; padding: 0; position: relative; display: flex; flex-direction: column; }
 
         .view-container { width: 100%; height: 100%; animation: fadeIn 0.3s ease; }
@@ -227,9 +204,9 @@
         .chat-container { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; background: var(--bg); min-height: 0; }
         .chat-bubble { max-width: 80%; padding: 12px 16px; border-radius: 16px; font-size: 0.95rem; line-height: 1.5; position: relative; word-wrap: break-word; animation: fadeIn 0.2s ease; }
         .chat-bubble.user { align-self: flex-end; background: var(--chat-user-bg); color: var(--chat-user-text); border-bottom-right-radius: 2px; }
-        .chat-bubble.ai { align-self: flex-start; background: var(--chat-ai-bg); color: var(--chat-ai-text); border-bottom-left-radius: 2px; display: flex; gap: 10px; }
+        .chat-bubble.ai { align-self: flex-start; background: var(--chat-ai-bg); color: var(--chat-ai-text); border-bottom-left-radius: 2px; display: flex; gap: 10px; max-width: 90%; }
         .ai-avatar { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; object-fit: contain; background: white; border: 1px solid var(--border); }
-        .ai-content { flex: 1; overflow-x: hidden; }
+        .ai-content { flex: 1; overflow-x: hidden; min-width: 0; }
         .chat-bubble pre { background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; overflow-x: auto; }
         .chat-bubble code { font-family: monospace; font-size: 0.9em; }
         .chat-bubble.ai code { color: #d63384; background: rgba(0,0,0,0.05); padding: 2px 4px; border-radius: 4px; }
@@ -276,7 +253,7 @@
         .section-icon { color: var(--primary); width: 24px; height: 24px; }
 
         .file-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .file-card { background: var(--surface); border-radius: 12px; box-shadow: var(--shadow-sm); overflow: hidden; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; border: 1px solid transparent; }
+        .file-card { background: var(--surface); border-radius: 12px; box-shadow: var(--shadow-sm); overflow: hidden; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; border: 1px solid transparent; position: relative; }
         .file-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: var(--shadow-md); }
         .card-thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: var(--bg); transition: 0.4s; }
         .file-card:hover .card-thumb { transform: scale(1.05); }
@@ -286,6 +263,26 @@
         .card-footer { margin-top: auto; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--text-sub); padding-top: 12px; border-top: 1px solid var(--bg); }
         .meta-pill { background: var(--primary-soft); color: var(--primary); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-transform: lowercase; display: flex; align-items: center; gap: 5px; }
         .meta-pill svg { width: 14px; height: 14px; stroke-width: 2.5; }
+
+        /* AI Prompt file badge */
+        .prompt-file-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: linear-gradient(135deg, #4f46e5, #818cf8);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            z-index: 3;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
 
         .detail-wrapper { width: 100%; background: transparent; padding: 0; animation: fadeIn 0.3s ease; }
         .detail-header-block { margin: 20px 0; }
@@ -298,6 +295,77 @@
 
         .detail-desc { margin-top: 25px; line-height: 1.8; color: var(--text-main); font-size: 1rem; }
         .detail-desc p { margin-bottom: 15px; }
+        .detail-desc h1, .detail-desc h2, .detail-desc h3 { margin-top: 22px; margin-bottom: 10px; color: var(--text-main); line-height: 1.3; }
+        .detail-desc h1 { font-size: 1.5rem; }
+        .detail-desc h2 { font-size: 1.25rem; }
+        .detail-desc h3 { font-size: 1.1rem; }
+        .detail-desc ul, .detail-desc ol { padding-left: 25px; margin-bottom: 15px; }
+        .detail-desc li { margin-bottom: 6px; }
+        .detail-desc blockquote {
+            border-left: 4px solid var(--primary);
+            padding: 12px 16px;
+            background: var(--bg);
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            font-style: italic;
+            color: var(--text-sub);
+        }
+        .detail-desc a { 
+            color: var(--primary); 
+            text-decoration: none; 
+            font-weight: 600;
+            border-bottom: 1px dashed var(--primary);
+            transition: 0.2s;
+        }
+        .detail-desc a:hover {
+            border-bottom-style: solid;
+            background: var(--primary-soft);
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .detail-desc code {
+            background: var(--bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.88em;
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+        .detail-desc pre {
+            background: var(--bg);
+            padding: 14px;
+            border-radius: 10px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            margin: 15px 0;
+        }
+        .detail-desc pre code {
+            background: transparent;
+            border: none;
+            padding: 0;
+            color: var(--text-main);
+        }
+        .detail-desc hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 25px 0;
+        }
+        .detail-desc table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        .detail-desc table th, .detail-desc table td {
+            padding: 10px;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+        .detail-desc table th {
+            background: var(--bg);
+            font-weight: 700;
+        }
+
         .unlock-inline { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border); }
         
         .unlock-actions { display: flex; gap: 10px; align-items: stretch; width: 100%; }
@@ -308,6 +376,103 @@
         .copy-btn { background: var(--surface); color: var(--text-sub); border: 1px solid var(--border); border-radius: 12px; cursor: pointer; display: flex; justify-content: center; align-items: center; flex-shrink: 0; transition: 0.2s; height: auto; min-width: 100px; width: auto; }
         .copy-btn:hover { background: var(--bg); color: var(--text-main); border-color: var(--primary); }
         .copy-btn svg { width: 28px; height: 28px; }
+
+        /* AI Prompt Copy Buttons */
+        .prompt-copy-main-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary), #818cf8);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px var(--primary-glow);
+            transition: 0.2s;
+            margin-bottom: 10px;
+        }
+        .prompt-copy-main-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px var(--primary-glow); }
+        .prompt-copy-main-btn.copied { background: #10b981; box-shadow: 0 6px 20px rgba(16,185,129,0.4); }
+
+        .prompt-gemini-main-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--surface);
+            color: var(--text-main);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .prompt-gemini-main-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* AI Prompt Detail Box */
+        .prompt-detail-wrapper {
+            background: var(--bg);
+            border: 1px dashed var(--primary);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .prompt-detail-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .prompt-detail-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), #818cf8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .prompt-detail-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        .prompt-detail-subtitle {
+            font-size: 0.78rem;
+            color: var(--text-sub);
+            margin-top: 2px;
+        }
+        .prompt-text-display {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            font-family: monospace;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
 
         .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); z-index: 2005; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
         .lightbox-overlay.active { opacity: 1; }
@@ -337,17 +502,10 @@
         .upload-form, .auth-form, .edit-profile-form { max-width: 500px; margin: 0 auto; background: var(--surface); padding: 40px; border-radius: 24px; box-shadow: var(--shadow-md); }
 
         .upload-notice {
-            background: #fffbeb;
-            border-left: 4px solid #f59e0b;
-            padding: 16px;
-            border-radius: 8px;
-            margin-top: 20px;
-            color: #92400e;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
+            background: #fffbeb; border-left: 4px solid #f59e0b;
+            padding: 16px; border-radius: 8px; margin-top: 20px;
+            color: #92400e; font-size: 0.95rem; line-height: 1.5;
+            display: flex; gap: 10px; align-items: flex-start;
         }
         .upload-notice i { font-size: 1.2rem; color: #f59e0b; margin-top: 2px; }
         [data-theme="dark"] .upload-notice { background: rgba(245, 158, 11, 0.1); color: #fde68a; }
@@ -489,6 +647,86 @@
         }
         .ad-warning.show { display: block; }
         [data-theme="dark"] .ad-warning { background: rgba(245, 158, 11, 0.15); color: #fde68a; }
+
+        /* ===== AI CHAT FILE CARDS ===== */
+        .ai-file-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+        .ai-file-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.15);
+            border-color: var(--primary);
+            background: linear-gradient(135deg, var(--bg), var(--surface));
+        }
+        .ai-file-card:active { transform: scale(0.98); }
+        .ai-file-icon {
+            width: 44px; height: 44px; border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary-soft), var(--surface));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; flex-shrink: 0;
+            border: 1px solid var(--border);
+        }
+        .ai-file-info { flex: 1; min-width: 0; }
+        .ai-file-title {
+            font-weight: 700; font-size: 0.92rem;
+            color: var(--text-main); line-height: 1.35;
+            margin-bottom: 4px; word-break: break-word;
+        }
+        .ai-file-meta {
+            display: flex; align-items: center;
+            gap: 8px; flex-wrap: wrap;
+        }
+        .ai-file-ext {
+            background: var(--primary-soft);
+            color: var(--primary);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            font-family: monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .ai-file-cta {
+            color: var(--primary);
+            font-size: 0.72rem;
+            font-weight: 600;
+            opacity: 0.85;
+        }
+        .ai-file-card:hover .ai-file-cta {
+            opacity: 1;
+            transform: translateX(3px);
+            transition: transform 0.25s ease;
+        }
+        [data-theme="dark"] .ai-file-icon {
+            background: linear-gradient(135deg, rgba(79,70,229,0.25), var(--bg));
+            border-color: var(--primary);
+        }
+
+        /* Toast */
+        .copy-toast {
+            position: fixed; bottom: 90px; left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #10b981; color: white;
+            padding: 14px 24px; border-radius: 50px;
+            font-weight: 600; font-size: 0.88rem;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+            z-index: 10000; transition: transform 0.3s ease;
+            max-width: 90%; text-align: center;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .copy-toast.show { transform: translateX(-50%) translateY(0); }
     </style>
 </head>
 <body>
@@ -600,7 +838,7 @@
     </div>
 </div>
 
-<!-- AI Assistant Sheet -->
+<!-- AI Chat Assistant Sheet -->
 <div class="bottom-sheet" id="aiSheet">
     <div class="sheet-header">
         <button class="sheet-btn sheet-left-btn" id="aiExpandBtn"></button>
@@ -651,7 +889,6 @@
 </nav>
 
 <script>
-    // Firebase Configuration
     const firebaseConfig = {
         apiKey: "AIzaSyAgblSHPL02TI8lyw5XBRJEi4y3lUOlqKQ",
         authDomain: "file-5dd84.firebaseapp.com",
@@ -749,6 +986,11 @@
     let adSecondsElapsed = 0;
     let adUnlockCompleted = false;
 
+    const AI_PROMPT_PREFIX = 'ai-prompt-';
+
+    // ============================================
+    // UTILITIES
+    // ============================================
     function formatCount(n) {
         if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'm';
         if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
@@ -775,6 +1017,49 @@
         return months + 'mo ago';
     }
 
+    function escapeHtmlUser(str) {
+        if (!str) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
+    // ============================================
+    // AI PROMPT VIRTUAL FILES
+    // ============================================
+    function getAIPromptFiles() {
+        const imgSettings = appSettings.aiImage || {};
+        if (imgSettings.enabled === false) return [];
+        const prompts = imgSettings.prompts || [];
+        return prompts.map((p, i) => ({
+            id: AI_PROMPT_PREFIX + i,
+            title: p.title || ('AI Prompt ' + (i + 1)),
+            description: p.prompt || '',
+            thumbnail_url: p.sample_image || '',
+            file_extension: '.ai',
+            required_ads: parseInt(p.required_ads) || 0,
+            status: 'approved',
+            isAIPrompt: true,
+            promptIndex: i,
+            prompt_text: p.prompt || '',
+            detail_photos: p.detail_photos || [],
+            created_at: p.created_at || Date.now()
+        }));
+    }
+
+    function isAIPromptId(id) {
+        return typeof id === 'string' && id.startsWith(AI_PROMPT_PREFIX);
+    }
+
+    function getAIPromptByIndex(index) {
+        const imgSettings = appSettings.aiImage || {};
+        const prompts = imgSettings.prompts || [];
+        return prompts[index] || null;
+    }
+
     const getHomeSkeleton = () => {
         let html = '<div class="skeleton" style="width:100%; aspect-ratio:16/9; margin-bottom:20px;"></div>';
         html += '<div class="skeleton" style="width:50%; height:25px; margin-bottom:20px;"></div>';
@@ -799,6 +1084,9 @@
         `;
     };
 
+    // ============================================
+    // THEME
+    // ============================================
     function initTheme() {
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
@@ -842,6 +1130,9 @@
         if (currentUser) usersRef.child(currentUser.uid).child('theme').set(next).catch(console.warn);
     });
 
+    // ============================================
+    // AUTH
+    // ============================================
     auth.onAuthStateChanged(async (user) => {
         if (user && !user.isAnonymous) {
             currentUser = user;
@@ -982,6 +1273,9 @@
         alert.classList.remove('hidden');
     }
 
+    // ============================================
+    // LOAD DATA
+    // ============================================
     async function loadData() {
         try {
             const filesSnap = await filesRef.once('value');
@@ -1003,6 +1297,9 @@
         } catch (error) { console.error('Error loading data:', error); }
     }
 
+    // ============================================
+    // NOTIFICATIONS
+    // ============================================
     function loadNotifications() {
         if (!currentUser) return;
         if (notifListener) notifListener.off();
@@ -1037,7 +1334,7 @@
             const isUnread = !n.is_read;
             return `
             <li class="notif-item ${isUnread ? 'unread' : ''}" onclick="openNotifDetail('${n.id}')">
-                <div class="notif-title-list">${n.title || 'Notification'}</div>
+                <div class="notif-title-list">${escapeHtmlUser(n.title || 'Notification')}</div>
                 <div class="notif-time">${timeAgoShort(n.created_at)}</div>
             </li>`;
         }).join('');
@@ -1052,7 +1349,7 @@
 
         const descHtml = DOMPurify.sanitize(marked.parse(notification.decs || notification.description || ''));
         notifDetailContent.innerHTML = `
-            <div class="notif-detail-title">${notification.title || 'Notification'}</div>
+            <div class="notif-detail-title">${escapeHtmlUser(notification.title || 'Notification')}</div>
             <div class="notif-detail-time">${timeAgoShort(notification.created_at)}</div>
             <div class="notif-detail-content markdown-body">${descHtml}</div>
         `;
@@ -1087,6 +1384,9 @@
     }
     closeSheet.addEventListener('click', closeSheetCommon); closeAiSheet.addEventListener('click', closeSheetCommon); sheetOverlay.addEventListener('click', closeSheetCommon);
 
+    // ============================================
+    // AI CHAT
+    // ============================================
     function updateAiLeftIcon() { aiExpandBtn.innerHTML = isAiExpanded ? SVG_COLLAPSE : SVG_EXPAND; }
     function toggleAiExpand() { isAiExpanded = !isAiExpanded; if (isAiExpanded) aiSheet.classList.add('expanded'); else aiSheet.classList.remove('expanded'); updateAiLeftIcon(); }
     aiExpandBtn.onclick = toggleAiExpand;
@@ -1107,14 +1407,64 @@
         } catch(e) { console.error(e); }
     }
 
+    // ===== PARSE [FILE:ID|Title|Ext] into beautiful cards =====
+    function parseFileLinks(text) {
+        if (!text) return '';
+        const fileRegex = /\[FILE:([^|\]]+)\|([^|\]]+)\|([^\]]+)\]/g;
+        let processed = text.replace(fileRegex, (match, id, title, ext) => {
+            const cleanId = id.trim();
+            const cleanTitle = title.trim();
+            const cleanExt = ext.trim();
+            const safeTitle = String(cleanTitle).replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return `\n\n<div class="ai-file-card" data-file-id="${cleanId}" data-file-ext="${cleanExt}"><div class="ai-file-icon">${getExtIcon(cleanExt)}</div><div class="ai-file-info"><div class="ai-file-title">${safeTitle}</div><div class="ai-file-meta"><span class="ai-file-ext">${cleanExt}</span><span class="ai-file-cta">Click to open →</span></div></div></div>\n\n`;
+        });
+        processed = processed.replace(/\n{3,}/g, '\n\n');
+        return processed;
+    }
+
+    function getExtIcon(ext) {
+        const e = String(ext || '').toLowerCase();
+        if (e.includes('apk')) return '📱';
+        if (e.includes('zip') || e.includes('rar')) return '📦';
+        if (e.includes('pdf')) return '📄';
+        if (e.includes('mp4') || e.includes('mkv')) return '🎬';
+        if (e.includes('mp3')) return '🎵';
+        if (e.includes('jpg') || e.includes('png')) return '🖼️';
+        if (e.includes('ai')) return '🎨';
+        if (e.includes('exe')) return '💻';
+        if (e.includes('doc')) return '📝';
+        return '📁';
+    }
+
     function appendMessage(role, text, saveToHistory = true) {
-        const div = document.createElement('div'); div.className = `chat-bubble ${role}`;
+        const div = document.createElement('div'); 
+        div.className = `chat-bubble ${role}`;
+        
         if (role === 'ai') {
-            const parsed = DOMPurify.sanitize(marked.parse(text));
+            const processedText = parseFileLinks(text);
+            const parsed = DOMPurify.sanitize(marked.parse(processedText), {
+                ADD_ATTR: ['data-file-id', 'data-file-ext', 'target']
+            });
             const avatarUrl = getAiAvatarUrl(document.documentElement.getAttribute('data-theme'));
             div.innerHTML = `<img src="${avatarUrl}" class="ai-avatar"><div class="ai-content">${parsed}</div>`;
-        } else div.innerText = text; 
-        chatList.appendChild(div); scrollToBottom();
+            
+            setTimeout(() => {
+                div.querySelectorAll('.ai-file-card').forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const fileId = card.dataset.fileId;
+                        if (fileId) {
+                            closeSheetCommon();
+                            setTimeout(() => navigateTo('/file/' + fileId), 350);
+                        }
+                    });
+                });
+            }, 50);
+        } else {
+            div.innerText = text;
+        }
+        chatList.appendChild(div); 
+        scrollToBottom();
         if (role === 'ai' && saveToHistory) hljs.highlightAll();
     }
 
@@ -1160,29 +1510,37 @@
             
             const approvedFilesList = Object.entries(filesData)
                 .map(([id, item]) => ({
-                    id: id,
-                    title: item.title,
-                    extension: item.file_extension,
-                    downloads: item.total_downloads || 0,
-                    status: item.status,
-                    page_url: `/file/${id}`
+                    id: id, title: item.title, extension: item.file_extension,
+                    status: item.status
                 }))
                 .filter(f => f.status === 'approved');
 
-            const currentNotice = settingsVal.app?.scrollingNotice || "None";
+            const aiPromptFiles = getAIPromptFiles();
+            const allAvailableItems = [
+                ...approvedFilesList,
+                ...aiPromptFiles.map(p => ({ id: p.id, title: p.title, extension: '.ai', status: 'approved' }))
+            ];
 
-            const systemPrompt = `You are FileHub AI. Real-time database access:
+            const systemPrompt = `You are FileHub AI, an intelligent assistant for the FileHub website.
 
-NOTICE: "${currentNotice}"
-FILES (${approvedFilesList.length}):
-${JSON.stringify(approvedFilesList, null, 2)}
+DATABASE ACCESS (${allAvailableItems.length} files):
+${JSON.stringify(allAvailableItems, null, 2)}
 
-USER: ${currentUserData?.fullname || 'Guest'} (${currentUser?.email || 'not logged in'})
+USER: ${currentUserData?.fullname || 'Guest'}
 
-Rules:
-1. Help users find files, explain rules, or explain downloads.
-2. When mentioning a file, ALWAYS use Markdown link: [File Name](/file/FILE_ID).
-3. Be helpful, concise, friendly, speak in Bengali or user's language.`;
+RESPONSE RULES (VERY IMPORTANT):
+1. Speak in Bengali (বাংলা) unless user speaks English.
+2. When mentioning files, ALWAYS use this EXACT format (one per line, no bullet points, no markdown links):
+   [FILE:ID|Title|Extension]
+
+   Example:
+   [FILE:earnix-job|EARNRIX JOB|.apk]
+   [FILE:ai-prompt-0|🎬 TikTok Cover Photo Mod APK (Premium Unlocked) 🎨|.ai]
+
+3. NEVER use markdown links like [text](url) for files.
+4. NEVER use bullet points (- or *) for file lists. Just newlines.
+5. Add a short friendly intro line, then list files separated by newlines.
+6. End with a helpful question or note.`;
 
             const apiResponse = await fetch(apiUrl, {
                 method: "POST",
@@ -1217,6 +1575,9 @@ Rules:
         }
     }
 
+    // ============================================
+    // SEARCH
+    // ============================================
     searchTrigger.addEventListener('click', () => { searchOverlay.classList.add('active'); searchInput.focus(); });
     searchBack.addEventListener('click', () => { searchOverlay.classList.remove('active'); searchInput.value = ''; searchClear.classList.remove('visible'); filterFiles(''); });
     searchInput.addEventListener('input', (e) => { const term = e.target.value; searchClear.classList.toggle('visible', term.length > 0); filterFiles(term); });
@@ -1232,12 +1593,17 @@ Rules:
         });
     }
 
+    // ============================================
+    // LIGHTBOX
+    // ============================================
     window.openLightbox = (src) => { if (!src) return; lightboxImg.src = src; lightbox.style.display = 'flex'; requestAnimationFrame(() => lightbox.classList.add('active')); };
     window.closeLightbox = () => { lightbox.classList.remove('active'); setTimeout(() => { lightbox.style.display = 'none'; lightboxImg.src = ''; }, 300); };
     lightboxClose.addEventListener('click', window.closeLightbox);
     lightbox.addEventListener('click', (e) => { if (e.target === lightbox) window.closeLightbox(); });
 
-    // ==================== ROUTING (Hash-based for Vercel serverless) ====================
+    // ============================================
+    // ROUTING
+    // ============================================
     let currentRoute = null;
 
     window.navigateTo = (url) => {
@@ -1259,8 +1625,6 @@ Rules:
 
     async function handleRoute() {
         let path = '/';
-        
-        // Hash-based routing priority
         if (window.location.hash && window.location.hash.startsWith('#/')) {
             path = window.location.hash.substring(1);
         } else if (window.location.pathname && window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
@@ -1270,17 +1634,13 @@ Rules:
         if (currentRoute) path = currentRoute;
         if (path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);
         if (!path || path === '') path = '/';
-
-        if (path.startsWith('/index.html/')) {
-            path = path.substring('/index.html'.length);
-        }
+        if (path.startsWith('/index.html/')) path = path.substring('/index.html'.length);
 
         clearInterval(bannerInterval); clearInterval(detailInterval);
         await loadData();
         
         if (path === '/' || path === '/index.html' || path === '') {
-            resetOGTags();
-            renderHome();
+            resetOGTags(); renderHome();
         } else if (path.startsWith('/file/')) {
             const slug = decodeURIComponent(path.split('/file/')[1]);
             if (slug) renderDetail('file', slug);
@@ -1296,25 +1656,20 @@ Rules:
             if (currentUser) renderProfile();
             else { showAuthModal(); renderHome(); }
         } else {
-            console.warn('Unknown route, showing home:', path);
+            console.warn('Unknown route:', path);
             renderHome();
         }
     }
 
-    window.addEventListener('popstate', () => {
-        currentRoute = null;
-        handleRoute();
-    });
-
+    window.addEventListener('popstate', () => { currentRoute = null; handleRoute(); });
     window.addEventListener('hashchange', () => {
         const hashPath = window.location.hash.substring(1);
-        if (hashPath) {
-            currentRoute = hashPath;
-            handleRoute();
-        }
+        if (hashPath) { currentRoute = hashPath; handleRoute(); }
     });
 
-    // ==================== DYNAMIC OG TAGS ====================
+    // ============================================
+    // OG TAGS
+    // ============================================
     function updateOGTags(item) {
         const title = item.title || 'FileHub';
         const description = item.description 
@@ -1322,7 +1677,6 @@ Rules:
             : 'Download premium files securely from FileHub.';
         const image = item.thumbnail_url || 'https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png';
         const url = window.location.href;
-
         document.title = title + ' - FileHub';
 
         function setMeta(property, content, isName = false) {
@@ -1368,13 +1722,18 @@ Rules:
         });
     }
 
-    // ==================== RENDER HOME ====================
+    // ============================================
+    // HOME PAGE
+    // ============================================
     function renderHome() {
         document.title = "Dashboard - FileHub";
         app.innerHTML = getHomeSkeleton();
 
         try {
             const approvedFiles = allFiles.filter(f => f.status === 'approved');
+            const aiPromptFiles = getAIPromptFiles();
+            const allDisplayItems = [...aiPromptFiles, ...approvedFiles];
+
             let bannerHTML = '';
             if (allBanners.length > 0) {
                 const dots = allBanners.map((_, i) => `<span class="dot-c ${i===0?'active':''}"></span>`).join('');
@@ -1386,9 +1745,8 @@ Rules:
                                 <img src="${b.thumbnail_url || ''}" onerror="this.onerror=null;this.src='https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png'">
                                 <div class="center-eye"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></div>
                                 <div class="slide-overlay">
-                                    <span class="banner-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>${truncateExt(b.file_extension)}</span>
-                                    <div class="slide-title" style="flex:1; text-align:center; padding:0 5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${b.title || 'Banner'}</div>
-                                    <span class="banner-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>${formatCount(b.total_downloads || 0)}</span>
+                                    <span class="banner-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>Slider</span>
+                                    <div class="slide-title" style="flex:1; text-align:center; padding:0 5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtmlUser(b.title || 'Banner')}</div>
                                 </div>
                             </div>`).join('')}
                     </div>
@@ -1396,17 +1754,25 @@ Rules:
                 <div class="carousel-dots" id="homeDots">${dots}</div>`;
             }
 
-            let filesHTML = approvedFiles.length ? approvedFiles.map(f => `
+            let filesHTML = allDisplayItems.length ? allDisplayItems.map(f => {
+                const isAI = f.isAIPrompt;
+                const cardThumb = f.thumbnail_url || 'https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png';
+                const badgeHTML = isAI ? `<span class="prompt-file-badge"><i class="fas fa-magic"></i> AI Prompt</span>` : '';
+                const ext = isAI ? 'ai' : (f.file_extension || 'file');
+                
+                return `
                 <div class="file-card">
-                    <img src="${f.thumbnail_url || ''}" class="card-thumb" onerror="this.onerror=null;this.src='https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png'" onclick="openLightbox(this.src); event.stopPropagation();">
+                    ${badgeHTML}
+                    <img src="${cardThumb}" class="card-thumb" onerror="this.onerror=null;this.src='https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png'" onclick="openLightbox(this.src); event.stopPropagation();">
                     <div class="card-body" onclick="navigateTo('/file/${f.id}')">
-                        <div class="card-title">${f.title || 'Untitled'}</div>
+                        <div class="card-title">${escapeHtmlUser(f.title || 'Untitled')}</div>
                         <div class="card-footer">
-                            <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>${truncateExt(f.file_extension)}</span>
-                            <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>${formatCount(f.total_downloads || 0)}</span>
+                            <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>${truncateExt(ext)}</span>
+                            <span class="meta-pill">${isAI ? '<i class="fas fa-copy"></i> Copy' : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>' + formatCount(f.total_downloads || 0)}</span>
                         </div>
                     </div>
-                </div>`).join('') : '<p style="text-align:center;color:var(--text-sub);grid-column:1/-1">No files found.</p>';
+                </div>`;
+            }).join('') : '<p style="text-align:center;color:var(--text-sub);grid-column:1/-1">No items found.</p>';
 
             app.innerHTML = `${bannerHTML}
                 <div class="section-header">
@@ -1416,25 +1782,102 @@ Rules:
                 <div class="file-grid">${filesHTML}</div>`;
 
             if(allBanners.length > 1) initCarousel('homeInner', 'homeDots', allBanners.length, true);
-
         } catch (e) {
             console.error(e);
             app.innerHTML = '<div style="text-align:center;padding:50px;color:var(--text-sub)">Failed to load content. Please refresh.</div>';
         }
     }
 
-    // ==================== DETAIL ====================
+    // ============================================
+    // DETAIL PAGE (Files, Banners & AI Prompts)
+    // ============================================
     async function renderDetail(type, id) {
         app.innerHTML = getDetailSkeleton();
+
         try {
+            // ==== AI PROMPT VIRTUAL FILE ====
+            if (type === 'file' && isAIPromptId(id)) {
+                const promptIndex = parseInt(id.replace(AI_PROMPT_PREFIX, ''));
+                const promptData = getAIPromptByIndex(promptIndex);
+                if (!promptData) { renderError('Not Found', 'AI prompt does not exist.'); return; }
+
+                const imgSettings = appSettings.aiImage || {};
+                const geminiUrl = imgSettings.geminiUrl || 'https://gemini.google.com/app';
+
+                const item = {
+                    id: id,
+                    title: promptData.title || 'AI Prompt',
+                    description: promptData.prompt || '',
+                    thumbnail_url: promptData.sample_image || '',
+                    file_extension: '.ai',
+                    required_ads: parseInt(promptData.required_ads) || 0,
+                    created_at: promptData.created_at || Date.now(),
+                    isAIPrompt: true,
+                    prompt_text: promptData.prompt || '',
+                    geminiUrl: geminiUrl,
+                    detail_photos: promptData.detail_photos || []
+                };
+
+                document.title = `${item.title} - FileHub`;
+                updateOGTags(item);
+
+                let watched = 0;
+                if (currentUser) {
+                    const statusRef = database.ref(`user_file_status/${currentUser.uid}_${item.id}`);
+                    const statusSnap = await statusRef.once('value');
+                    watched = statusSnap.val() || 0;
+                } else {
+                    watched = parseInt(localStorage.getItem(`ad_${item.id}`) || '0');
+                }
+
+                // Build carousel from detail_photos or thumbnail
+                let carouselHTML = '';
+                const photos = (item.detail_photos && item.detail_photos.length > 0) 
+                    ? item.detail_photos 
+                    : (item.thumbnail_url ? [item.thumbnail_url] : []);
+                
+                if (photos.length > 0) {
+                    if (photos.length === 1) {
+                        carouselHTML = `<div class="carousel-wrap"><div class="slide"><img src="${escapeHtmlUser(photos[0])}" onclick="openLightbox(this.src)" onerror="this.onerror=null;this.src='https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png'"></div></div>`;
+                    } else {
+                        const dots = photos.map((_, i) => `<span class="dot-c ${i===0?'active':''}"></span>`).join('');
+                        carouselHTML = `
+                        <div class="carousel-wrap" id="detailWrap">
+                            <div class="carousel-inner" id="detailInner">
+                                ${photos.map(u => `<div class="slide"><img src="${escapeHtmlUser(u)}" onclick="openLightbox(this.src)" onerror="this.onerror=null;this.src='https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png'"></div>`).join('')}
+                            </div>
+                        </div>
+                        <div class="carousel-dots" id="detailDots">${dots}</div>`;
+                    }
+                }
+
+                app.innerHTML = `
+                    <div class="detail-wrapper">
+                        ${carouselHTML}
+                        <div class="detail-header-block">
+                            <h1 class="detail-title">${escapeHtmlUser(item.title)}</h1>
+                            <div class="detail-meta-grid">
+                                <span class="meta-pill meta-left"><i class="fas fa-magic"></i> AI Prompt</span>
+                                <span class="meta-pill meta-center"><i class="fas fa-copy"></i> Copyable</span>
+                                <span class="meta-pill meta-right"><i class="far fa-clock"></i> ${timeAgoShort(item.created_at)}</span>
+                            </div>
+                        </div>
+                        <div id="unlockSection" class="unlock-inline"></div>
+                    </div>`;
+
+                if (photos.length > 1) initCarousel('detailInner', 'detailDots', photos.length, false);
+
+                renderUnlockLogic('file', item, watched);
+                return;
+            }
+
+            // ==== NORMAL FILE/BANNER ====
             const ref = type === 'file' ? filesRef : bannersRef;
             const snapshot = await ref.child(id).once('value');
             if (!snapshot.exists()) { renderError('Content Not Found', 'The file does not exist.'); return; }
 
             const item = { id, ...snapshot.val() };
             document.title = `${item.title || 'File'} - FileHub`;
-            
-            // Update OG tags dynamically
             updateOGTags(item);
 
             let watched = 0;
@@ -1452,28 +1895,37 @@ Rules:
                 carouselHTML = `
                 <div class="carousel-wrap" id="detailWrap">
                     <div class="carousel-inner" id="detailInner">
-                        ${item.detail_photos.map(u => `<div class="slide"><img src="${u}" onclick="openLightbox(this.src)" onerror="this.onerror=null;this.src='https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png'"></div>`).join('')}
+                        ${item.detail_photos.map(u => `<div class="slide"><img src="${escapeHtmlUser(u)}" onclick="openLightbox(this.src)" onerror="this.onerror=null;this.src='https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png'"></div>`).join('')}
                     </div>
                 </div>
                 <div class="carousel-dots" id="detailDots">${dots}</div>`;
             } else if (item.thumbnail_url) {
-                 carouselHTML = `<div class="carousel-wrap"><div class="slide"><img src="${item.thumbnail_url}" onclick="openLightbox(this.src)" onerror="this.onerror=null;this.src='https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png'"></div></div>`;
+                 carouselHTML = `<div class="carousel-wrap"><div class="slide"><img src="${escapeHtmlUser(item.thumbnail_url)}" onclick="openLightbox(this.src)" onerror="this.onerror=null;this.src='https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png'"></div></div>`;
             }
 
-            const desc = DOMPurify.sanitize(marked.parse(item.description || 'No description available.'));
+            // Build description - only show if exists (Banner has no description)
+            let descHTML = '';
+            if (type === 'file') {
+                if (item.description && item.description.trim() !== '') {
+                    const desc = DOMPurify.sanitize(marked.parse(item.description));
+                    descHTML = `<div class="detail-desc markdown-body">${desc}</div>`;
+                } else {
+                    descHTML = `<div class="detail-desc markdown-body"><p style="color:var(--text-sub);text-align:center;padding:10px;">— No description available —</p></div>`;
+                }
+            }
 
             app.innerHTML = `
                 <div class="detail-wrapper">
                     ${carouselHTML}
                     <div class="detail-header-block">
-                        <h1 class="detail-title">${item.title || 'Untitled'}</h1>
+                        <h1 class="detail-title">${escapeHtmlUser(item.title || 'Untitled')}</h1>
                         <div class="detail-meta-grid">
-                            <span class="meta-pill meta-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>${item.file_extension || 'file'}</span>
+                            <span class="meta-pill meta-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>${item.file_extension || (type === 'banner' ? 'slider' : 'file')}</span>
                             <span class="meta-pill meta-center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>${formatCount(item.total_downloads || 0)}</span>
                             <span class="meta-pill meta-right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>${timeAgoShort(item.created_at)}</span>
                         </div>
                     </div>
-                    <div class="detail-desc markdown-body">${desc}</div>
+                    ${descHTML}
                     <div id="unlockSection" class="unlock-inline"></div>
                 </div>`;
             
@@ -1481,44 +1933,176 @@ Rules:
             if (item.detail_photos && item.detail_photos.length > 1) initCarousel('detailInner', 'detailDots', item.detail_photos.length, false);
 
             renderUnlockLogic(type, item, watched);
-
         } catch(e) { console.error(e); renderError('Connection Error', 'Failed to load content.'); }
     }
 
+    // ============================================
+    // UNLOCK LOGIC
+    // ============================================
     function renderUnlockLogic(type, item, watched) {
         const zone = document.getElementById('unlockSection');
         if (!zone) return;
         const req = item.required_ads || 0;
+        const isAI = item.isAIPrompt;
+        const isBanner = type === 'banner';
+
         let mainBtnHtml = '';
 
         if (watched >= req && req > 0) {
-            mainBtnHtml = `<button class="unlock-btn" id="dlBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Download Now</button>`;
+            if (isAI) {
+                mainBtnHtml = `
+                    <button class="prompt-copy-main-btn" id="copyPromptMainBtn" onclick="copyMainPrompt(this)">
+                        <i class="fas fa-copy"></i>
+                        Copy Prompt
+                    </button>
+                    <a href="${escapeHtmlUser(item.geminiUrl || 'https://gemini.google.com/app')}" target="_blank" rel="noopener" class="prompt-gemini-main-btn">
+                        <i class="fas fa-gem"></i>
+                        Open Gemini AI
+                    </a>
+                `;
+            } else if (isBanner) {
+                mainBtnHtml = item.download_url 
+                    ? `<a href="${escapeHtmlUser(item.download_url)}" target="_blank" rel="noopener" class="unlock-btn" style="text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Visit Link</a>`
+                    : `<div style="padding:16px;background:var(--bg);border-radius:12px;text-align:center;color:var(--text-sub);">No link provided</div>`;
+            } else {
+                mainBtnHtml = `<button class="unlock-btn" id="dlBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Download Now</button>`;
+            }
         } else if (req > 0) {
-            const btnText = `Unlock Step ${watched+1}/${req}`;
+            const btnText = isAI ? `Unlock Prompt (Step ${watched+1}/${req})` : `Unlock Step ${watched+1}/${req}`;
             const icon = watched > 0 ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>' : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
             mainBtnHtml = `<button class="unlock-btn" onclick="triggerAd('${item.id}', ${watched}, ${req}, '${type}')">${icon} ${btnText}</button>`;
         } else {
-            mainBtnHtml = `<button class="unlock-btn" id="dlBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Download Now</button>`;
+            if (isAI) {
+                mainBtnHtml = `
+                    <button class="prompt-copy-main-btn" id="copyPromptMainBtn" onclick="copyMainPrompt(this)">
+                        <i class="fas fa-copy"></i>
+                        Copy Prompt
+                    </button>
+                    <a href="${escapeHtmlUser(item.geminiUrl || 'https://gemini.google.com/app')}" target="_blank" rel="noopener" class="prompt-gemini-main-btn">
+                        <i class="fas fa-gem"></i>
+                        Open Gemini AI
+                    </a>
+                `;
+            } else if (isBanner) {
+                mainBtnHtml = item.download_url 
+                    ? `<a href="${escapeHtmlUser(item.download_url)}" target="_blank" rel="noopener" class="unlock-btn" style="text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Visit Link</a>`
+                    : `<div style="padding:16px;background:var(--bg);border-radius:12px;text-align:center;color:var(--text-sub);">No link provided</div>`;
+            } else {
+                mainBtnHtml = `<button class="unlock-btn" id="dlBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Download Now</button>`;
+            }
+        }
+
+        // For AI prompts, show prompt text box when unlocked
+        let promptTextBoxHTML = '';
+        if (isAI && watched >= req) {
+            promptTextBoxHTML = `
+                <div class="prompt-detail-wrapper">
+                    <div class="prompt-detail-header">
+                        <div class="prompt-detail-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div>
+                            <div class="prompt-detail-title">Prompt Text</div>
+                            <div class="prompt-detail-subtitle">নিচের প্রমোট কপি করে Gemini AI তে পেস্ট করুন</div>
+                        </div>
+                    </div>
+                    <div class="prompt-text-display" id="promptTextBox">${escapeHtmlUser(item.prompt_text)}</div>
+                </div>
+            `;
         }
 
         const shareUrl = `${window.location.origin}/file/${item.id}`;
-        zone.innerHTML = `
-            <div class="unlock-actions">
-                ${mainBtnHtml}
-                <button class="copy-btn" onclick="copyPageLink(this, '${shareUrl}')" title="Copy Link">${SVG_LINK}</button>
-            </div>
-            <div id="dlStatus" style="text-align:center; margin-top:10px; font-size:0.85rem; color:var(--text-sub)"></div>`;
+        
+        if (isAI) {
+            zone.innerHTML = `
+                ${promptTextBoxHTML}
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                    ${mainBtnHtml}
+                </div>
+                <div id="dlStatus" style="text-align:center; margin-top:10px; font-size:0.85rem; color:var(--text-sub)"></div>
+                <div style="display:flex; justify-content:center; margin-top:10px;">
+                    <button class="copy-btn" style="padding:10px 20px;" onclick="copyPageLink(this, '${shareUrl}')" title="Copy Share Link">${SVG_LINK}</button>
+                </div>
+            `;
+        } else {
+            zone.innerHTML = `
+                <div class="unlock-actions">
+                    ${mainBtnHtml}
+                    ${isBanner ? '' : `<button class="copy-btn" onclick="copyPageLink(this, '${shareUrl}')" title="Copy Link">${SVG_LINK}</button>`}
+                </div>
+                <div id="dlStatus" style="text-align:center; margin-top:10px; font-size:0.85rem; color:var(--text-sub)"></div>`;
+        }
 
         const dlBtn = document.getElementById('dlBtn');
         if(dlBtn) {
             dlBtn.onclick = async function() {
-                if (!item.download_url) { document.getElementById('dlStatus').innerText = 'Download URL not available.'; return; }
+                if (!item.download_url) { 
+                    document.getElementById('dlStatus').innerText = 'Download URL not available.';
+                    return; 
+                }
                 this.innerText = "Redirecting..."; this.disabled = true;
                 const ref = type === 'file' ? filesRef : bannersRef;
                 await ref.child(item.id).child('total_downloads').transaction(current => (current || 0) + 1);
                 window.location.href = item.download_url;
             };
         }
+    }
+
+    // Copy main AI prompt
+    window.copyMainPrompt = function(btnEl) {
+        const promptBox = document.getElementById('promptTextBox');
+        if (!promptBox) return;
+        
+        const promptText = promptBox.textContent;
+        const originalHTML = btnEl.innerHTML;
+        
+        const copyToClipboard = () => {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                return navigator.clipboard.writeText(promptText);
+            } else {
+                return new Promise((resolve, reject) => {
+                    const temp = document.createElement('textarea');
+                    temp.value = promptText;
+                    temp.style.position = 'fixed';
+                    temp.style.opacity = '0';
+                    document.body.appendChild(temp);
+                    temp.select();
+                    try { document.execCommand('copy'); resolve(); }
+                    catch (e) { reject(e); }
+                    document.body.removeChild(temp);
+                });
+            }
+        };
+        
+        copyToClipboard().then(() => {
+            btnEl.innerHTML = '<i class="fas fa-check"></i> Copied to Clipboard!';
+            btnEl.classList.add('copied');
+            setTimeout(() => {
+                btnEl.innerHTML = originalHTML;
+                btnEl.classList.remove('copied');
+            }, 2000);
+            showCopyToast('✅ Prompt copied! Gemini AI তে পেস্ট করুন');
+        }).catch(() => {
+            alert('❌ Copy failed. Please copy manually.');
+        });
+    };
+
+    function showCopyToast(message) {
+        const existing = document.getElementById('copyToast');
+        if (existing) existing.remove();
+        
+        const toast = document.createElement('div');
+        toast.id = 'copyToast';
+        toast.className = 'copy-toast';
+        toast.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+        document.body.appendChild(toast);
+        
+        requestAnimationFrame(() => toast.classList.add('show'));
+        
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 300);
+        }, 2500);
     }
 
     window.copyPageLink = (btn, link) => {
@@ -1529,16 +2113,13 @@ Rules:
         }).catch(() => { document.getElementById('dlStatus').innerText = 'Failed to copy link.'; });
     };
 
-    // ==================== ADSTERRA ====================
+    // ============================================
+    // ADSTERRA
+    // ============================================
     window.triggerAd = async (fileId, currentWatched, reqAds, type) => {
-        adUnlockCompleted = false;
-        adSecondsElapsed = 0;
-        adWindowOpened = false;
-        
-        pendingAdFileId = fileId;
-        pendingAdType = type;
-        pendingAdCurrentWatched = currentWatched;
-        pendingAdReq = reqAds;
+        adUnlockCompleted = false; adSecondsElapsed = 0; adWindowOpened = false;
+        pendingAdFileId = fileId; pendingAdType = type;
+        pendingAdCurrentWatched = currentWatched; pendingAdReq = reqAds;
 
         const activeNetwork = appSettings.ads?.activeNetwork || 'adsterra';
         const adsterraLink = appSettings.ads?.adsterraDirectLink || '';
@@ -1553,8 +2134,9 @@ Rules:
             return;
         }
 
-        adPopupTitle.textContent = `Unlock Step ${currentWatched + 1} of ${reqAds}`;
-        adPopupText.innerHTML = `ডাউনলোড আনলক করতে নিচের বাটনে ক্লিক করুন। একটি নতুন ট্যাবে অ্যাড খুলবে। <b>অন্তত ৮ সেকেন্ড</b> অপেক্ষা করুন।`;
+        const isAI = isAIPromptId(fileId);
+        adPopupTitle.textContent = isAI ? `Unlock AI Prompt (Step ${currentWatched + 1} of ${reqAds})` : `Unlock Step ${currentWatched + 1} of ${reqAds}`;
+        adPopupText.innerHTML = `আনলক করতে নিচের বাটনে ক্লিক করুন। একটি নতুন ট্যাবে অ্যাড খুলবে। <b>অন্তত ৮ সেকেন্ড</b> অপেক্ষা করুন।`;
         adPopupBtn.disabled = false;
         adPopupBtn.innerHTML = '<i class="fas fa-external-link-alt mr-2"></i> Open Ad & Unlock';
         adPopupStatus.textContent = '';
@@ -1568,11 +2150,7 @@ Rules:
 
     window.openAdsterraLink = async () => {
         const adsterraLink = appSettings.ads?.adsterraDirectLink || '';
-
-        if (!adsterraLink) {
-            adPopupStatus.textContent = '⚠️ Adsterra Direct Link not configured.';
-            return;
-        }
+        if (!adsterraLink) { adPopupStatus.textContent = '⚠️ Not configured.'; return; }
 
         adPopupBtn.disabled = true;
         adPopupBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Ad Opened...';
@@ -1580,17 +2158,14 @@ Rules:
         adWarning.classList.add('show');
 
         const adWindow = window.open(adsterraLink, '_blank');
-
         if (!adWindow || adWindow.closed || typeof adWindow.closed == 'undefined') {
-            adPopupStatus.textContent = '⚠️ Popup blocked! Please allow popups and try again.';
+            adPopupStatus.textContent = '⚠️ Popup blocked! Please allow popups.';
             adPopupBtn.disabled = false;
             adPopupBtn.innerHTML = '<i class="fas fa-external-link-alt mr-2"></i> Try Again';
             return;
         }
 
-        adWindowOpened = true;
-        adSecondsElapsed = 0;
-
+        adWindowOpened = true; adSecondsElapsed = 0;
         adTimerDisplay.style.display = 'block';
         adTimerDisplay.textContent = AD_REQUIRED_SECONDS;
         adProgressBar.style.display = 'block';
@@ -1598,9 +2173,7 @@ Rules:
 
         let remaining = AD_REQUIRED_SECONDS;
         adTimerInterval = setInterval(() => {
-            remaining--;
-            adSecondsElapsed++;
-            
+            remaining--; adSecondsElapsed++;
             if (remaining > 0) {
                 adTimerDisplay.textContent = remaining;
                 const pct = ((AD_REQUIRED_SECONDS - remaining) / AD_REQUIRED_SECONDS) * 100;
@@ -1610,7 +2183,7 @@ Rules:
                 adTimerDisplay.textContent = '0';
                 adProgressFill.style.width = '100%';
                 clearInterval(adTimerInterval);
-                adPopupStatus.textContent = '✅ সময় সম্পূর্ণ! আনলক করা হচ্ছে...';
+                adPopupStatus.textContent = '✅ সময় সম্পূর্ণ!';
                 completeAdUnlock();
             }
         }, 1000);
@@ -1622,8 +2195,8 @@ Rules:
                     if (adSecondsElapsed < AD_REQUIRED_SECONDS) {
                         clearInterval(adTimerInterval);
                         adWarning.classList.add('show');
-                        adWarning.innerHTML = '<i class="fas fa-exclamation-triangle"></i> আপনি ৮ সেকেন্ডের আগে অ্যাড বন্ধ করেছেন! এই স্টেপ আবার শুরু করতে হবে।';
-                        adPopupStatus.textContent = '❌ অ্যাড খুব দ্রুত বন্ধ হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।';
+                        adWarning.innerHTML = '<i class="fas fa-exclamation-triangle"></i> আপনি ৮ সেকেন্ডের আগে অ্যাড বন্ধ করেছেন!';
+                        adPopupStatus.textContent = '❌ অ্যাড খুব দ্রুত বন্ধ হয়েছে।';
                         adPopupBtn.disabled = false;
                         adPopupBtn.innerHTML = '<i class="fas fa-redo mr-2"></i> Try Again';
                         adTimerDisplay.style.display = 'none';
@@ -1641,12 +2214,10 @@ Rules:
         adUnlockCompleted = true;
         if (!pendingAdFileId) return;
 
-        clearInterval(adTimerInterval);
-        clearInterval(adCheckInterval);
-
+        clearInterval(adTimerInterval); clearInterval(adCheckInterval);
         adPopupBtn.disabled = true;
         adPopupBtn.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Unlocked!';
-        adPopupStatus.textContent = '✅ অ্যাড সফলভাবে দেখা হয়েছে! ডাউনলোড আনলক হচ্ছে...';
+        adPopupStatus.textContent = '✅ আনলক হচ্ছে...';
         adWarning.classList.remove('show');
 
         const newWatchedCount = pendingAdCurrentWatched + 1;
@@ -1660,33 +2231,28 @@ Rules:
             }
         } catch(e) { console.error(e); }
 
-        setTimeout(() => {
-            closeAdPopup();
-            handleRoute();
-        }, 1200);
+        setTimeout(() => { closeAdPopup(); handleRoute(); }, 1200);
     }
 
     window.closeAdPopup = () => {
         if (adWindowOpened && !adUnlockCompleted && adSecondsElapsed < AD_REQUIRED_SECONDS) {
-            const confirmClose = confirm('⚠️ আপনি এখনও ৮ সেকেন্ড পূর্ণ করেননি। এখন বন্ধ করলে এই স্টেপ আবার শুরু করতে হবে। আপনি কি নিশ্চিত?');
+            const confirmClose = confirm('⚠️ আপনি এখনও ৮ সেকেন্ড পূর্ণ করেননি। বন্ধ করলে স্টেপ আবার শুরু করতে হবে।');
             if (!confirmClose) return;
         }
-
         adPopup.classList.remove('active');
-        adProgressBar.style.display = 'none';
-        adProgressFill.style.width = '0%';
-        adTimerDisplay.style.display = 'none';
-        adWarning.classList.remove('show');
+        adProgressBar.style.display = 'none'; adProgressFill.style.width = '0%';
+        adTimerDisplay.style.display = 'none'; adWarning.classList.remove('show');
         if (adTimerInterval) clearInterval(adTimerInterval);
         if (adCheckInterval) clearInterval(adCheckInterval);
-        adWindowOpened = false;
-        adSecondsElapsed = 0;
-        adUnlockCompleted = false;
-        pendingAdFileId = null;
+        adWindowOpened = false; adSecondsElapsed = 0;
+        adUnlockCompleted = false; pendingAdFileId = null;
     };
 
     adPopup.addEventListener('click', (e) => { if (e.target === adPopup) closeAdPopup(); });
 
+    // ============================================
+    // CAROUSEL
+    // ============================================
     function initCarousel(innerId, dotsId, count, isHome) {
         const inner = document.getElementById(innerId); const dots = document.getElementById(dotsId)?.children;
         if (!inner || !dots) return;
@@ -1695,13 +2261,15 @@ Rules:
         function next() { idx = (idx + 1) % count; update(); }
         function prev() { idx = (idx - 1 + count) % count; update(); }
         function startTimer() { interval = setInterval(next, 5000); if(isHome) bannerInterval = interval; else detailInterval = interval; }
-        
         startTimer();
         let touchStartX = 0; let touchEndX = 0;
         inner.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; clearInterval(interval); }, {passive: true});
         inner.addEventListener('touchend', (e) => { touchEndX = e.changedTouches[0].screenX; if (touchEndX < touchStartX - 50) next(); if (touchEndX > touchStartX + 50) prev(); startTimer(); }, {passive: true});
     }
 
+    // ============================================
+    // UPLOAD
+    // ============================================
     function renderUpload() {
         document.title = "Upload - FileHub";
         if (!currentUser) { showAuthModal(); return; }
@@ -1711,30 +2279,12 @@ Rules:
                 <h1 style="font-size:1.5rem;font-weight:700;margin-bottom:24px;">Upload New File</h1>
                 <div id="upload-alert" class="alert hidden"></div>
                 <form id="upload-form">
-                    <div class="form-group">
-                        <label class="form-label">Title</label>
-                        <input type="text" id="upload-title" class="form-control" placeholder="Enter file title" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Description (Markdown Supported)</label>
-                        <textarea id="upload-description" class="form-control" rows="4" placeholder="Describe your file" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">File Extension</label>
-                        <input type="text" id="upload-extension" class="form-control" placeholder=".zip, .rar, .pdf" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Thumbnail URL</label>
-                        <input type="url" id="upload-thumbnail" class="form-control" placeholder="https://example.com/image.jpg" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Download URL</label>
-                        <input type="url" id="upload-download" class="form-control" placeholder="https://example.com/file.zip" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Detail Photos (optional, comma separated URLs)</label>
-                        <textarea id="upload-photos" class="form-control" rows="2"></textarea>
-                    </div>
+                    <div class="form-group"><label class="form-label">Title</label><input type="text" id="upload-title" class="form-control" placeholder="Enter file title" required></div>
+                    <div class="form-group"><label class="form-label">Description</label><textarea id="upload-description" class="form-control" rows="4" placeholder="Markdown supported" required></textarea></div>
+                    <div class="form-group"><label class="form-label">File Extension</label><input type="text" id="upload-extension" class="form-control" placeholder=".zip" required></div>
+                    <div class="form-group"><label class="form-label">Thumbnail URL</label><input type="url" id="upload-thumbnail" class="form-control" required></div>
+                    <div class="form-group"><label class="form-label">Download URL</label><input type="url" id="upload-download" class="form-control" required></div>
+                    <div class="form-group"><label class="form-label">Detail Photos (comma separated)</label><textarea id="upload-photos" class="form-control" rows="2"></textarea></div>
                     <div class="upload-notice">
                         <i class="fas fa-info-circle"></i>
                         <span><strong>Note:</strong> Your upload will be reviewed by an Admin before it becomes public.</span>
@@ -1768,7 +2318,7 @@ Rules:
             
             try {
                 await filesRef.push(fileData);
-                showAlert('upload-alert', 'File uploaded successfully! It will be reviewed by an admin shortly.', 'success');
+                showAlert('upload-alert', 'File uploaded successfully!', 'success');
                 document.getElementById('upload-form').reset();
                 setTimeout(() => navigateTo('/profile'), 2000);
             } catch (error) {
@@ -1778,6 +2328,9 @@ Rules:
         });
     }
 
+    // ============================================
+    // PROFILE
+    // ============================================
     function renderProfile() {
         document.title = "Profile - FileHub";
         if (!currentUser) { showAuthModal(); return; }
@@ -1806,8 +2359,8 @@ Rules:
                         <div class="profile-avatar-edit" onclick="editAvatar()"><i class="fas fa-camera"></i></div>
                     </div>
                     <div class="profile-info">
-                        <h1 class="profile-name">${fullname}</h1>
-                        <div class="profile-username"><i class="fas fa-at"></i> ${username}</div>
+                        <h1 class="profile-name">${escapeHtmlUser(fullname)}</h1>
+                        <div class="profile-username"><i class="fas fa-at"></i> ${escapeHtmlUser(username)}</div>
                         <div class="profile-id"><i class="fas fa-id-badge"></i> ID: ${displayId}</div>
                         <div class="profile-badges">
                             <span class="badge ${isActive ? 'badge-active' : 'badge-inactive'}">
@@ -1819,22 +2372,10 @@ Rules:
                 </div>
 
                 <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-download"></i></div>
-                        <div class="stat-content"><div class="stat-value">${totalDownloads}</div><div class="stat-label">Downloads</div></div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                        <div class="stat-content"><div class="stat-value">${userFiles.length}</div><div class="stat-label">Uploads</div></div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-eye"></i></div>
-                        <div class="stat-content"><div class="stat-value">${adsWatched}</div><div class="stat-label">Ads Watched</div></div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
-                        <div class="stat-content"><div class="stat-value">${formattedJoinDate}</div><div class="stat-label">Joined</div></div>
-                    </div>
+                    <div class="stat-card"><div class="stat-icon"><i class="fas fa-download"></i></div><div class="stat-content"><div class="stat-value">${totalDownloads}</div><div class="stat-label">Downloads</div></div></div>
+                    <div class="stat-card"><div class="stat-icon"><i class="fas fa-cloud-upload-alt"></i></div><div class="stat-content"><div class="stat-value">${userFiles.length}</div><div class="stat-label">Uploads</div></div></div>
+                    <div class="stat-card"><div class="stat-icon"><i class="fas fa-eye"></i></div><div class="stat-content"><div class="stat-value">${adsWatched}</div><div class="stat-label">Ads Watched</div></div></div>
+                    <div class="stat-card"><div class="stat-icon"><i class="fas fa-calendar-alt"></i></div><div class="stat-content"><div class="stat-value">${formattedJoinDate}</div><div class="stat-label">Joined</div></div></div>
                 </div>
 
                 <div class="profile-actions">
@@ -1862,7 +2403,7 @@ Rules:
                                 <div class="file-card" onclick="navigateTo('/file/${f.id}')">
                                     <img src="${f.thumbnail_url || ''}" class="card-thumb" onerror="this.onerror=null;this.src='https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png'">
                                     <div class="card-body">
-                                        <div class="card-title">${f.title || 'Untitled'}</div>
+                                        <div class="card-title">${escapeHtmlUser(f.title || 'Untitled')}</div>
                                         <div class="card-footer">
                                             <span class="status-badge ${statusClass}">${statusIcon} ${f.status || 'pending'}</span>
                                             <span class="meta-pill"><i class="fas fa-download"></i> ${f.total_downloads || 0}</span>
@@ -1887,18 +2428,9 @@ Rules:
             <h2 class="modal-title">Edit Profile</h2>
             <div id="editProfileAlert" class="alert hidden"></div>
             <form id="editProfileForm">
-                <div class="form-group">
-                    <label class="form-label">Full Name</label>
-                    <input type="text" id="editFullName" class="form-control" value="${currentUserData?.fullname || ''}" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Username</label>
-                    <input type="text" id="editUsername" class="form-control" value="${currentUserData?.username || ''}" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Avatar URL</label>
-                    <input type="url" id="editAvatar" class="form-control" value="${currentUserData?.avatar || ''}">
-                </div>
+                <div class="form-group"><label class="form-label">Full Name</label><input type="text" id="editFullName" class="form-control" value="${escapeHtmlUser(currentUserData?.fullname || '')}" required></div>
+                <div class="form-group"><label class="form-label">Username</label><input type="text" id="editUsername" class="form-control" value="${escapeHtmlUser(currentUserData?.username || '')}" required></div>
+                <div class="form-group"><label class="form-label">Avatar URL</label><input type="url" id="editAvatar" class="form-control" value="${escapeHtmlUser(currentUserData?.avatar || '')}"></div>
                 <button type="submit" class="btn btn-primary" id="editProfileBtn"><i class="fas fa-save mr-2"></i> Save Changes</button>
             </form>
         `;
@@ -1920,7 +2452,7 @@ Rules:
         try {
             await usersRef.child(currentUser.uid).update(updates);
             currentUserData = { ...currentUserData, ...updates };
-            showModalAlert('editProfileAlert', 'Profile updated successfully!', 'success');
+            showModalAlert('editProfileAlert', 'Profile updated!', 'success');
             setTimeout(() => { closeModal('editProfileModal'); renderProfile(); }, 1500);
         } catch (error) {
             showModalAlert('editProfileAlert', error.message, 'error');
@@ -1933,18 +2465,9 @@ Rules:
             <h2 class="modal-title">Change Password</h2>
             <div id="changePasswordAlert" class="alert hidden"></div>
             <form id="changePasswordForm">
-                <div class="form-group">
-                    <label class="form-label">Current Password</label>
-                    <input type="password" id="currentPassword" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">New Password</label>
-                    <input type="password" id="newPassword" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Confirm New Password</label>
-                    <input type="password" id="confirmPassword" class="form-control" required>
-                </div>
+                <div class="form-group"><label class="form-label">Current Password</label><input type="password" id="currentPassword" class="form-control" required></div>
+                <div class="form-group"><label class="form-label">New Password</label><input type="password" id="newPassword" class="form-control" required></div>
+                <div class="form-group"><label class="form-label">Confirm New Password</label><input type="password" id="confirmPassword" class="form-control" required></div>
                 <button type="submit" class="btn btn-primary" id="changePasswordBtn"><i class="fas fa-key mr-2"></i> Update Password</button>
             </form>
         `;
@@ -1959,8 +2482,8 @@ Rules:
         const confirmPassword = document.getElementById('confirmPassword').value;
         const btn = document.getElementById('changePasswordBtn');
         
-        if (newPassword !== confirmPassword) { showModalAlert('changePasswordAlert', 'New passwords do not match!', 'error'); return; }
-        if (newPassword.length < 6) { showModalAlert('changePasswordAlert', 'Password must be at least 6 characters!', 'error'); return; }
+        if (newPassword !== confirmPassword) { showModalAlert('changePasswordAlert', 'Passwords do not match!', 'error'); return; }
+        if (newPassword.length < 6) { showModalAlert('changePasswordAlert', 'Password must be 6+ characters!', 'error'); return; }
         
         btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Updating...';
         
@@ -1968,7 +2491,7 @@ Rules:
             const credential = firebase.auth.EmailAuthProvider.credential(currentUser.email, currentPassword);
             await currentUser.reauthenticateWithCredential(credential);
             await currentUser.updatePassword(newPassword);
-            showModalAlert('changePasswordAlert', 'Password changed successfully!', 'success');
+            showModalAlert('changePasswordAlert', 'Password changed!', 'success');
             setTimeout(() => { closeModal('changePasswordModal'); }, 1500);
         } catch (error) {
             showModalAlert('changePasswordAlert', error.message, 'error');
@@ -1995,17 +2518,15 @@ Rules:
 
     chatInput.addEventListener('input', function() { this.style.height = 'auto'; this.style.height = (this.scrollHeight) + 'px'; });
 
-    // ==================== INIT ====================
+    // ============================================
+    // INIT
+    // ============================================
     initTheme();
-    
-    // Initial route
-    const hashPath = window.location.hash.substring(1);
-    if (hashPath && hashPath !== '/') {
-        currentRoute = hashPath;
-    } else if (window.location.pathname && window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
-        currentRoute = window.location.pathname;
+    currentRoute = window.location.pathname || '/';
+    if (window.location.hash && window.location.hash.startsWith('#/')) {
+        currentRoute = window.location.hash.substring(1);
     }
-    
+
     setTimeout(() => {
         if (!app.innerHTML || app.innerHTML.trim() === '') {
             handleRoute();
