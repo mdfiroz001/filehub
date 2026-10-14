@@ -9,7 +9,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     
-    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
@@ -28,7 +27,6 @@
             --green: #22c55e;
             --yellow: #f59e0b;
         }
-
         [data-theme="dark"] {
             --primary: #818cf8;
             --primary-light: #1e293b;
@@ -42,7 +40,6 @@
             --green: #16a34a;
             --yellow: #d97706;
         }
-
         body { 
             font-family: 'Inter', sans-serif; 
             background: var(--bg); 
@@ -50,7 +47,6 @@
             min-height: 100vh; 
             transition: all 0.3s ease;
         }
-
         .sidebar {
             width: 280px;
             background: var(--surface);
@@ -66,27 +62,19 @@
             display: flex;
             flex-direction: column;
         }
-        
         .sidebar.open { left: 0; }
-        
         @media (min-width: 768px) {
             .sidebar { left: 0; }
             .main-content { margin-left: 280px; }
         }
-
         .sidebar-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.5);
             z-index: 999;
             display: none;
         }
-        
         .sidebar-overlay.active { display: block; }
-
         .sidebar-header {
             display: flex;
             align-items: center;
@@ -95,21 +83,18 @@
             padding-bottom: 20px;
             border-bottom: 1px solid var(--border);
         }
-        
         .sidebar-logo {
             width: 40px;
             height: 40px;
             border-radius: 8px;
             object-fit: cover;
         }
-        
         .sidebar-title {
             font-family: 'Outfit', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--text-main);
         }
-        
         .nav-link {
             display: flex;
             align-items: center;
@@ -123,29 +108,24 @@
             margin-bottom: 8px;
             cursor: pointer;
         }
-        
         .nav-link:hover {
             background: var(--primary-light);
             color: var(--primary);
         }
-        
         .nav-link.active {
             background: var(--primary);
             color: white;
         }
-        
         .nav-link i {
             font-size: 1.2rem;
             width: 24px;
             text-align: center;
         }
-
         .main-content {
             flex-grow: 1;
             padding: 20px;
             transition: margin-left 0.3s ease;
         }
-
         .card {
             background: var(--surface);
             border-radius: 12px;
@@ -153,7 +133,6 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             margin-bottom: 20px;
         }
-        
         .card-title {
             font-family: 'Outfit', sans-serif;
             font-size: 1.3rem;
@@ -161,7 +140,6 @@
             color: var(--text-main);
             margin-bottom: 15px;
         }
-
         .btn {
             padding: 8px 16px;
             border-radius: 8px;
@@ -174,7 +152,6 @@
             align-items: center;
             justify-content: center;
         }
-        
         .btn-primary { background: var(--primary); color: white; }
         .btn-primary:hover { opacity: 0.9; }
         .btn-danger { background: var(--red); color: white; }
@@ -184,7 +161,6 @@
         .btn-warning { background: var(--yellow); color: white; }
         .btn-warning:hover { opacity: 0.9; }
         .btn-sm { padding: 6px 10px; font-size: 0.8rem; }
-
         .form-group { margin-bottom: 15px; }
         .form-label { display: block; font-weight: 600; margin-bottom: 5px; color: var(--text-main); }
         .form-input, .form-textarea, .form-select { 
@@ -195,14 +171,12 @@
         .form-input:focus, .form-textarea:focus, .form-select:focus { 
             outline: none; border-color: var(--primary); 
         }
-
         .status-badge { padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: capitalize; }
         .status-active { background: #e0e7ff; color: #4f46e5; }
         .status-inactive { background: #fee2e2; color: #dc2626; }
         .status-approved { background: #dcfce7; color: #16a34a; }
         .status-pending { background: #fef3c7; color: #d97706; }
         .status-rejected { background: #fee2e2; color: #dc2626; }
-
         .modal-overlay { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0, 0, 0, 0.5); z-index: 2000; 
@@ -218,28 +192,23 @@
             position: absolute; top: 15px; right: 15px; 
             cursor: pointer; font-size: 1.2rem; color: var(--text-sub); 
         }
-
         .alert { padding: 12px; border-radius: 8px; margin-bottom: 15px; }
         .alert-success { background: #dcfce7; color: #16a34a; border: 1px solid #16a34a; }
         .alert-error { background: #fee2e2; color: #dc2626; border: 1px solid #dc2626; }
         .hidden { display: none; }
-
         .stat-card { background: var(--surface); padding: 20px; border-radius: 12px; text-align: center; }
         .stat-icon { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
         .stat-value { font-size: 2rem; font-weight: 700; color: var(--text-main); }
         .stat-label { color: var(--text-sub); font-size: 0.9rem; }
-
         .data-table { width: 100%; border-collapse: collapse; white-space: nowrap; }
         .data-table th { text-align: left; padding: 12px; background: var(--bg); color: var(--text-sub); font-weight: 600; }
         .data-table td { padding: 12px; border-bottom: 1px solid var(--border); }
         .data-table tr:hover { background: var(--bg); }
-
         .info-badge {
             background: #dbeafe; color: #1e40af; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem;
             display: inline-flex; align-items: center; gap: 6px; margin-bottom: 15px;
         }
         [data-theme="dark"] .info-badge { background: rgba(59,130,246,0.2); color: #93c5fd; }
-
         .slug-preview {
             background: var(--bg);
             border: 1px solid var(--border);
@@ -251,7 +220,6 @@
             word-break: break-all;
             margin-top: 5px;
         }
-
         .slug-input-wrapper {
             display: flex;
             align-items: center;
@@ -278,7 +246,46 @@
             font-family: monospace;
             font-size: 0.9rem;
         }
-
+        .prompt-thumb {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+        }
+        .prompt-text-cell {
+            font-family: monospace;
+            font-size: 0.78rem;
+            line-height: 1.4;
+            max-width: 240px;
+            white-space: normal;
+            color: var(--text-main);
+        }
+        .step-badge {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .step-badge.step-zero { background: #dcfce7; color: #16a34a; }
+        .detail-photos-preview {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .detail-photos-preview img {
+            width: 65px;
+            height: 65px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--border);
+        }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
@@ -288,7 +295,6 @@
 <body>
 
 <div id="app">
-    <!-- Login Section -->
     <div id="login-section" class="min-h-screen flex items-center justify-center p-4">
         <div class="card max-w-md w-full">
             <div class="text-center mb-6">
@@ -296,20 +302,16 @@
                 <h2 class="text-2xl font-bold">Admin Login</h2>
                 <p class="text-sm text-gray-500 mt-1">FileHub Control Panel</p>
             </div>
-            
             <div id="login-alert" class="alert hidden"></div>
-            
             <form id="login-form">
                 <div class="form-group">
                     <label class="form-label">Email</label>
                     <input type="email" id="login-email" class="form-input" placeholder="admin@filehub.com" required>
                 </div>
-                
                 <div class="form-group">
                     <label class="form-label">Password</label>
                     <input type="password" id="login-password" class="form-input" placeholder="••••••••" required>
                 </div>
-                
                 <button type="submit" class="btn btn-primary w-full justify-center" id="login-btn" style="width:100%;">
                     <i class="fas fa-sign-in-alt mr-2"></i> Login
                 </button>
@@ -317,10 +319,8 @@
         </div>
     </div>
 
-    <!-- Admin Panel -->
     <div id="admin-panel" class="hidden min-h-screen">
         <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
-        
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <img src="https://iili.io/fY4mez7.jpg" alt="FileHub" class="sidebar-logo">
@@ -329,7 +329,6 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            
             <nav style="flex:1;">
                 <div class="nav-link active" data-page="dashboard" onclick="loadPage('dashboard')">
                     <i class="fas fa-chart-line"></i> Dashboard
@@ -339,6 +338,9 @@
                 </div>
                 <div class="nav-link" data-page="banners" onclick="loadPage('banners')">
                     <i class="fas fa-image"></i> Sliders / Banners
+                </div>
+                <div class="nav-link" data-page="ai-prompts" onclick="loadPage('ai-prompts')">
+                    <i class="fas fa-magic"></i> AI Prompts
                 </div>
                 <div class="nav-link" data-page="users" onclick="loadPage('users')">
                     <i class="fas fa-users"></i> Users
@@ -350,10 +352,9 @@
                     <i class="fas fa-cog"></i> Settings
                 </div>
                 <div class="nav-link" data-page="ai-settings" onclick="loadPage('ai-settings')">
-                    <i class="fas fa-robot"></i> AI Settings
+                    <i class="fas fa-robot"></i> AI Chat Settings
                 </div>
             </nav>
-            
             <div style="margin-top:auto; padding-top:20px; border-top:1px solid var(--border);">
                 <div class="nav-link text-red-500" onclick="logout()">
                     <i class="fas fa-sign-out-alt"></i> Logout
@@ -369,13 +370,11 @@
                 <h2 class="text-xl font-bold">FileHub Admin</h2>
                 <div class="w-8"></div>
             </div>
-            
             <div id="page-content" class="overflow-hidden"></div>
         </main>
     </div>
 </div>
 
-<!-- Modals -->
 <div id="item-modal" class="modal-overlay">
     <div class="modal-box">
         <span class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></span>
@@ -397,7 +396,6 @@
 </div>
 
 <script>
-    // Firebase Configuration
     const firebaseConfig = {
         apiKey: "AIzaSyAgblSHPL02TI8lyw5XBRJEi4y3lUOlqKQ",
         authDomain: "file-5dd84.firebaseapp.com",
@@ -408,12 +406,10 @@
         appId: "1:425635065125:web:a8ce55b1745f301bb5becc",
     };
 
-    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const database = firebase.database();
 
-    // Refs
     const usersRef = database.ref('users');
     const filesRef = database.ref('files');
     const bannersRef = database.ref('banners');
@@ -421,7 +417,6 @@
     const notificationsRef = database.ref('notifications');
     const adminsRef = database.ref('admins');
 
-    // State
     let currentUser = null;
     let isAdmin = false;
     let currentPage = 'dashboard';
@@ -430,7 +425,6 @@
     let allBanners = [];
     let appSettings = {};
 
-    // Initialize Auth
     auth.onAuthStateChanged(async (user) => {
         if (user) {
             try {
@@ -456,16 +450,13 @@
         }
     });
 
-    // Login Form
     document.getElementById('login-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = document.getElementById('login-email').value;
         const password = document.getElementById('login-password').value;
         const loginBtn = document.getElementById('login-btn');
-        
         loginBtn.disabled = true;
         loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Logging in...';
-        
         try {
             await auth.signInWithEmailAndPassword(email, password);
         } catch (error) {
@@ -479,12 +470,10 @@
         document.getElementById('login-section').classList.remove('hidden');
         document.getElementById('admin-panel').classList.add('hidden');
     }
-    
     function showAdminPanel() {
         document.getElementById('login-section').classList.add('hidden');
         document.getElementById('admin-panel').classList.remove('hidden');
     }
-
     function toggleSidebar() {
         document.getElementById('sidebar').classList.toggle('open');
         document.getElementById('sidebar-overlay').classList.toggle('active');
@@ -493,49 +482,35 @@
     async function loadData() {
         try {
             const usersSnap = await usersRef.once('value');
-            allUsers = usersSnap.val() ? Object.entries(usersSnap.val()).map(([id, data]) => ({ id, ...data })) : [];
-            
+            allUsers = usersSnap.val() ? Object.entries(usersSnap.val()).map(function(e) { return Object.assign({ id: e[0] }, e[1]); }) : [];
             const filesSnap = await filesRef.once('value');
-            allFiles = filesSnap.val() ? Object.entries(filesSnap.val()).map(([id, data]) => ({ id, ...data })).sort((a, b) => (b.created_at || 0) - (a.created_at || 0)) : [];
-            
+            allFiles = filesSnap.val() ? Object.entries(filesSnap.val()).map(function(e) { return Object.assign({ id: e[0] }, e[1]); }).sort(function(a, b) { return (b.created_at || 0) - (a.created_at || 0); }) : [];
             const bannersSnap = await bannersRef.once('value');
-            allBanners = bannersSnap.val() ? Object.entries(bannersSnap.val()).map(([id, data]) => ({ id, ...data })).sort((a, b) => (b.created_at || 0) - (a.created_at || 0)) : [];
-            
+            allBanners = bannersSnap.val() ? Object.entries(bannersSnap.val()).map(function(e) { return Object.assign({ id: e[0] }, e[1]); }).sort(function(a, b) { return (b.created_at || 0) - (a.created_at || 0); }) : [];
             const settingsSnap = await settingsRef.once('value');
             appSettings = settingsSnap.val() || {};
-            
             loadPage(currentPage);
         } catch (error) {
             console.error('Error loading data:', error);
-            document.getElementById('page-content').innerHTML = `
-                <div class="card">
-                    <div class="alert alert-error">
-                        <i class="fas fa-exclamation-triangle mr-2"></i> 
-                        Error loading data: ${error.message}
-                    </div>
-                    <button class="btn btn-primary" onclick="loadData()">Retry</button>
-                </div>
-            `;
+            document.getElementById('page-content').innerHTML = '<div class="card"><div class="alert alert-error">Error loading data: ' + error.message + '</div><button class="btn btn-primary" onclick="loadData()">Retry</button></div>';
         }
     }
 
     async function loadPage(page) {
         currentPage = page;
-        
-        document.querySelectorAll('.nav-link').forEach(link => {
+        document.querySelectorAll('.nav-link').forEach(function(link) {
             link.classList.remove('active');
             if (link.dataset.page === page) link.classList.add('active');
         });
-        
         if (window.innerWidth < 768) {
             document.getElementById('sidebar').classList.remove('open');
             document.getElementById('sidebar-overlay').classList.remove('active');
         }
-        
         switch(page) {
             case 'dashboard': renderDashboard(); break;
             case 'files': renderFiles(); break;
             case 'banners': renderBanners(); break;
+            case 'ai-prompts': renderAIPrompts(); break;
             case 'users': renderUsers(); break;
             case 'notifications': renderNotifications(); break;
             case 'settings': renderSettings(); break;
@@ -549,446 +524,479 @@
         window.location.reload();
     }
 
-    function showAlert(elementId, message, type = 'success') {
+    function showAlert(elementId, message, type) {
+        type = type || 'success';
         const alert = document.getElementById(elementId);
-        if(alert) {
+        if (alert) {
             alert.textContent = message;
-            alert.className = `alert alert-${type}`;
+            alert.className = 'alert alert-' + type;
             alert.classList.remove('hidden');
-            setTimeout(() => alert.classList.add('hidden'), 4000);
+            setTimeout(function() { alert.classList.add('hidden'); }, 4000);
         } else {
             alert(message);
         }
     }
 
     function openModal() { document.getElementById('item-modal').classList.add('active'); }
-    function closeModal() { 
-        document.getElementById('item-modal').classList.remove('active'); 
+    function closeModal() {
+        document.getElementById('item-modal').classList.remove('active');
         const alert = document.getElementById('modal-alert');
-        if(alert) alert.classList.add('hidden');
+        if (alert) alert.classList.add('hidden');
     }
-    
     function openConfirmModal(message, onConfirm) {
         document.getElementById('confirm-message').textContent = message;
         document.getElementById('confirm-modal').classList.add('active');
-        document.getElementById('confirm-action').onclick = async () => {
-            try {
-                await onConfirm();
-            } catch(e) {
-                console.error(e);
-                alert("Action failed: " + e.message);
-            }
+        document.getElementById('confirm-action').onclick = async function() {
+            try { await onConfirm(); } catch(e) { console.error(e); alert("Action failed: " + e.message); }
             closeConfirmModal();
         };
     }
     function closeConfirmModal() { document.getElementById('confirm-modal').classList.remove('active'); }
 
+    // ==================== ESCAPE HTML ====================
+    function esc(str) {
+        if (!str) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
     // ==================== SLUG SYSTEM ====================
-    
-    // Title থেকে slug বানানোর ফাংশন
     function generateSlugFromTitle(title) {
         if (!title) return '';
-        return title
-            .toLowerCase()
-            .trim()
-            // বাংলা অক্ষর সরান
+        return title.toLowerCase().trim()
             .replace(/[\u0980-\u09FF]/g, '')
-            // Special character সরান
             .replace(/[^a-z0-9\s-]/g, '')
-            // একাধিক space → এক -
             .replace(/\s+/g, '-')
-            // একাধিক - → এক -
             .replace(/-+/g, '-')
-            // শুরু ও শেষের - সরান
             .replace(/^-+|-+$/g, '')
             .substring(0, 60);
     }
 
-    // Title লিখলে auto slug generate
     window.autoGenerateSlug = function() {
         const titleInput = document.getElementById('file-title');
         const slugInput = document.getElementById('file-slug');
-        
         if (!titleInput || !slugInput) return;
-        
-        // যদি ইউজার নিজে slug এডিট করে থাকে, তাহলে overwrite না করা
         if (slugInput.dataset.userEdited === 'true') return;
-        
-        const title = titleInput.value;
-        const slug = generateSlugFromTitle(title);
-        slugInput.value = slug;
+        slugInput.value = generateSlugFromTitle(titleInput.value);
         updateSlugPreview();
     };
 
-    // Slug input sanitize (live typing)
     window.sanitizeSlugInput = function() {
         const slugInput = document.getElementById('file-slug');
         if (!slugInput) return;
-        
-        const original = slugInput.value;
-        const cleaned = original
-            .toLowerCase()
+        const cleaned = slugInput.value.toLowerCase()
             .replace(/[\u0980-\u09FF]/g, '')
             .replace(/[^a-z0-9\s-]/g, '')
             .replace(/\s+/g, '-')
             .replace(/-+/g, '-');
-        
-        if (original !== cleaned) {
-            slugInput.value = cleaned;
-        }
-        
-        // Mark as user-edited
+        slugInput.value = cleaned;
         slugInput.dataset.userEdited = 'true';
         updateSlugPreview();
     };
 
-    // Slug preview আপডেট
     window.updateSlugPreview = function() {
         const slugInput = document.getElementById('file-slug');
         const previewEl = document.getElementById('slug-preview');
         if (!slugInput || !previewEl) return;
-        
         const slug = slugInput.value.trim() || 'auto-generated';
-        const baseUrl = window.location.origin;
-        previewEl.textContent = `${baseUrl}/file/${slug}`;
+        previewEl.textContent = window.location.origin + '/file/' + slug;
     };
 
-    // ডুপ্লিকেট চেক করে unique slug বানানো
-    async function getUniqueSlug(baseSlug, excludeFileId = null) {
+    async function getUniqueSlug(baseSlug, excludeFileId) {
         let slug = baseSlug;
         let counter = 1;
-        const maxTries = 20;
-        
-        while (counter <= maxTries) {
+        while (counter <= 20) {
             const snapshot = await filesRef.child(slug).once('value');
-            if (!snapshot.exists() || snapshot.key === excludeFileId) {
-                return slug;
-            }
+            if (!snapshot.exists() || snapshot.key === excludeFileId) return slug;
             counter++;
-            slug = `${baseSlug}-${counter}`;
+            slug = baseSlug + '-' + counter;
         }
-        
-        // Fallback: timestamp যোগ
-        return `${baseSlug}-${Date.now().toString().slice(-5)}`;
+        return baseSlug + '-' + Date.now().toString().slice(-5);
     }
 
-    // ==================== RENDER FUNCTIONS ====================
-    
+    // ==================== DASHBOARD ====================
     function renderDashboard() {
-        const pendingFilesCount = allFiles.filter(f => f.status === 'pending').length;
-        const totalDownloads = allFiles.reduce((sum, f) => sum + (f.total_downloads || 0), 0);
-        
-        document.getElementById('page-content').innerHTML = `
-            <h1 class="text-3xl font-bold mb-6">Dashboard</h1>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-users"></i></div>
-                    <div class="stat-value">${allUsers.length}</div>
-                    <div class="stat-label">Total Users</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
-                    <div class="stat-value">${allFiles.length}</div>
-                    <div class="stat-label">Total Files</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon" style="color:var(--yellow);"><i class="fas fa-clock"></i></div>
-                    <div class="stat-value">${pendingFilesCount}</div>
-                    <div class="stat-label">Pending Approvals</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-download"></i></div>
-                    <div class="stat-value">${totalDownloads}</div>
-                    <div class="stat-label">Total Downloads</div>
-                </div>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="card">
-                    <h3 class="card-title">Recent Files Request</h3>
-                    <div class="overflow-x-auto">
-                        <table class="data-table">
-                            <thead><tr><th>Title</th><th>Status</th><th>Uploader</th></tr></thead>
-                            <tbody>
-                                ${allFiles.slice(0, 5).map(file => `
-                                    <tr>
-                                        <td class="max-w-[150px] truncate" title="${file.title}">${file.title || 'Untitled'}</td>
-                                        <td><span class="status-badge status-${file.status || 'pending'}">${file.status || 'pending'}</span></td>
-                                        <td>${file.uploadedByEmail ? file.uploadedByEmail.split('@')[0] : 'Admin'}</td>
-                                    </tr>
-                                `).join('')}
-                                ${allFiles.length === 0 ? '<tr><td colspan="3" class="text-center text-gray-500">No files yet</td></tr>' : ''}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <h3 class="card-title">Recent Users</h3>
-                    <div class="overflow-x-auto">
-                        <table class="data-table">
-                            <thead><tr><th>ID</th><th>Username</th><th>Status</th></tr></thead>
-                            <tbody>
-                                ${allUsers.slice(0, 5).map(user => `
-                                    <tr>
-                                        <td class="font-mono text-sm">${user.numericId || user.id.substring(0,8)}</td>
-                                        <td>${user.username || 'N/A'}</td>
-                                        <td><span class="status-badge ${user.isAccountActive !== false ? 'status-active' : 'status-inactive'}">${user.isAccountActive !== false ? 'Active' : 'Banned'}</span></td>
-                                    </tr>
-                                `).join('')}
-                                ${allUsers.length === 0 ? '<tr><td colspan="3" class="text-center text-gray-500">No users yet</td></tr>' : ''}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        `;
+        const pendingFilesCount = allFiles.filter(function(f) { return f.status === 'pending'; }).length;
+        const totalAIPrompts = (appSettings.aiImage && appSettings.aiImage.prompts ? appSettings.aiImage.prompts.length : 0);
+        document.getElementById('page-content').innerHTML = 
+            '<h1 class="text-3xl font-bold mb-6">Dashboard</h1>' +
+            '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">' +
+                '<div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">' + allUsers.length + '</div><div class="stat-label">Total Users</div></div>' +
+                '<div class="stat-card"><div class="stat-icon"><i class="fas fa-file-alt"></i></div><div class="stat-value">' + allFiles.length + '</div><div class="stat-label">Total Files</div></div>' +
+                '<div class="stat-card"><div class="stat-icon" style="color:var(--yellow);"><i class="fas fa-clock"></i></div><div class="stat-value">' + pendingFilesCount + '</div><div class="stat-label">Pending</div></div>' +
+                '<div class="stat-card"><div class="stat-icon" style="color:#8b5cf6;"><i class="fas fa-magic"></i></div><div class="stat-value">' + totalAIPrompts + '</div><div class="stat-label">AI Prompts</div></div>' +
+            '</div>' +
+            '<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">' +
+                '<div class="card"><h3 class="card-title">Recent Files</h3><div class="overflow-x-auto"><table class="data-table">' +
+                '<thead><tr><th>Title</th><th>Status</th><th>Uploader</th></tr></thead><tbody>' +
+                allFiles.slice(0, 5).map(function(file) {
+                    return '<tr><td class="max-w-[150px] truncate">' + esc(file.title || 'Untitled') + '</td>' +
+                        '<td><span class="status-badge status-' + (file.status || 'pending') + '">' + (file.status || 'pending') + '</span></td>' +
+                        '<td>' + (file.uploadedByEmail ? esc(file.uploadedByEmail.split('@')[0]) : 'Admin') + '</td></tr>';
+                }).join('') +
+                (allFiles.length === 0 ? '<tr><td colspan="3" class="text-center text-gray-500">No files yet</td></tr>' : '') +
+                '</tbody></table></div></div>' +
+                '<div class="card"><h3 class="card-title">Recent Users</h3><div class="overflow-x-auto"><table class="data-table">' +
+                '<thead><tr><th>ID</th><th>Username</th><th>Status</th></tr></thead><tbody>' +
+                allUsers.slice(0, 5).map(function(user) {
+                    return '<tr><td class="font-mono text-sm">' + (user.numericId || user.id.substring(0,8)) + '</td>' +
+                        '<td>' + esc(user.username || 'N/A') + '</td>' +
+                        '<td><span class="status-badge ' + (user.isAccountActive !== false ? 'status-active' : 'status-inactive') + '">' + (user.isAccountActive !== false ? 'Active' : 'Banned') + '</span></td></tr>';
+                }).join('') +
+                (allUsers.length === 0 ? '<tr><td colspan="3" class="text-center text-gray-500">No users yet</td></tr>' : '') +
+                '</tbody></table></div></div>' +
+            '</div>';
     }
 
+    // ==================== FILES ====================
     function renderFiles() {
-        document.getElementById('page-content').innerHTML = `
-            <div class="flex justify-between items-center mb-6">
-                <h1 class="text-3xl font-bold">Manage Files & Uploads</h1>
-                <button class="btn btn-primary" onclick="openFileForm()">
-                    <i class="fas fa-upload mr-2"></i> Upload New File
-                </button>
-            </div>
-            
-            <div class="card overflow-hidden">
-                <div class="overflow-x-auto">
-                    <table class="data-table w-full text-sm">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Slug (URL)</th>
-                                <th>Status</th>
-                                <th>Downloads</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${allFiles.map(file => {
-                                const isCustomSlug = !file.id.startsWith('-');
-                                return `
-                                <tr>
-                                    <td class="font-medium max-w-xs truncate" title="${file.title}">${file.title || 'Untitled'}</td>
-                                    <td>
-                                        <code style="font-size:0.75rem;color:${isCustomSlug ? 'var(--green)' : 'var(--text-sub)'};">
-                                            /file/${file.id}
-                                        </code>
-                                    </td>
-                                    <td><span class="status-badge status-${file.status || 'pending'}">${file.status || 'pending'}</span></td>
-                                    <td>${file.total_downloads || 0}</td>
-                                    <td class="flex gap-1 flex-wrap">
-                                        <a href="${file.download_url}" target="_blank" class="btn btn-primary btn-sm" title="Visit Link">
-                                            <i class="fas fa-external-link-alt"></i>
-                                        </a>
-                                        ${file.status === 'pending' ? `
-                                            <button class="btn btn-success btn-sm" onclick="updateFileStatus('${file.id}', 'approved')" title="Approve">
-                                                <i class="fas fa-check"></i>
-                                            </button>
-                                        ` : ''}
-                                        <button class="btn btn-warning btn-sm" onclick="editFile('${file.id}')" title="Edit">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="btn btn-danger btn-sm" onclick="deleteFile('${file.id}', '${file.title ? file.title.replace(/'/g, "\\'") : ''}')" title="Delete">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            `;
-                            }).join('')}
-                            ${allFiles.length === 0 ? '<tr><td colspan="5" class="text-center text-gray-500 py-8">No files uploaded yet</td></tr>' : ''}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        `;
+        let rows = '';
+        allFiles.forEach(function(file) {
+            const isCustomSlug = !file.id.startsWith('-');
+            rows += '<tr>' +
+                '<td class="font-medium max-w-xs truncate" title="' + esc(file.title) + '">' + esc(file.title || 'Untitled') + '</td>' +
+                '<td><code style="font-size:0.75rem;color:' + (isCustomSlug ? 'var(--green)' : 'var(--text-sub)') + ';">/file/' + file.id + '</code></td>' +
+                '<td><span class="status-badge status-' + (file.status || 'pending') + '">' + (file.status || 'pending') + '</span></td>' +
+                '<td><span class="step-badge ' + ((file.required_ads || 0) === 0 ? 'step-zero' : '') + '">' + (file.required_ads || 0) + '</span></td>' +
+                '<td>' + (file.total_downloads || 0) + '</td>' +
+                '<td class="flex gap-1 flex-wrap">' +
+                    '<a href="' + file.download_url + '" target="_blank" class="btn btn-primary btn-sm" title="Visit"><i class="fas fa-external-link-alt"></i></a>' +
+                    (file.status === 'pending' ? '<button class="btn btn-success btn-sm" onclick="updateFileStatus(\'' + file.id + '\', \'approved\')"><i class="fas fa-check"></i></button>' : '') +
+                    '<button class="btn btn-warning btn-sm" onclick="editFile(\'' + file.id + '\')"><i class="fas fa-edit"></i></button>' +
+                    '<button class="btn btn-danger btn-sm" onclick="deleteFile(\'' + file.id + '\', \'' + esc(file.title || '').replace(/'/g, "\\'") + '\')"><i class="fas fa-trash"></i></button>' +
+                '</td></tr>';
+        });
+        if (allFiles.length === 0) rows = '<tr><td colspan="6" class="text-center text-gray-500 py-8">No files uploaded yet</td></tr>';
+
+        document.getElementById('page-content').innerHTML = 
+            '<div class="flex justify-between items-center mb-6">' +
+                '<h1 class="text-3xl font-bold">Manage Files</h1>' +
+                '<button class="btn btn-primary" onclick="openFileForm()"><i class="fas fa-upload mr-2"></i> Upload New File</button>' +
+            '</div>' +
+            '<div class="card overflow-hidden"><div class="overflow-x-auto">' +
+                '<table class="data-table w-full text-sm"><thead><tr><th>Title</th><th>Slug</th><th>Status</th><th>Steps</th><th>Downloads</th><th>Actions</th></tr></thead>' +
+                '<tbody>' + rows + '</tbody></table>' +
+            '</div></div>';
     }
 
     async function updateFileStatus(fileId, status) {
         try {
             await filesRef.child(fileId).update({ status: status });
-            const file = allFiles.find(f => f.id === fileId);
-            if(file && file.uploadedBy) {
+            const file = allFiles.find(function(f) { return f.id === fileId; });
+            if (file && file.uploadedBy) {
                 await notificationsRef.push({
                     title: 'File ' + (status === 'approved' ? 'Approved' : 'Rejected'),
-                    decs: `Your uploaded file "${file.title}" has been ${status}.`,
+                    decs: 'Your uploaded file "' + file.title + '" has been ' + status + '.',
                     created_at: Date.now(),
                     is_read: false,
                     target_uid: file.uploadedBy
                 });
             }
             await loadData();
-        } catch(e) { 
-            console.error(e); 
-            alert("Error: " + e.message);
+        } catch(e) { console.error(e); alert("Error: " + e.message); }
+    }
+
+    // ==================== BANNERS (No Description) ====================
+    function renderBanners() {
+        let rows = '';
+        allBanners.forEach(function(banner) {
+            rows += '<tr>' +
+                '<td><img src="' + esc(banner.thumbnail_url) + '" style="width:70px;height:40px;object-fit:cover;border-radius:6px;" onerror="this.src=\'https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png\'"></td>' +
+                '<td class="font-medium">' + esc(banner.title || 'Untitled') + '</td>' +
+                '<td>' + (banner.download_url ? '<a href="' + esc(banner.download_url) + '" target="_blank" style="color:var(--primary);font-size:0.8rem;text-decoration:underline;">' + esc(banner.download_url.substring(0, 40)) + (banner.download_url.length > 40 ? '...' : '') + '</a>' : '<span style="color:var(--text-sub);font-size:0.8rem;font-style:italic;">No link</span>') + '</td>' +
+                '<td class="flex gap-1">' +
+                    '<button class="btn btn-warning btn-sm" onclick="editBanner(\'' + banner.id + '\')"><i class="fas fa-edit"></i></button>' +
+                    '<button class="btn btn-danger btn-sm" onclick="deleteBanner(\'' + banner.id + '\', \'' + esc(banner.title || '').replace(/'/g, "\\'") + '\')"><i class="fas fa-trash"></i></button>' +
+                '</td></tr>';
+        });
+        if (allBanners.length === 0) rows = '<tr><td colspan="4" class="text-center text-gray-500 py-8">No banners yet</td></tr>';
+
+        document.getElementById('page-content').innerHTML = 
+            '<div class="flex justify-between items-center mb-6">' +
+                '<h1 class="text-3xl font-bold">Sliders & Banners</h1>' +
+                '<button class="btn btn-primary" onclick="openBannerForm()"><i class="fas fa-plus mr-2"></i> Add Slider</button>' +
+            '</div>' +
+            '<div class="info-badge"><i class="fas fa-info-circle"></i><span>ব্যানার আনলিমিটেড। শুধু ছবি + লিংক — কোনো Description নেই।</span></div>' +
+            '<div class="card"><div class="overflow-x-auto">' +
+                '<table class="data-table"><thead><tr><th>Thumbnail</th><th>Title</th><th>Target Link</th><th>Actions</th></tr></thead>' +
+                '<tbody>' + rows + '</tbody></table>' +
+            '</div></div>';
+    }
+
+    // ==================== AI PROMPTS ====================
+    function renderAIPrompts() {
+        const imgSettings = appSettings.aiImage || {};
+        const prompts = imgSettings.prompts || [];
+        const isEnabled = imgSettings.enabled !== false;
+        const geminiUrl = imgSettings.geminiUrl || 'https://gemini.google.com/app';
+
+        let rows = '';
+        prompts.forEach(function(p, i) {
+            const reqAds = parseInt(p.required_ads) || 0;
+            rows += '<tr>' +
+                '<td>' + (p.sample_image ? '<img src="' + esc(p.sample_image) + '" class="prompt-thumb" onerror="this.style.display=\'none\'">' : '<span style="color:var(--text-sub);font-size:0.8rem;">No image</span>') + '</td>' +
+                '<td class="font-medium">' + esc(p.title || 'Untitled') + '</td>' +
+                '<td class="prompt-text-cell">' + esc((p.prompt || '').substring(0, 100)) + (p.prompt && p.prompt.length > 100 ? '...' : '') + '</td>' +
+                '<td><span class="step-badge ' + (reqAds === 0 ? 'step-zero' : '') + '"><i class="fas fa-play-circle" style="font-size:0.6rem;"></i> ' + reqAds + '</span></td>' +
+                '<td>' + (p.detail_photos && p.detail_photos.length ? '<span style="color:var(--primary);font-weight:700;font-size:0.8rem;">' + p.detail_photos.length + ' 📷</span>' : '<span style="color:var(--text-sub);font-size:0.75rem;">—</span>') + '</td>' +
+                '<td><div class="flex gap-1 flex-wrap">' +
+                    '<button class="btn btn-primary btn-sm" onclick="copyPromptAdmin(' + i + ')" title="Copy"><i class="fas fa-copy"></i></button>' +
+                    '<button class="btn btn-warning btn-sm" onclick="openPromptForm(' + i + ')" title="Edit"><i class="fas fa-edit"></i></button>' +
+                    '<button class="btn btn-danger btn-sm" onclick="deletePrompt(' + i + ')" title="Delete"><i class="fas fa-trash"></i></button>' +
+                '</div></td></tr>';
+        });
+        if (prompts.length === 0) rows = '<tr><td colspan="6" class="text-center text-gray-500 py-8">No prompts yet. Click "Add New Prompt".</td></tr>';
+
+        document.getElementById('page-content').innerHTML = 
+            '<div class="flex justify-between items-center mb-6">' +
+                '<h1 class="text-3xl font-bold"><i class="fas fa-magic text-indigo-500 mr-2"></i> AI Image Prompts</h1>' +
+            '</div>' +
+            '<div class="info-badge"><i class="fas fa-lightbulb"></i><span>প্রতিটি প্রমোটে আলাদা Steps সেট করা যাবে। Detail Images দিলে স্লাইডার দেখাবে।</span></div>' +
+            '<div class="card mb-6"><h3 class="card-title">⚙️ General Settings</h3>' +
+                '<div id="ai-prompt-alert" class="alert hidden"></div>' +
+                '<form id="ai-prompt-settings-form">' +
+                    '<div class="form-group flex items-center mb-4">' +
+                        '<input type="checkbox" id="ai-prompt-enabled" class="mr-3 w-5 h-5" ' + (isEnabled ? 'checked' : '') + '>' +
+                        '<label class="form-label mb-0 cursor-pointer" for="ai-prompt-enabled">Enable AI Prompts</label>' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                        '<label class="form-label">Gemini AI URL</label>' +
+                        '<input type="url" id="ai-prompt-gemini-url" class="form-input" value="' + esc(geminiUrl) + '">' +
+                    '</div>' +
+                    '<button type="submit" class="btn btn-primary"><i class="fas fa-save mr-2"></i> Save Settings</button>' +
+                '</form>' +
+            '</div>' +
+            '<div class="card">' +
+                '<div class="flex justify-between items-center mb-4">' +
+                    '<h3 class="card-title mb-0">📝 Prompt Library (' + prompts.length + ')</h3>' +
+                    '<button class="btn btn-primary" onclick="openPromptForm()"><i class="fas fa-plus mr-2"></i> Add New Prompt</button>' +
+                '</div>' +
+                '<div class="overflow-x-auto"><table class="data-table w-full">' +
+                '<thead><tr><th>Preview</th><th>Title</th><th>Prompt</th><th>Steps</th><th>Detail</th><th>Actions</th></tr></thead>' +
+                '<tbody>' + rows + '</tbody></table></div>' +
+            '</div>';
+
+        document.getElementById('ai-prompt-settings-form').addEventListener('submit', saveAIPromptSettings);
+    }
+
+    async function saveAIPromptSettings(e) {
+        e.preventDefault();
+        const imgSettings = appSettings.aiImage || {};
+        try {
+            await settingsRef.child('aiImage').update({
+                enabled: document.getElementById('ai-prompt-enabled').checked,
+                geminiUrl: document.getElementById('ai-prompt-gemini-url').value.trim() || 'https://gemini.google.com/app',
+                prompts: imgSettings.prompts || []
+            });
+            showAlert('ai-prompt-alert', '✅ Settings saved!', 'success');
+            await loadData();
+        } catch (error) { showAlert('ai-prompt-alert', error.message, 'error'); }
+    }
+
+    function openPromptForm(index) {
+        const imgSettings = appSettings.aiImage || {};
+        const prompts = imgSettings.prompts || [];
+        const prompt = (index !== null && index !== undefined) ? prompts[index] : {};
+        const detailPhotosStr = (prompt.detail_photos || []).join('\n');
+        const isEdit = (index !== null && index !== undefined);
+
+        document.getElementById('modal-title').textContent = isEdit ? '✏️ Edit Prompt' : '➕ Add New Prompt';
+
+        const sampleImagePreview = prompt.sample_image ? '<img src="' + esc(prompt.sample_image) + '" style="max-width:100%;max-height:180px;border-radius:10px;border:1px solid var(--border);">' : '';
+        const detailPreview = (prompt.detail_photos || []).map(function(u) {
+            return '<img src="' + esc(u) + '" onerror="this.style.display=\'none\'">';
+        }).join('');
+
+        document.getElementById('modal-form').innerHTML = 
+            '<div class="form-group">' +
+                '<label class="form-label">Prompt Title <span style="color:var(--red);">*</span></label>' +
+                '<input type="text" id="prompt-title" class="form-input" value="' + esc(prompt.title || '') + '" placeholder="e.g., Realistic Portrait" required>' +
+            '</div>' +
+            '<div class="form-group">' +
+                '<label class="form-label">Prompt Text <span style="color:var(--red);">*</span></label>' +
+                '<textarea id="prompt-text" class="form-textarea" rows="5" placeholder="A photorealistic portrait..." required style="font-family:monospace;font-size:0.85rem;">' + esc(prompt.prompt || '') + '</textarea>' +
+            '</div>' +
+            '<div class="form-group">' +
+                '<label class="form-label">Required Steps (Ads) <span style="color:var(--red);">*</span></label>' +
+                '<input type="number" id="prompt-required-ads" class="form-input" value="' + (parseInt(prompt.required_ads) || 0) + '" min="0">' +
+                '<p style="font-size:0.75rem;color:var(--text-sub);margin-top:5px;">💡 0 দিলে ফ্রি, 1+ দিলে ঐ পরিমাণ Ads দেখতে হবে।</p>' +
+            '</div>' +
+            '<div class="form-group">' +
+                '<label class="form-label">Sample Image URL</label>' +
+                '<input type="url" id="prompt-sample-image" class="form-input" value="' + esc(prompt.sample_image || '') + '" oninput="previewSampleImage()">' +
+                '<div id="sample-image-preview" style="margin-top:10px;">' + sampleImagePreview + '</div>' +
+            '</div>' +
+            '<div class="form-group">' +
+                '<label class="form-label">Detail Images (প্রতি লাইনে একটি URL)</label>' +
+                '<textarea id="prompt-detail-photos" class="form-textarea" rows="4" oninput="previewDetailPhotos()" style="font-family:monospace;font-size:0.82rem;">' + esc(detailPhotosStr) + '</textarea>' +
+                '<div id="detail-photos-preview" class="detail-photos-preview">' + detailPreview + '</div>' +
+            '</div>' +
+            '<div class="flex justify-end gap-3 mt-4">' +
+                '<button type="button" class="btn btn-danger" onclick="closeModal()">Cancel</button>' +
+                '<button type="submit" class="btn btn-success" id="save-prompt-btn"><i class="fas fa-save mr-2"></i> Save Prompt</button>' +
+            '</div>';
+
+        document.getElementById('modal-form').onsubmit = function(e) { savePrompt(e, index); };
+        openModal();
+    }
+
+    window.previewSampleImage = function() {
+        const url = document.getElementById('prompt-sample-image').value.trim();
+        const preview = document.getElementById('sample-image-preview');
+        if (!url) { preview.innerHTML = ''; return; }
+        preview.innerHTML = '<img src="' + esc(url) + '" style="max-width:100%;max-height:180px;border-radius:10px;border:1px solid var(--border);" onerror="this.style.display=\'none\'">';
+    };
+
+    window.previewDetailPhotos = function() {
+        const text = document.getElementById('prompt-detail-photos').value.trim();
+        const preview = document.getElementById('detail-photos-preview');
+        if (!text) { preview.innerHTML = ''; return; }
+        const urls = text.split('\n').map(function(u) { return u.trim(); }).filter(function(u) { return u; });
+        preview.innerHTML = urls.map(function(u) {
+            return '<img src="' + esc(u) + '" onerror="this.style.display=\'none\'">';
+        }).join('');
+    };
+
+    async function savePrompt(e, index) {
+        e.preventDefault();
+        const btn = document.getElementById('save-prompt-btn');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Saving...';
+
+        const title = document.getElementById('prompt-title').value.trim();
+        const promptText = document.getElementById('prompt-text').value.trim();
+        const requiredAds = parseInt(document.getElementById('prompt-required-ads').value) || 0;
+        const sampleImage = document.getElementById('prompt-sample-image').value.trim();
+        const detailPhotosText = document.getElementById('prompt-detail-photos').value.trim();
+        const detailPhotos = detailPhotosText.split('\n').map(function(u) { return u.trim(); }).filter(function(u) { return u; });
+
+        if (!title || !promptText) {
+            showAlert('modal-alert', 'Fill required fields', 'error');
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-save mr-2"></i> Save Prompt';
+            return;
+        }
+
+        try {
+            const imgSettings = appSettings.aiImage || {};
+            let prompts = (imgSettings.prompts || []).slice();
+            const isEdit = (index !== null && index !== undefined);
+            const newPrompt = {
+                title: title,
+                prompt: promptText,
+                required_ads: requiredAds,
+                sample_image: sampleImage,
+                detail_photos: detailPhotos,
+                created_at: (isEdit && prompts[index]) ? (prompts[index].created_at || Date.now()) : Date.now()
+            };
+            if (isEdit) prompts[index] = newPrompt;
+            else prompts.push(newPrompt);
+
+            await settingsRef.child('aiImage').child('prompts').set(prompts);
+            showAlert('modal-alert', '✅ Prompt saved!', 'success');
+            setTimeout(function() { closeModal(); loadData(); }, 800);
+        } catch (error) {
+            showAlert('modal-alert', error.message, 'error');
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-save mr-2"></i> Save Prompt';
         }
     }
 
-    function renderBanners() {
-        document.getElementById('page-content').innerHTML = `
-            <div class="flex justify-between items-center mb-6">
-                <h1 class="text-3xl font-bold">Sliders & Banners</h1>
-                <button class="btn btn-primary" onclick="openBannerForm()">
-                    <i class="fas fa-plus mr-2"></i> Add Slider Item
-                </button>
-            </div>
-            
-            <div class="card">
-                <div class="overflow-x-auto">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>Thumbnail</th>
-                                <th>Title</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${allBanners.map(banner => `
-                                <tr>
-                                    <td><img src="${banner.thumbnail_url}" style="width:60px;height:35px;object-fit:cover;border-radius:6px;" onerror="this.src='https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png'"></td>
-                                    <td>${banner.title || 'Untitled'}</td>
-                                    <td class="flex gap-1">
-                                        <button class="btn btn-warning btn-sm" onclick="editBanner('${banner.id}')">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="btn btn-danger btn-sm" onclick="deleteBanner('${banner.id}', '${banner.title ? banner.title.replace(/'/g, "\\'") : ''}')">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            `).join('')}
-                            ${allBanners.length === 0 ? '<tr><td colspan="3" class="text-center text-gray-500 py-8">No banners yet</td></tr>' : ''}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        `;
-    }
+    window.copyPromptAdmin = function(index) {
+        const imgSettings = appSettings.aiImage || {};
+        const prompts = imgSettings.prompts || [];
+        if (!prompts[index]) return;
+        navigator.clipboard.writeText(prompts[index].prompt).then(function() {
+            alert('✅ Prompt copied!');
+        }).catch(function() {
+            const temp = document.createElement('textarea');
+            temp.value = prompts[index].prompt;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            alert('✅ Copied!');
+        });
+    };
 
+    window.deletePrompt = function(index) {
+        openConfirmModal('Delete this prompt permanently?', async function() {
+            const imgSettings = appSettings.aiImage || {};
+            let prompts = (imgSettings.prompts || []).slice();
+            prompts.splice(index, 1);
+            await settingsRef.child('aiImage').child('prompts').set(prompts);
+            await loadData();
+        });
+    };
+
+    // ==================== USERS ====================
     function renderUsers() {
-        document.getElementById('page-content').innerHTML = `
-            <h1 class="text-3xl font-bold mb-6">Users</h1>
-            <div class="card overflow-hidden">
-                <div class="mb-4">
-                    <input type="text" id="user-search" class="form-input" placeholder="Search by ID, Username, or Email...">
-                </div>
-                
-                <div class="overflow-x-auto">
-                    <table class="data-table w-full">
-                        <thead>
-                            <tr>
-                                <th>User ID</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="users-table">
-                            ${generateUsersTableHTML(allUsers)}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        `;
-        
+        document.getElementById('page-content').innerHTML = 
+            '<h1 class="text-3xl font-bold mb-6">Users</h1>' +
+            '<div class="card"><div class="mb-4"><input type="text" id="user-search" class="form-input" placeholder="Search..."></div>' +
+            '<div class="overflow-x-auto"><table class="data-table w-full">' +
+            '<thead><tr><th>User ID</th><th>Username</th><th>Email</th><th>Status</th><th>Actions</th></tr></thead>' +
+            '<tbody id="users-table">' + generateUsersTableHTML(allUsers) + '</tbody></table></div></div>';
+
         const searchInput = document.getElementById('user-search');
         if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                const search = e.target.value.toLowerCase();
-                const filtered = allUsers.filter(user => 
-                    (user.email && user.email.toLowerCase().includes(search)) ||
-                    (user.username && user.username.toLowerCase().includes(search)) ||
-                    (user.numericId && user.numericId.includes(search)) ||
-                    (user.fullname && user.fullname.toLowerCase().includes(search))
-                );
+            searchInput.addEventListener('input', function(e) {
+                const s = e.target.value.toLowerCase();
+                const filtered = allUsers.filter(function(u) {
+                    return (u.email && u.email.toLowerCase().indexOf(s) !== -1) ||
+                           (u.username && u.username.toLowerCase().indexOf(s) !== -1) ||
+                           (u.numericId && u.numericId.indexOf(s) !== -1) ||
+                           (u.fullname && u.fullname.toLowerCase().indexOf(s) !== -1);
+                });
                 document.getElementById('users-table').innerHTML = generateUsersTableHTML(filtered);
             });
         }
     }
 
-    function generateUsersTableHTML(usersArray) {
-        if (usersArray.length === 0) {
-            return '<tr><td colspan="5" class="text-center text-gray-500 py-8">No users found</td></tr>';
-        }
-        return usersArray.map(user => `
-            <tr>
-                <td class="font-mono text-sm">${user.numericId || user.id.substring(0,10)}</td>
-                <td>${user.username || 'N/A'}</td>
-                <td>${user.email || 'N/A'}</td>
-                <td><span class="status-badge ${user.isAccountActive !== false ? 'status-active' : 'status-inactive'}">${user.isAccountActive !== false ? 'Active' : 'Banned'}</span></td>
-                <td class="flex gap-1">
-                    <button class="btn ${user.isAccountActive !== false ? 'btn-danger' : 'btn-success'} btn-sm" onclick="toggleUserBan('${user.id}', ${user.isAccountActive !== false})" title="${user.isAccountActive !== false ? 'Ban User' : 'Unban User'}">
-                        <i class="fas ${user.isAccountActive !== false ? 'fa-ban' : 'fa-check'}"></i>
-                    </button>
-                    <button class="btn btn-warning btn-sm" onclick="editUser('${user.id}')" title="Edit">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                </td>
-            </tr>
-        `).join('');
+    function generateUsersTableHTML(users) {
+        if (users.length === 0) return '<tr><td colspan="5" class="text-center text-gray-500 py-8">No users found</td></tr>';
+        let html = '';
+        users.forEach(function(user) {
+            html += '<tr>' +
+                '<td class="font-mono text-sm">' + (user.numericId || user.id.substring(0,10)) + '</td>' +
+                '<td>' + esc(user.username || 'N/A') + '</td>' +
+                '<td>' + esc(user.email || 'N/A') + '</td>' +
+                '<td><span class="status-badge ' + (user.isAccountActive !== false ? 'status-active' : 'status-inactive') + '">' + (user.isAccountActive !== false ? 'Active' : 'Banned') + '</span></td>' +
+                '<td class="flex gap-1">' +
+                    '<button class="btn ' + (user.isAccountActive !== false ? 'btn-danger' : 'btn-success') + ' btn-sm" onclick="toggleUserBan(\'' + user.id + '\', ' + (user.isAccountActive !== false) + ')"><i class="fas ' + (user.isAccountActive !== false ? 'fa-ban' : 'fa-check') + '"></i></button>' +
+                    '<button class="btn btn-warning btn-sm" onclick="editUser(\'' + user.id + '\')"><i class="fas fa-edit"></i></button>' +
+                '</td></tr>';
+        });
+        return html;
     }
 
     async function toggleUserBan(userId, currentStatus) {
-        openConfirmModal(`Are you sure you want to ${currentStatus ? 'BAN' : 'UNBAN'} this user?`, async () => {
+        openConfirmModal('Are you sure you want to ' + (currentStatus ? 'BAN' : 'UNBAN') + ' this user?', async function() {
             await usersRef.child(userId).update({ isAccountActive: !currentStatus });
             await loadData();
         });
     }
 
+    // ==================== NOTIFICATIONS ====================
     function renderNotifications() {
-        document.getElementById('page-content').innerHTML = `
-            <h1 class="text-3xl font-bold mb-6">Manage Notifications</h1>
-            
-            <div class="card mb-6">
-                <h3 class="card-title">Send New Notification</h3>
-                <div id="notif-alert" class="alert hidden"></div>
-                
-                <form id="notification-form">
-                    <div class="form-group">
-                        <label class="form-label">Target User UID (leave empty for All Users)</label>
-                        <input type="text" id="notif-target" class="form-input" placeholder="Paste UID or leave empty">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Title</label>
-                        <input type="text" id="notif-title" class="form-input" placeholder="Notification title" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Message (Markdown supported)</label>
-                        <textarea id="notif-message" class="form-textarea" rows="4" placeholder="Write your message here..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary" id="send-notif-btn">
-                        <i class="fas fa-paper-plane mr-2"></i> Send Notification
-                    </button>
-                </form>
-            </div>
-            
-            <div class="card">
-                <h3 class="card-title">Recent Notifications</h3>
-                <div class="overflow-x-auto">
-                    <table class="data-table w-full">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Target</th>
-                                <th>Date</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="notifications-list">
-                            <tr><td colspan="4" class="text-center text-gray-500">Loading...</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        `;
-        
+        document.getElementById('page-content').innerHTML = 
+            '<h1 class="text-3xl font-bold mb-6">Notifications</h1>' +
+            '<div class="card mb-6"><h3 class="card-title">Send Notification</h3>' +
+            '<div id="notif-alert" class="alert hidden"></div>' +
+            '<form id="notification-form">' +
+                '<div class="form-group"><label class="form-label">Target UID (empty = All)</label><input type="text" id="notif-target" class="form-input"></div>' +
+                '<div class="form-group"><label class="form-label">Title</label><input type="text" id="notif-title" class="form-input" required></div>' +
+                '<div class="form-group"><label class="form-label">Message</label><textarea id="notif-message" class="form-textarea" rows="4" required></textarea></div>' +
+                '<button type="submit" class="btn btn-primary" id="send-notif-btn"><i class="fas fa-paper-plane mr-2"></i> Send</button>' +
+            '</form></div>' +
+            '<div class="card"><h3 class="card-title">Recent</h3><div class="overflow-x-auto">' +
+            '<table class="data-table w-full"><thead><tr><th>Title</th><th>Target</th><th>Date</th><th></th></tr></thead>' +
+            '<tbody id="notifications-list"><tr><td colspan="4" class="text-center">Loading...</td></tr></tbody></table></div></div>';
+
         loadRecentNotifications();
         document.getElementById('notification-form').addEventListener('submit', sendNotification);
     }
@@ -996,125 +1004,101 @@
     async function loadRecentNotifications() {
         try {
             const snap = await notificationsRef.orderByChild('created_at').limitToLast(20).once('value');
-            const notifications = snap.val() ? Object.entries(snap.val())
-                .map(([id, data]) => ({ id, ...data }))
-                .sort((a, b) => (b.created_at || 0) - (a.created_at || 0)) : [];
-            
+            const notifications = snap.val() ? Object.entries(snap.val()).map(function(e) { return Object.assign({ id: e[0] }, e[1]); }).sort(function(a, b) { return (b.created_at || 0) - (a.created_at || 0); }) : [];
             const list = document.getElementById('notifications-list');
             if (!list) return;
-            
             if (notifications.length === 0) {
                 list.innerHTML = '<tr><td colspan="4" class="text-center text-gray-500 py-4">No notifications sent yet</td></tr>';
                 return;
             }
-            
-            list.innerHTML = notifications.map(notif => `
-                <tr>
-                    <td class="max-w-[200px] truncate" title="${notif.title}">${notif.title || 'Untitled'}</td>
-                    <td>${notif.target_uid === 'all' || !notif.target_uid ? 'All Users' : (notif.target_uid.substring(0,8)+'...')}</td>
-                    <td>${notif.created_at ? new Date(notif.created_at).toLocaleString() : 'N/A'}</td>
-                    <td>
-                        <button class="btn btn-danger btn-sm" onclick="deleteNotification('${notif.id}')" title="Delete">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </td>
-                </tr>
-            `).join('');
-        } catch (error) { 
+            let html = '';
+            notifications.forEach(function(n) {
+                html += '<tr>' +
+                    '<td class="max-w-[200px] truncate">' + esc(n.title || 'Untitled') + '</td>' +
+                    '<td>' + (n.target_uid === 'all' || !n.target_uid ? 'All Users' : n.target_uid.substring(0,8) + '...') + '</td>' +
+                    '<td>' + (n.created_at ? new Date(n.created_at).toLocaleString() : 'N/A') + '</td>' +
+                    '<td><button class="btn btn-danger btn-sm" onclick="deleteNotification(\'' + n.id + '\')"><i class="fas fa-trash"></i></button></td>' +
+                    '</tr>';
+            });
+            list.innerHTML = html;
+        } catch (error) {
             console.error(error);
             const list = document.getElementById('notifications-list');
-            if (list) list.innerHTML = '<tr><td colspan="4" class="text-center text-red-500 py-4">Error loading notifications</td></tr>';
+            if (list) list.innerHTML = '<tr><td colspan="4" class="text-center text-red-500 py-4">Error</td></tr>';
         }
     }
 
     function deleteNotification(id) {
-        openConfirmModal('Delete this notification permanently?', async () => {
+        openConfirmModal('Delete this notification permanently?', async function() {
             await notificationsRef.child(id).remove();
             loadRecentNotifications();
         });
     }
 
-    function renderSettings() {
-        document.getElementById('page-content').innerHTML = `
-            <h1 class="text-3xl font-bold mb-6">Settings</h1>
-            
-            <div class="card mb-6">
-                <h3 class="card-title">App Settings</h3>
-                <div id="app-settings-alert" class="alert hidden"></div>
-                
-                <form id="app-settings-form">
-                    <div class="form-group">
-                        <label class="form-label">Scrolling Notice (Ticker Text)</label>
-                        <input type="text" id="scrolling-notice" class="form-input" value="${appSettings.app?.scrollingNotice || ''}" placeholder="Welcome to FileHub!">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">App Name</label>
-                        <input type="text" id="app-name" class="form-input" value="${appSettings.app?.appName || 'FileHub'}">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Save App Settings</button>
-                </form>
-            </div>
-            
-            <div class="card">
-                <h3 class="card-title"><i class="fas fa-ad mr-2"></i> Ad Network Settings</h3>
-                <div class="info-badge">
-                    <i class="fas fa-info-circle"></i> 
-                    <span>Adsterra Direct Link: ইউজার অ্যাড দেখে ডাউনলোড আনলক করবে।</span>
-                </div>
-                <div id="ad-settings-alert" class="alert hidden"></div>
-                
-                <form id="ad-settings-form">
-                    <div class="form-group">
-                        <label class="form-label">Active Ad Network Strategy</label>
-                        <select id="active-ad-network" class="form-select">
-                            <option value="adsterra" ${appSettings.ads?.activeNetwork === 'adsterra' ? 'selected' : ''}>Adsterra Direct Link Only</option>
-                            <option value="monetag" ${appSettings.ads?.activeNetwork === 'monetag' ? 'selected' : ''}>Monetag Only</option>
-                            <option value="gigapub" ${appSettings.ads?.activeNetwork === 'gigapub' ? 'selected' : ''}>GigaPub Only</option>
-                            <option value="both" ${appSettings.ads?.activeNetwork === 'both' ? 'selected' : ''}>Both (Fallback Mode)</option>
-                        </select>
-                    </div>
+    async function sendNotification(e) {
+        e.preventDefault();
+        const sendBtn = document.getElementById('send-notif-btn');
+        sendBtn.disabled = true;
+        sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+        const targetUid = document.getElementById('notif-target').value.trim();
+        try {
+            await notificationsRef.push({
+                title: document.getElementById('notif-title').value,
+                decs: document.getElementById('notif-message').value,
+                created_at: Date.now(),
+                is_read: false,
+                target_uid: targetUid || 'all'
+            });
+            showAlert('notif-alert', 'Notification sent!', 'success');
+            document.getElementById('notification-form').reset();
+            loadRecentNotifications();
+        } catch (error) { showAlert('notif-alert', error.message, 'error'); }
+        sendBtn.disabled = false;
+        sendBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Send Notification';
+    }
 
-                    <div class="form-group" style="background:var(--bg);padding:15px;border-radius:8px;border:1px dashed var(--primary);">
-                        <label class="form-label" style="color:var(--primary);">
-                            <i class="fas fa-link mr-1"></i> Adsterra Direct Link URL
-                        </label>
-                        <input type="url" id="adsterra-direct-link" class="form-input" 
-                            value="${appSettings.ads?.adsterraDirectLink || ''}" 
-                            placeholder="https://www.effectivegatecpm.com/xxxxxxxxxxxxx">
-                        <p style="font-size:0.8rem;color:var(--text-sub);margin-top:6px;">
-                            <i class="fas fa-lightbulb"></i> Adsterra ড্যাশবোর্ড → Direct Link → একটি লিংক তৈরি করে এখানে পেস্ট করুন।
-                        </p>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Monetag Zone ID (Legacy)</label>
-                        <input type="text" id="monetag-zone" class="form-input" value="${appSettings.ads?.monetagZone || ''}" placeholder="e.g., 1234567">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">GigaPub Ad ID (Legacy)</label>
-                        <input type="text" id="gigapub-zone" class="form-input" value="${appSettings.ads?.gigapubZone || ''}" placeholder="e.g., 9876543">
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save mr-2"></i> Save Ad Settings
-                    </button>
-                </form>
-            </div>
-        `;
-        
+    // ==================== SETTINGS ====================
+    function renderSettings() {
+        const scrollingNotice = appSettings.app ? (appSettings.app.scrollingNotice || '') : '';
+        const appName = appSettings.app ? (appSettings.app.appName || 'FileHub') : 'FileHub';
+        const activeNetwork = appSettings.ads ? (appSettings.ads.activeNetwork || 'adsterra') : 'adsterra';
+        const adsterraLink = appSettings.ads ? (appSettings.ads.adsterraDirectLink || '') : '';
+
+        document.getElementById('page-content').innerHTML = 
+            '<h1 class="text-3xl font-bold mb-6">Settings</h1>' +
+            '<div class="card mb-6"><h3 class="card-title">App Settings</h3>' +
+            '<div id="app-settings-alert" class="alert hidden"></div>' +
+            '<form id="app-settings-form">' +
+                '<div class="form-group"><label class="form-label">Scrolling Notice</label><input type="text" id="scrolling-notice" class="form-input" value="' + esc(scrollingNotice) + '"></div>' +
+                '<div class="form-group"><label class="form-label">App Name</label><input type="text" id="app-name" class="form-input" value="' + esc(appName) + '"></div>' +
+                '<button type="submit" class="btn btn-primary">Save App Settings</button>' +
+            '</form></div>' +
+            '<div class="card"><h3 class="card-title"><i class="fas fa-ad mr-2"></i> Ad Network</h3>' +
+            '<div class="info-badge"><i class="fas fa-info-circle"></i><span>Adsterra Direct Link: ইউজার Ads দেখে আনলক করবে।</span></div>' +
+            '<div id="ad-settings-alert" class="alert hidden"></div>' +
+            '<form id="ad-settings-form">' +
+                '<div class="form-group"><label class="form-label">Active Ad Network</label>' +
+                '<select id="active-ad-network" class="form-select">' +
+                    '<option value="adsterra" ' + (activeNetwork === 'adsterra' ? 'selected' : '') + '>Adsterra Direct Link Only</option>' +
+                '</select></div>' +
+                '<div class="form-group" style="background:var(--bg);padding:15px;border-radius:8px;border:1px dashed var(--primary);">' +
+                    '<label class="form-label" style="color:var(--primary);"><i class="fas fa-link mr-1"></i> Adsterra Direct Link URL</label>' +
+                    '<input type="url" id="adsterra-direct-link" class="form-input" value="' + esc(adsterraLink) + '" placeholder="https://www.effectivegatecpm.com/xxx">' +
+                '</div>' +
+                '<button type="submit" class="btn btn-primary"><i class="fas fa-save mr-2"></i> Save Ad Settings</button>' +
+            '</form></div>';
+
         document.getElementById('app-settings-form').addEventListener('submit', saveAppSettings);
         document.getElementById('ad-settings-form').addEventListener('submit', saveAdSettings);
     }
 
     async function saveAppSettings(e) {
         e.preventDefault();
-        const appData = {
-            appName: document.getElementById('app-name').value,
-            scrollingNotice: document.getElementById('scrolling-notice').value
-        };
         try {
-            await settingsRef.child('app').update(appData);
+            await settingsRef.child('app').update({
+                appName: document.getElementById('app-name').value,
+                scrollingNotice: document.getElementById('scrolling-notice').value
+            });
             showAlert('app-settings-alert', 'App settings saved!', 'success');
             await loadData();
         } catch (error) { showAlert('app-settings-alert', error.message, 'error'); }
@@ -1122,218 +1106,131 @@
 
     async function saveAdSettings(e) {
         e.preventDefault();
-        const adData = {
-            activeNetwork: document.getElementById('active-ad-network').value,
-            adsterraDirectLink: document.getElementById('adsterra-direct-link').value.trim(),
-            monetagZone: document.getElementById('monetag-zone').value,
-            gigapubZone: document.getElementById('gigapub-zone').value
-        };
         try {
-            await settingsRef.child('ads').update(adData);
-            showAlert('ad-settings-alert', 'Ad Network settings saved!', 'success');
+            await settingsRef.child('ads').update({
+                activeNetwork: document.getElementById('active-ad-network').value,
+                adsterraDirectLink: document.getElementById('adsterra-direct-link').value.trim()
+            });
+            showAlert('ad-settings-alert', 'Ad settings saved!', 'success');
             await loadData();
         } catch (error) { showAlert('ad-settings-alert', error.message, 'error'); }
     }
 
+    // ==================== AI CHAT SETTINGS ====================
     function renderAISettings() {
-        const aiKey = appSettings.aiApiKey || appSettings.ai?.apiKey || '';
-        const apiUrl = appSettings.ai?.apiURL || 'https://api.openai.com/v1/chat/completions';
-        const aiModel = appSettings.ai?.model || 'gpt-4o-mini';
+        const aiKey = appSettings.aiApiKey || (appSettings.ai ? (appSettings.ai.apiKey || '') : '');
+        const apiUrl = appSettings.ai ? (appSettings.ai.apiURL || 'https://api.openai.com/v1/chat/completions') : 'https://api.openai.com/v1/chat/completions';
+        const aiModel = appSettings.ai ? (appSettings.ai.model || 'gpt-4o-mini') : 'gpt-4o-mini';
+        const aiEnabled = appSettings.ai ? (appSettings.ai.enabled !== false) : true;
 
-        document.getElementById('page-content').innerHTML = `
-            <h1 class="text-3xl font-bold mb-6"><i class="fas fa-robot text-indigo-500 mr-2"></i> AI Assistant Settings</h1>
-            <div class="card">
-                <div id="ai-settings-alert" class="alert hidden"></div>
-                <form id="ai-settings-form">
-                    <div class="form-group flex items-center mb-6">
-                        <input type="checkbox" id="ai-enabled" class="mr-3 w-5 h-5 accent-indigo-600" ${appSettings.ai?.enabled !== false ? 'checked' : ''}>
-                        <label class="form-label mb-0 cursor-pointer" for="ai-enabled">Enable Website AI Assistant</label>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">API Endpoint URL</label>
-                        <input type="url" id="ai-api-url" class="form-input" value="${apiUrl}" placeholder="https://api.openai.com/v1/chat/completions" required>
-                        <p class="text-xs text-gray-500 mt-1">OpenAI: <code>https://api.openai.com/v1/chat/completions</code><br>Groq (100% Free): <code>https://api.groq.com/openai/v1/chat/completions</code></p>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">API Key</label>
-                        <div class="relative">
-                            <input type="password" id="ai-api-key" class="form-input pr-10" value="${aiKey}" placeholder="sk-proj-xxxxxxxxxxxxxxxxxxxx" required>
-                            <button type="button" onclick="togglePasswordVisibility('ai-api-key')" class="absolute right-3 top-3 text-gray-500">
-                                <i class="fas fa-eye" id="ai-api-key-icon"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">API Model</label>
-                        <input type="text" id="ai-model" class="form-input" value="${aiModel}" placeholder="e.g., gpt-4o-mini or llama-3.3-70b-versatile">
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save mr-2"></i> Save AI Settings
-                    </button>
-                </form>
-            </div>
-        `;
+        document.getElementById('page-content').innerHTML = 
+            '<h1 class="text-3xl font-bold mb-6"><i class="fas fa-robot text-indigo-500 mr-2"></i> AI Chat Settings</h1>' +
+            '<div class="card"><div id="ai-settings-alert" class="alert hidden"></div>' +
+            '<form id="ai-settings-form">' +
+                '<div class="form-group flex items-center mb-4">' +
+                    '<input type="checkbox" id="ai-enabled" class="mr-3 w-5 h-5" ' + (aiEnabled ? 'checked' : '') + '>' +
+                    '<label class="form-label mb-0 cursor-pointer" for="ai-enabled">Enable AI Chat Assistant</label>' +
+                '</div>' +
+                '<div class="form-group"><label class="form-label">API URL</label><input type="url" id="ai-api-url" class="form-input" value="' + esc(apiUrl) + '" required></div>' +
+                '<div class="form-group"><label class="form-label">API Key</label><input type="password" id="ai-api-key" class="form-input" value="' + esc(aiKey) + '" required></div>' +
+                '<div class="form-group"><label class="form-label">Model</label><input type="text" id="ai-model" class="form-input" value="' + esc(aiModel) + '"></div>' +
+                '<button type="submit" class="btn btn-primary"><i class="fas fa-save mr-2"></i> Save</button>' +
+            '</form></div>';
 
-        document.getElementById('ai-settings-form').addEventListener('submit', async (e) => {
+        document.getElementById('ai-settings-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const apiKeyVal = document.getElementById('ai-api-key').value.trim();
-            const aiData = {
-                enabled: document.getElementById('ai-enabled').checked,
-                apiURL: document.getElementById('ai-api-url').value.trim(),
-                apiKey: apiKeyVal,
-                model: document.getElementById('ai-model').value.trim() || 'gpt-4o-mini'
-            };
-
             try {
-                await settingsRef.child('ai').update(aiData);
+                await settingsRef.child('ai').update({
+                    enabled: document.getElementById('ai-enabled').checked,
+                    apiURL: document.getElementById('ai-api-url').value.trim(),
+                    apiKey: apiKeyVal,
+                    model: document.getElementById('ai-model').value.trim() || 'gpt-4o-mini'
+                });
                 await settingsRef.child('aiApiKey').set(apiKeyVal);
-                showAlert('ai-settings-alert', 'AI settings saved successfully!', 'success');
+                showAlert('ai-settings-alert', 'AI settings saved!', 'success');
                 await loadData();
-            } catch (error) { 
-                showAlert('ai-settings-alert', error.message, 'error'); 
-            }
+            } catch (error) { showAlert('ai-settings-alert', error.message, 'error'); }
         });
     }
 
-    window.togglePasswordVisibility = (id) => {
-        const input = document.getElementById(id);
-        const icon = document.getElementById(id + '-icon');
-        if (input.type === 'password') {
-            input.type = 'text';
-            icon.classList.replace('fa-eye', 'fa-eye-slash');
-        } else {
-            input.type = 'password';
-            icon.classList.replace('fa-eye-slash', 'fa-eye');
-        }
-    };
-
-    // ==================== FILE FORM WITH SLUG ====================
-    
-    function openFileForm(fileId = null) {
-        const file = fileId ? allFiles.find(f => f.id === fileId) : {};
+    // ==================== FILE FORM ====================
+    function openFileForm(fileId) {
+        const file = fileId ? allFiles.find(function(f) { return f.id === fileId; }) : {};
         document.getElementById('modal-title').textContent = fileId ? 'Edit File' : 'Upload / Add New File';
-        
-        // Existing slug if editing (and if custom, not Firebase auto ID)
+
         const isCustomSlug = fileId && !file.id.startsWith('-');
         const existingSlug = isCustomSlug ? file.id : '';
-        
-        document.getElementById('modal-form').innerHTML = `
-            <input type="hidden" id="file-id" value="${file.id || ''}">
-            
-            <div class="form-group">
-                <label class="form-label">Title <span style="color:var(--red);">*</span></label>
-                <input type="text" id="file-title" class="form-input" value="${file.title || ''}" 
-                       placeholder="e.g., TikTok Cover Photo Mod APK 2024" 
-                       oninput="autoGenerateSlug()" required>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">
-                    🔗 Custom URL Slug
-                    <span style="font-weight:400;color:var(--text-sub);font-size:0.8rem;">(Optional)</span>
-                </label>
-                <div class="slug-input-wrapper">
-                    <span class="prefix">/file/</span>
-                    <input type="text" id="file-slug" 
-                           value="${existingSlug}" 
-                           placeholder="tiktok-cover-photo-mod"
-                           oninput="sanitizeSlugInput()"
-                           ${fileId ? '' : ''}>
-                </div>
-                <p style="font-size:0.75rem;color:var(--text-sub);margin-top:5px;">
-                    💡 শুধু ছোট হাতের ইংরেজি অক্ষর, সংখ্যা এবং <code>-</code> ব্যবহার করুন। খালি রাখলে Title থেকে অটো তৈরি হবে।
-                </p>
-                <div class="slug-preview" id="slug-preview">
-                    Loading...
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">Description (Markdown Supported)</label>
-                <textarea id="file-description" class="form-textarea" rows="3" placeholder="Describe what this file contains..." required>${file.description || ''}</textarea>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">Thumbnail URL</label>
-                <input type="url" id="file-thumbnail" class="form-input" value="${file.thumbnail_url || ''}" placeholder="https://example.com/image.jpg" required>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">Download URL</label>
-                <input type="url" id="file-download-url" class="form-input" value="${file.download_url || ''}" placeholder="https://example.com/file.zip" required>
-            </div>
-            
-            <div class="grid grid-cols-2 gap-4">
-                <div class="form-group">
-                    <label class="form-label">Extension</label>
-                    <input type="text" id="file-extension" class="form-input" value="${file.file_extension || '.zip'}" placeholder=".zip" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Required Ads</label>
-                    <input type="number" id="file-required-ads" class="form-input" value="${file.required_ads || 0}" min="0" required>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">Detail Photos (Comma separated URLs)</label>
-                <textarea id="file-detail-photos" class="form-textarea" rows="2" placeholder="https://img1.jpg, https://img2.jpg">${(file.detail_photos || []).join(', ')}</textarea>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">Status</label>
-                <select id="file-status" class="form-select">
-                    <option value="approved" ${file.status === 'approved' || !fileId ? 'selected' : ''}>Approved (Public)</option>
-                    <option value="pending" ${file.status === 'pending' ? 'selected' : ''}>Pending Review</option>
-                    <option value="rejected" ${file.status === 'rejected' ? 'selected' : ''}>Rejected</option>
-                </select>
-            </div>
-            
-            <div class="flex justify-end gap-3 mt-4">
-                <button type="button" class="btn btn-danger" onclick="closeModal()">Cancel</button>
-                <button type="submit" class="btn btn-success" id="save-file-btn">
-                    <i class="fas fa-save mr-2"></i> Save File
-                </button>
-            </div>
-        `;
-        
-        // Initialize slug preview
-        setTimeout(() => {
+        const detailPhotosStr = (file.detail_photos || []).join('\n');
+
+        document.getElementById('modal-form').innerHTML = 
+            '<div class="form-group">' +
+                '<label class="form-label">Title <span style="color:var(--red);">*</span></label>' +
+                '<input type="text" id="file-title" class="form-input" value="' + esc(file.title || '') + '" placeholder="e.g., TikTok Mod APK 2024" oninput="autoGenerateSlug()" required>' +
+            '</div>' +
+            '<div class="form-group">' +
+                '<label class="form-label">🔗 Custom URL Slug (Optional)</label>' +
+                '<div class="slug-input-wrapper"><span class="prefix">/file/</span>' +
+                '<input type="text" id="file-slug" value="' + esc(existingSlug) + '" placeholder="tiktok-mod-apk" oninput="sanitizeSlugInput()">' +
+                '</div><div class="slug-preview" id="slug-preview">Loading...</div>' +
+            '</div>' +
+            '<div class="form-group">' +
+                '<label class="form-label">Description (Markdown Supported)</label>' +
+                '<textarea id="file-description" class="form-textarea" rows="6" placeholder="Markdown supported..." required>' + esc(file.description || '') + '</textarea>' +
+                '<p style="font-size:0.75rem;color:var(--text-sub);margin-top:5px;">Markdown: # Heading, **bold**, - list, [link](url), quote, code, ---</p>' +
+            '</div>' +
+            '<div class="form-group"><label class="form-label">Thumbnail URL</label><input type="url" id="file-thumbnail" class="form-input" value="' + esc(file.thumbnail_url || '') + '" required></div>' +
+            '<div class="form-group"><label class="form-label">Download URL</label><input type="url" id="file-download-url" class="form-input" value="' + esc(file.download_url || '') + '" required></div>' +
+            '<div class="grid grid-cols-2 gap-4">' +
+                '<div class="form-group"><label class="form-label">Extension</label><input type="text" id="file-extension" class="form-input" value="' + esc(file.file_extension || '.zip') + '" required></div>' +
+                '<div class="form-group"><label class="form-label">Required Ads</label><input type="number" id="file-required-ads" class="form-input" value="' + (file.required_ads || 0) + '" min="0" required></div>' +
+            '</div>' +
+            '<div class="form-group"><label class="form-label">Detail Photos (প্রতি লাইনে একটি URL)</label>' +
+            '<textarea id="file-detail-photos" class="form-textarea" rows="3" placeholder="https://img1.jpg" style="font-family:monospace;font-size:0.82rem;">' + esc(detailPhotosStr) + '</textarea></div>' +
+            '<div class="form-group"><label class="form-label">Status</label>' +
+            '<select id="file-status" class="form-select">' +
+                '<option value="approved" ' + (file.status === 'approved' || !fileId ? 'selected' : '') + '>Approved (Public)</option>' +
+                '<option value="pending" ' + (file.status === 'pending' ? 'selected' : '') + '>Pending Review</option>' +
+                '<option value="rejected" ' + (file.status === 'rejected' ? 'selected' : '') + '>Rejected</option>' +
+            '</select></div>' +
+            '<div class="flex justify-end gap-3 mt-4">' +
+                '<button type="button" class="btn btn-danger" onclick="closeModal()">Cancel</button>' +
+                '<button type="submit" class="btn btn-success" id="save-file-btn"><i class="fas fa-save mr-2"></i> Save File</button>' +
+            '</div>';
+
+        setTimeout(function() {
             if (existingSlug) {
                 const slugInput = document.getElementById('file-slug');
-                slugInput.dataset.userEdited = 'true';
+                if (slugInput) slugInput.dataset.userEdited = 'true';
             }
             updateSlugPreview();
         }, 50);
-        
-        document.getElementById('modal-form').onsubmit = (e) => saveFile(e, fileId);
+
+        document.getElementById('modal-form').onsubmit = function(e) { saveFile(e, fileId); };
         openModal();
     }
 
     async function saveFile(e, fileId) {
         e.preventDefault();
         const saveBtn = document.getElementById('save-file-btn');
-        saveBtn.disabled = true; 
+        saveBtn.disabled = true;
         saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Saving...';
-        
-        const existingFile = fileId ? allFiles.find(f => f.id === fileId) : {};
+
+        const existingFile = fileId ? allFiles.find(function(f) { return f.id === fileId; }) : {};
         const title = document.getElementById('file-title').value.trim();
         const customSlug = document.getElementById('file-slug').value.trim();
-        
-        // Slug নির্ধারণ: custom slug > title থেকে auto > timestamp fallback
+
         let baseSlug = customSlug || generateSlugFromTitle(title);
-        
-        // যদি slug একদমই খালি হয়, তাহলে timestamp
-        if (!baseSlug) {
-            baseSlug = 'file-' + Date.now().toString().slice(-8);
-        }
-        
-        // Unique slug চেক
+        if (!baseSlug) baseSlug = 'file-' + Date.now().toString().slice(-8);
+
         let finalSlug = baseSlug;
         if (!fileId || (existingFile.id && existingFile.id !== baseSlug)) {
-            // নতুন file, বা slug পরিবর্তন হয়েছে
             finalSlug = await getUniqueSlug(baseSlug, fileId);
         }
-        
+
+        const detailPhotosText = document.getElementById('file-detail-photos').value.trim();
+        const detailPhotos = detailPhotosText.split('\n').map(function(u) { return u.trim(); }).filter(function(u) { return u; });
+
         const fileData = {
             title: title,
             description: document.getElementById('file-description').value,
@@ -1341,18 +1238,16 @@
             download_url: document.getElementById('file-download-url').value,
             file_extension: document.getElementById('file-extension').value,
             required_ads: parseInt(document.getElementById('file-required-ads').value) || 0,
-            detail_photos: document.getElementById('file-detail-photos').value
-                .split(',').map(u => u.trim()).filter(u => u),
+            detail_photos: detailPhotos,
             status: document.getElementById('file-status').value,
             created_at: existingFile.created_at || Date.now(),
             total_downloads: existingFile.total_downloads || 0,
             uploadedBy: existingFile.uploadedBy || currentUser.uid,
             uploadedByEmail: existingFile.uploadedByEmail || currentUser.email
         };
-        
+
         try {
             if (fileId) {
-                // Slug পরিবর্তন হলে নতুন key এ save করে পুরনো ডিলিট
                 if (existingFile.id !== finalSlug) {
                     await filesRef.child(finalSlug).set(fileData);
                     await filesRef.child(existingFile.id).remove();
@@ -1360,148 +1255,121 @@
                     await filesRef.child(fileId).update(fileData);
                 }
             } else {
-                // নতুন file — slug দিয়ে save
                 await filesRef.child(finalSlug).set(fileData);
             }
-            
-            showAlert('modal-alert', `✅ File saved! URL: /file/${finalSlug}`, 'success');
-            setTimeout(() => { closeModal(); loadData(); }, 1500);
+            showAlert('modal-alert', '✅ File saved! URL: /file/' + finalSlug, 'success');
+            setTimeout(function() { closeModal(); loadData(); }, 1500);
         } catch (error) {
             showAlert('modal-alert', error.message, 'error');
-            saveBtn.disabled = false; 
+            saveBtn.disabled = false;
             saveBtn.innerHTML = '<i class="fas fa-save mr-2"></i> Save File';
         }
     }
-    
+
     function editFile(fileId) { openFileForm(fileId); }
-    
     function deleteFile(fileId, title) {
-        openConfirmModal(`Delete file "${title}" permanently?\n\nURL: /file/${fileId}`, async () => {
+        openConfirmModal('Delete file "' + title + '" permanently?', async function() {
             await filesRef.child(fileId).remove();
             await loadData();
         });
     }
 
-    function openBannerForm(bannerId = null) {
-        const banner = bannerId ? allBanners.find(b => b.id === bannerId) : {};
-        document.getElementById('modal-title').textContent = bannerId ? 'Edit Slider Item' : 'Add Slider Item';
-        
-        document.getElementById('modal-form').innerHTML = `
-            <div class="form-group">
-                <label class="form-label">Title</label>
-                <input type="text" id="banner-title" class="form-input" value="${banner.title || ''}" placeholder="Banner title" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Image URL</label>
-                <input type="url" id="banner-thumbnail" class="form-input" value="${banner.thumbnail_url || ''}" placeholder="https://example.com/banner.jpg" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Target Link (Optional)</label>
-                <input type="url" id="banner-download-url" class="form-input" value="${banner.download_url || ''}" placeholder="https://example.com/page">
-            </div>
-            <div class="flex justify-end gap-3 mt-4">
-                <button type="button" class="btn btn-danger" onclick="closeModal()">Cancel</button>
-                <button type="submit" class="btn btn-success" id="save-banner-btn">Save</button>
-            </div>
-        `;
-        document.getElementById('modal-form').onsubmit = (e) => saveBanner(e, bannerId);
+    // ==================== BANNER FORM (No Description) ====================
+    function openBannerForm(bannerId) {
+        const banner = bannerId ? allBanners.find(function(b) { return b.id === bannerId; }) : {};
+        document.getElementById('modal-title').textContent = bannerId ? '✏️ Edit Slider' : '➕ Add Slider';
+
+        const previewImg = banner.thumbnail_url ? '<img src="' + esc(banner.thumbnail_url) + '" style="max-width:100%;max-height:180px;border-radius:8px;border:1px solid var(--border);">' : '';
+
+        document.getElementById('modal-form').innerHTML = 
+            '<div class="form-group"><label class="form-label">Title <span style="color:var(--red);">*</span></label>' +
+            '<input type="text" id="banner-title" class="form-input" value="' + esc(banner.title || '') + '" required></div>' +
+            '<div class="form-group"><label class="form-label">Image URL <span style="color:var(--red);">*</span></label>' +
+            '<input type="url" id="banner-thumbnail" class="form-input" value="' + esc(banner.thumbnail_url || '') + '" oninput="previewBannerImage()" required>' +
+            '<div id="banner-image-preview" style="margin-top:10px;">' + previewImg + '</div>' +
+            '<p style="font-size:0.75rem;color:var(--text-sub);margin-top:5px;">💡 1200×630 px recommended</p></div>' +
+            '<div class="form-group"><label class="form-label">Target Link (Optional)</label>' +
+            '<input type="url" id="banner-download-url" class="form-input" value="' + esc(banner.download_url || '') + '" placeholder="https://example.com/page"></div>' +
+            '<div class="flex justify-end gap-3 mt-4">' +
+                '<button type="button" class="btn btn-danger" onclick="closeModal()">Cancel</button>' +
+                '<button type="submit" class="btn btn-success" id="save-banner-btn"><i class="fas fa-save mr-2"></i> Save Banner</button>' +
+            '</div>';
+
+        document.getElementById('modal-form').onsubmit = function(e) { saveBanner(e, bannerId); };
         openModal();
     }
 
+    window.previewBannerImage = function() {
+        const url = document.getElementById('banner-thumbnail').value.trim();
+        const preview = document.getElementById('banner-image-preview');
+        if (!url) { preview.innerHTML = ''; return; }
+        preview.innerHTML = '<img src="' + esc(url) + '" style="max-width:100%;max-height:180px;border-radius:8px;border:1px solid var(--border);" onerror="this.style.display=\'none\'">';
+    };
+
     async function saveBanner(e, bannerId) {
         e.preventDefault();
-        const existingBanner = bannerId ? allBanners.find(b => b.id === bannerId) : {};
+        const saveBtn = document.getElementById('save-banner-btn');
+        saveBtn.disabled = true;
+        saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Saving...';
+
+        const existingBanner = bannerId ? allBanners.find(function(b) { return b.id === bannerId; }) : {};
         const bannerData = {
             title: document.getElementById('banner-title').value,
             thumbnail_url: document.getElementById('banner-thumbnail').value,
             download_url: document.getElementById('banner-download-url').value,
-            created_at: existingBanner.created_at || Date.now(),
+            created_at: existingBanner.created_at || Date.now()
         };
         try {
             if (bannerId) await bannersRef.child(bannerId).update(bannerData);
             else await bannersRef.push(bannerData);
-            closeModal(); 
-            await loadData();
-        } catch (error) { showAlert('modal-alert', error.message, 'error'); }
+            showAlert('modal-alert', '✅ Banner saved!', 'success');
+            setTimeout(function() { closeModal(); loadData(); }, 1000);
+        } catch (error) {
+            showAlert('modal-alert', error.message, 'error');
+            saveBtn.disabled = false;
+            saveBtn.innerHTML = '<i class="fas fa-save mr-2"></i> Save Banner';
+        }
     }
 
     function editBanner(bannerId) { openBannerForm(bannerId); }
     function deleteBanner(bannerId, title) {
-        openConfirmModal(`Delete slider item "${title}"?`, async () => {
+        openConfirmModal('Delete slider "' + title + '"?', async function() {
             await bannersRef.child(bannerId).remove();
             await loadData();
         });
     }
 
+    // ==================== EDIT USER ====================
     function editUser(userId) {
-        const user = allUsers.find(u => u.id === userId);
+        const user = allUsers.find(function(u) { return u.id === userId; });
         if (!user) return;
         document.getElementById('modal-title').textContent = 'Edit User';
-        document.getElementById('modal-form').innerHTML = `
-            <div class="form-group">
-                <label class="form-label">User ID</label>
-                <input type="text" class="form-input" value="${user.numericId || user.id}" disabled>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-input" value="${user.email || ''}" disabled>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Username</label>
-                <input type="text" id="user-username" class="form-input" value="${user.username || ''}" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Full Name</label>
-                <input type="text" id="user-fullname" class="form-input" value="${user.fullname || ''}" required>
-            </div>
-            <div class="flex justify-end gap-3 mt-4">
-                <button type="button" class="btn btn-danger" onclick="closeModal()">Cancel</button>
-                <button type="submit" class="btn btn-success">Save</button>
-            </div>
-        `;
-        document.getElementById('modal-form').onsubmit = async (e) => {
+
+        document.getElementById('modal-form').innerHTML = 
+            '<div class="form-group"><label class="form-label">User ID</label><input type="text" class="form-input" value="' + esc(user.numericId || user.id) + '" disabled></div>' +
+            '<div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" value="' + esc(user.email || '') + '" disabled></div>' +
+            '<div class="form-group"><label class="form-label">Username</label><input type="text" id="user-username" class="form-input" value="' + esc(user.username || '') + '" required></div>' +
+            '<div class="form-group"><label class="form-label">Full Name</label><input type="text" id="user-fullname" class="form-input" value="' + esc(user.fullname || '') + '" required></div>' +
+            '<div class="flex justify-end gap-3 mt-4">' +
+                '<button type="button" class="btn btn-danger" onclick="closeModal()">Cancel</button>' +
+                '<button type="submit" class="btn btn-success">Save</button>' +
+            '</div>';
+
+        document.getElementById('modal-form').onsubmit = async function(e) {
             e.preventDefault();
             try {
                 await usersRef.child(userId).update({
                     username: document.getElementById('user-username').value,
                     fullname: document.getElementById('user-fullname').value
                 });
-                closeModal(); 
+                closeModal();
                 await loadData();
             } catch (err) { showAlert('modal-alert', err.message, 'error'); }
         };
         openModal();
     }
 
-    async function sendNotification(e) {
-        e.preventDefault();
-        const sendBtn = document.getElementById('send-notif-btn');
-        sendBtn.disabled = true; 
-        sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
-        
-        const targetUid = document.getElementById('notif-target').value.trim();
-        const notificationData = {
-            title: document.getElementById('notif-title').value,
-            decs: document.getElementById('notif-message').value,
-            created_at: Date.now(),
-            is_read: false,
-            target_uid: targetUid || 'all'
-        };
-        
-        try {
-            await notificationsRef.push(notificationData);
-            showAlert('notif-alert', 'Notification sent successfully!', 'success');
-            document.getElementById('notification-form').reset();
-            loadRecentNotifications();
-        } catch (error) { 
-            showAlert('notif-alert', error.message, 'error'); 
-        } finally {
-            sendBtn.disabled = false; 
-            sendBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Send Notification';
-        }
-    }
-
-    // Expose functions globally
+    // Expose global
     window.toggleSidebar = toggleSidebar;
     window.loadPage = loadPage;
     window.logout = logout;
@@ -1521,11 +1389,16 @@
     window.deleteNotification = deleteNotification;
     window.loadData = loadData;
     window.showAlert = showAlert;
-    window.togglePasswordVisibility = togglePasswordVisibility;
     window.autoGenerateSlug = autoGenerateSlug;
     window.sanitizeSlugInput = sanitizeSlugInput;
     window.updateSlugPreview = updateSlugPreview;
+    window.openPromptForm = openPromptForm;
+    window.deletePrompt = deletePrompt;
+    window.previewSampleImage = previewSampleImage;
+    window.previewDetailPhotos = previewDetailPhotos;
+    window.previewBannerImage = previewBannerImage;
+    window.copyPromptAdmin = copyPromptAdmin;
 </script>
 
 </body>
-</html>,
+</html>
