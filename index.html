@@ -222,9 +222,18 @@
         .banner-pill { background: var(--primary-soft); color: var(--primary); padding: 4px 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; gap: 4px; }
         .banner-pill svg { width: 14px; height: 14px; stroke-width: 2.5; }
 
-        .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; margin-top: 10px; }
+        .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; margin-top: 30px; }
         .section-header h2 { font-family: 'Outfit', sans-serif; font-size: 1.4rem; margin: 0; color: var(--text-main); }
         .section-icon { color: var(--primary); width: 24px; height: 24px; }
+        .section-count {
+            background: var(--primary-soft);
+            color: var(--primary);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: auto;
+        }
 
         .file-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
         .file-card { background: var(--surface); border-radius: 12px; box-shadow: var(--shadow-sm); overflow: hidden; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; border: 1px solid transparent; position: relative; }
@@ -257,6 +266,25 @@
             gap: 4px;
         }
 
+        .apk-file-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: linear-gradient(135deg, #10b981, #34d399);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            z-index: 3;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
         .detail-wrapper { width: 100%; background: transparent; padding: 0; animation: fadeIn 0.3s ease; }
         .detail-header-block { margin: 20px 0; }
         .detail-title { font-family: 'Outfit', sans-serif; font-size: 1.4rem; color: var(--text-main); line-height: 1.3; margin: 0 0 15px 0; }
@@ -266,7 +294,6 @@
         .meta-center { justify-self: center; }
         .meta-right { justify-self: end; }
 
-        /* ==================== BEAUTIFUL DESCRIPTION CARD ==================== */
         .detail-desc {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -320,27 +347,11 @@
             margin: 18px 0 10px 0;
         }
 
-        .detail-desc p {
-            margin-bottom: 12px;
-            color: var(--text-main);
-        }
+        .detail-desc p { margin-bottom: 12px; color: var(--text-main); }
+        .detail-desc strong { color: var(--primary); font-weight: 700; }
+        .detail-desc em { font-style: italic; color: var(--text-sub); }
 
-        .detail-desc strong {
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-        .detail-desc em {
-            font-style: italic;
-            color: var(--text-sub);
-        }
-
-        .detail-desc ul {
-            list-style: none;
-            padding: 0;
-            margin: 15px 0;
-        }
-
+        .detail-desc ul { list-style: none; padding: 0; margin: 15px 0; }
         .detail-desc ul li {
             padding: 12px 16px;
             margin-bottom: 8px;
@@ -350,19 +361,9 @@
             transition: 0.2s;
             line-height: 1.6;
         }
+        .detail-desc ul li:hover { transform: translateX(4px); background: var(--primary-soft); }
 
-        .detail-desc ul li:hover {
-            transform: translateX(4px);
-            background: var(--primary-soft);
-        }
-
-        .detail-desc ol {
-            list-style: none;
-            counter-reset: item-counter;
-            padding: 0;
-            margin: 15px 0;
-        }
-
+        .detail-desc ol { list-style: none; counter-reset: item-counter; padding: 0; margin: 15px 0; }
         .detail-desc ol li {
             counter-increment: item-counter;
             padding: 12px 16px 12px 50px;
@@ -372,7 +373,6 @@
             position: relative;
             line-height: 1.6;
         }
-
         .detail-desc ol li::before {
             content: counter(item-counter);
             position: absolute;
@@ -402,7 +402,6 @@
             font-weight: 500;
             line-height: 1.6;
         }
-
         [data-theme="dark"] .detail-desc blockquote {
             background: rgba(245, 158, 11, 0.15);
             color: #fde68a;
@@ -431,11 +430,7 @@
             margin: 8px 0;
             border: none;
         }
-
-        .detail-desc a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--primary-glow);
-        }
+        .detail-desc a:hover { transform: translateY(-2px); box-shadow: 0 8px 20px var(--primary-glow); }
 
         .detail-desc code {
             background: var(--primary-soft);
@@ -456,14 +451,7 @@
             overflow-x: auto;
             margin: 15px 0;
         }
-
-        .detail-desc pre code {
-            background: transparent;
-            border: none;
-            padding: 0;
-            color: var(--text-main);
-            font-weight: 400;
-        }
+        .detail-desc pre code { background: transparent; border: none; padding: 0; color: var(--text-main); font-weight: 400; }
 
         .detail-desc table {
             width: 100%;
@@ -474,25 +462,9 @@
             overflow: hidden;
             border: 1px solid var(--border);
         }
-
-        .detail-desc table th {
-            background: var(--primary);
-            color: white;
-            padding: 12px;
-            text-align: left;
-            font-weight: 700;
-            font-size: 0.85rem;
-        }
-
-        .detail-desc table td {
-            padding: 12px;
-            border-top: 1px solid var(--border);
-            background: var(--surface);
-        }
-
-        .detail-desc table tr:nth-child(even) td {
-            background: var(--bg);
-        }
+        .detail-desc table th { background: var(--primary); color: white; padding: 12px; text-align: left; font-weight: 700; font-size: 0.85rem; }
+        .detail-desc table td { padding: 12px; border-top: 1px solid var(--border); background: var(--surface); }
+        .detail-desc table tr:nth-child(even) td { background: var(--bg); }
 
         .unlock-inline { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border); }
         
@@ -543,11 +515,7 @@
             text-decoration: none;
             transition: 0.2s;
         }
-        .prompt-gemini-main-btn:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
+        .prompt-gemini-main-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
 
         .prompt-detail-wrapper {
             background: var(--bg);
@@ -576,17 +544,8 @@
             font-size: 1.2rem;
             flex-shrink: 0;
         }
-        .prompt-detail-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-        .prompt-detail-subtitle {
-            font-size: 0.78rem;
-            color: var(--text-sub);
-            margin-top: 2px;
-        }
+        .prompt-detail-title { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text-main); }
+        .prompt-detail-subtitle { font-size: 0.78rem; color: var(--text-sub); margin-top: 2px; }
         .prompt-text-display {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -807,10 +766,7 @@
             color: var(--text-main); line-height: 1.35;
             margin-bottom: 4px; word-break: break-word;
         }
-        .ai-file-meta {
-            display: flex; align-items: center;
-            gap: 8px; flex-wrap: wrap;
-        }
+        .ai-file-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .ai-file-ext {
             background: var(--primary-soft);
             color: var(--primary);
@@ -822,21 +778,9 @@
             text-transform: uppercase;
             letter-spacing: 0.3px;
         }
-        .ai-file-cta {
-            color: var(--primary);
-            font-size: 0.72rem;
-            font-weight: 600;
-            opacity: 0.85;
-        }
-        .ai-file-card:hover .ai-file-cta {
-            opacity: 1;
-            transform: translateX(3px);
-            transition: transform 0.25s ease;
-        }
-        [data-theme="dark"] .ai-file-icon {
-            background: linear-gradient(135deg, rgba(79,70,229,0.25), var(--bg));
-            border-color: var(--primary);
-        }
+        .ai-file-cta { color: var(--primary); font-size: 0.72rem; font-weight: 600; opacity: 0.85; }
+        .ai-file-card:hover .ai-file-cta { opacity: 1; transform: translateX(3px); transition: transform 0.25s ease; }
+        [data-theme="dark"] .ai-file-icon { background: linear-gradient(135deg, rgba(79,70,229,0.25), var(--bg)); border-color: var(--primary); }
 
         .copy-toast {
             position: fixed; bottom: 90px; left: 50%;
@@ -990,7 +934,7 @@
     <div class="chat-container" id="chatList">
         <div class="chat-bubble ai">
             <img src="https://iili.io/fYWPWg9.jpg" class="ai-avatar" id="aiAvatar" onerror="this.onerror=null;this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='">
-            <div class="ai-content">হ্যালো! আমি আপনার FileHub AI অ্যাসিস্ট্যান্ট। ফাইল খুঁজে পেতে বা যেকোনো প্রশ্ন করতে মেসেজ দিন।</div>
+            <div class="ai-content">হ্যালো! 👋 আমি FileHub AI অ্যাসিস্ট্যান্ট। আমি আপনাকে সাহায্য করতে এখানে আছি। যেকোনো প্রশ্ন করতে পারেন! 😊</div>
         </div>
     </div>
     <div class="chat-footer">
@@ -1160,6 +1104,15 @@
             .replace(/>/g, '&gt;')
             .replace(/"/g, '&quot;')
             .replace(/'/g, '&#039;');
+    }
+
+    // ==================== CATEGORY DETECTION ====================
+    function getFileCategory(file) {
+        if (!file) return 'other';
+        if (file.isAIPrompt) return 'ai-prompt';
+        const ext = (file.file_extension || '').toLowerCase().replace('.', '');
+        if (ext === 'apk') return 'apk';
+        return 'file'; // zip, rar, html, php, pdf, etc.
     }
 
     function getAIPromptFiles() {
@@ -1606,25 +1559,89 @@
             const filesSnap = await filesRef.once('value');
             const filesData = filesSnap.val() || {};
             
-            const approvedFilesList = Object.entries(filesData)
-                .map(function(e) { return { id: e[0], title: e[1].title, extension: e[1].file_extension, status: e[1].status }; })
+            const allFilesList = Object.entries(filesData)
+                .map(function(e) {
+                    const id = e[0];
+                    const item = e[1];
+                    const ext = item.file_extension || '';
+                    let category = 'file';
+                    if (ext.toLowerCase().replace('.', '') === 'apk') category = 'apk';
+                    return {
+                        id: id,
+                        title: item.title,
+                        extension: ext,
+                        category: category,
+                        status: item.status
+                    };
+                })
                 .filter(function(f) { return f.status === 'approved'; });
 
             const aiPromptFiles = getAIPromptFiles();
-            const allAvailableItems = approvedFilesList.concat(aiPromptFiles.map(function(p) { return { id: p.id, title: p.title, extension: '.ai', status: 'approved' }; }));
+            const aiPromptsList = aiPromptFiles.map(function(p) {
+                return { id: p.id, title: p.title, extension: '.ai', category: 'ai-prompt', status: 'approved' };
+            });
 
-            const systemPrompt = "You are FileHub AI, an intelligent assistant for the FileHub website.\n\n" +
-                "DATABASE ACCESS (" + allAvailableItems.length + " files):\n" +
-                JSON.stringify(allAvailableItems, null, 2) + "\n\n" +
-                "USER: " + (currentUserData ? (currentUserData.fullname || 'Guest') : 'Guest') + "\n\n" +
-                "RESPONSE RULES:\n" +
-                "1. Speak in Bengali unless user speaks English.\n" +
-                "2. When mentioning files, ALWAYS use this EXACT format (one per line):\n" +
-                "   [FILE:ID|Title|Extension]\n\n" +
-                "3. NEVER use markdown links for files.\n" +
-                "4. NEVER use bullet points for file lists.\n" +
-                "5. Add a short intro line, then list files separated by newlines.\n" +
-                "6. End with a helpful question.";
+            const apkFiles = allFilesList.filter(function(f) { return f.category === 'apk'; });
+            const otherFiles = allFilesList.filter(function(f) { return f.category === 'file'; });
+
+            const adminInfo = settingsVal.admin || {};
+            const adminName = adminInfo.name || 'FILE HUB এডমিন';
+            const adminSocial = adminInfo.social || {};
+            const socialList = [];
+            if (adminSocial.telegram) socialList.push('Telegram: ' + adminSocial.telegram);
+            if (adminSocial.facebook) socialList.push('Facebook: ' + adminSocial.facebook);
+            if (adminSocial.youtube) socialList.push('YouTube: ' + adminSocial.youtube);
+            if (adminSocial.whatsapp) socialList.push('WhatsApp: ' + adminSocial.whatsapp);
+            if (adminSocial.instagram) socialList.push('Instagram: ' + adminSocial.instagram);
+            if (adminSocial.twitter) socialList.push('Twitter: ' + adminSocial.twitter);
+            if (adminSocial.email) socialList.push('Email: ' + adminSocial.email);
+            const socialText = socialList.length > 0 ? socialList.join('\n') : 'Telegram: https://t.me/ewrjahid_01';
+
+            const websiteName = (settingsVal.app && settingsVal.app.appName) || 'FileHub';
+            const siteDescription = 'FileHub is a secure file sharing platform offering premium APK mods, files, and AI prompts.';
+
+            const systemPrompt = "You are FileHub AI, a friendly, helpful, and intelligent assistant for the " + websiteName + " website. " +
+                "You speak in a warm, friendly, casual tone. Always add emojis to make conversation lively. Speak Bengali (বাংলা) unless user speaks English.\n\n" +
+
+                "=== ABOUT YOU ===\n" +
+                "You are the official AI assistant of " + websiteName + ".\n" +
+                "If asked who created you, say: 'আমাকে তৈরি করেছে " + adminName + " — যিনি " + websiteName + " এর মূল এডমিন। 🙌'\n" +
+                "If asked about the admin or admin panel or who runs this site, say: 'আমাদের এডমিন হলেন " + adminName + "। উনার সাথে যোগাযোগ করতে পারেন নিচের সোশ্যাল মিডিয়াতে:\n" + socialText + "'\n" +
+
+                "=== SITE INFO ===\n" +
+                "Website Name: " + websiteName + "\n" +
+                "Description: " + siteDescription + "\n" +
+                "Total APK Files: " + apkFiles.length + "\n" +
+                "Total Other Files: " + otherFiles.length + "\n" +
+                "Total AI Prompts: " + aiPromptsList.length + "\n\n" +
+
+                "=== APK FILES (" + apkFiles.length + ") ===\n" +
+                JSON.stringify(apkFiles, null, 2) + "\n\n" +
+
+                "=== OTHER FILES (" + otherFiles.length + ") — Includes .zip, .rar, .html, .php, .pdf, etc. ===\n" +
+                JSON.stringify(otherFiles, null, 2) + "\n\n" +
+
+                "=== AI IMAGE PROMPTS (" + aiPromptsList.length + ") ===\n" +
+                JSON.stringify(aiPromptsList, null, 2) + "\n\n" +
+
+                "=== CURRENT USER ===\n" +
+                "Name: " + (currentUserData ? (currentUserData.fullname || 'Guest') : 'Guest') + "\n" +
+                "Username: " + (currentUserData ? (currentUserData.username || 'N/A') : 'N/A') + "\n" +
+                "Email: " + (currentUser ? currentUser.email : 'Not logged in') + "\n\n" +
+
+                "=== RESPONSE RULES ===\n" +
+                "1. Be FRIENDLY, casual, warm, and add emojis. Use Bengali language.\n" +
+                "2. When mentioning files, ALWAYS use this EXACT format (one per line, no bullet points):\n" +
+                "   [FILE:ID|Title|Extension]\n" +
+                "   Example: [FILE:earnix-job|🎬 TikTok Mod APK|.apk]\n" +
+                "3. NEVER use markdown links like [text](url) for files. Always use [FILE:...] format.\n" +
+                "4. NEVER use bullet points for files. Just newlines.\n" +
+                "5. When user asks for APK apps, list APK files only.\n" +
+                "6. When user asks for other files (zip, rar, html, php, pdf), list other files.\n" +
+                "7. When user asks for AI prompts, list AI prompts.\n" +
+                "8. If user asks about you or admin, respond warmly with the admin info above.\n" +
+                "9. If user asks general questions, answer helpfully and nicely.\n" +
+                "10. Always end with a friendly follow-up question like 'আরো কিছু জানতে চান? 😊'";
 
             const apiResponse = await fetch(apiUrl, {
                 method: "POST",
@@ -1635,7 +1652,7 @@
                         { role: "system", content: systemPrompt },
                         { role: "user", content: text }
                     ],
-                    temperature: 0.7
+                    temperature: 0.8
                 })
             });
 
@@ -1793,6 +1810,34 @@
         });
     }
 
+    function buildFileCardHTML(f) {
+        const isAI = f.isAIPrompt;
+        const isAPK = !isAI && (f.file_extension || '').toLowerCase().replace('.', '') === 'apk';
+        const cardThumb = f.thumbnail_url || 'https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png';
+        
+        let badgeHTML = '';
+        if (isAI) badgeHTML = '<span class="prompt-file-badge"><i class="fas fa-magic"></i> AI Prompt</span>';
+        else if (isAPK) badgeHTML = '<span class="apk-file-badge"><i class="fas fa-mobile-alt"></i> APK App</span>';
+        
+        const ext = isAI ? 'ai' : (f.file_extension || 'file');
+        let footerIcon = '';
+        if (isAI) footerIcon = '<i class="fas fa-copy"></i> Copy';
+        else if (isAPK) footerIcon = '<i class="fas fa-download"></i> ' + formatCount(f.total_downloads || 0);
+        else footerIcon = '<i class="fas fa-download"></i> ' + formatCount(f.total_downloads || 0);
+        
+        return '<div class="file-card">' +
+            badgeHTML +
+            '<img src="' + cardThumb + '" class="card-thumb" onerror="this.onerror=null;this.src=\'https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png\'" onclick="openLightbox(this.src); event.stopPropagation();">' +
+            '<div class="card-body" onclick="navigateTo(\'/file/' + f.id + '\')">' +
+                '<div class="card-title">' + escapeHtmlUser(f.title || 'Untitled') + '</div>' +
+                '<div class="card-footer">' +
+                    '<span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>' + truncateExt(ext) + '</span>' +
+                    '<span class="meta-pill">' + footerIcon + '</span>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
+    }
+
     function renderHome() {
         document.title = "Dashboard - FileHub";
         app.innerHTML = getHomeSkeleton();
@@ -1800,8 +1845,16 @@
         try {
             const approvedFiles = allFiles.filter(function(f) { return f.status === 'approved'; });
             const aiPromptFiles = getAIPromptFiles();
-            const allDisplayItems = aiPromptFiles.concat(approvedFiles);
+            
+            // Split files by category
+            const apkFiles = approvedFiles.filter(function(f) {
+                return (f.file_extension || '').toLowerCase().replace('.', '') === 'apk';
+            });
+            const otherFiles = approvedFiles.filter(function(f) {
+                return (f.file_extension || '').toLowerCase().replace('.', '') !== 'apk';
+            });
 
+            // Banner HTML
             let bannerHTML = '';
             if (allBanners.length > 0) {
                 const dots = allBanners.map(function(_, i) { return '<span class="dot-c ' + (i===0?'active':'') + '"></span>'; }).join('');
@@ -1812,7 +1865,7 @@
                                 return '<div class="slide" onclick="navigateTo(\'/banner/' + b.id + '\')">' +
                                     '<img src="' + (b.thumbnail_url || '') + '" onerror="this.onerror=null;this.src=\'https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png\'">' +
                                     '<div class="center-eye"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></div>' +
-                                    '<div class="slide-overlay"><span class="banner-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>Slider</span>' +
+                                    '<div class="slide-overlay"><span class="banner-pill"><i class="fas fa-image"></i> Slider</span>' +
                                     '<div class="slide-title" style="flex:1; text-align:center; padding:0 5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">' + escapeHtmlUser(b.title || 'Banner') + '</div></div></div>';
                             }).join('') +
                         '</div>' +
@@ -1820,34 +1873,48 @@
                     '<div class="carousel-dots" id="homeDots">' + dots + '</div>';
             }
 
-            let filesHTML = allDisplayItems.length ? allDisplayItems.map(function(f) {
-                const isAI = f.isAIPrompt;
-                const cardThumb = f.thumbnail_url || 'https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png';
-                const badgeHTML = isAI ? '<span class="prompt-file-badge"><i class="fas fa-magic"></i> AI Prompt</span>' : '';
-                const ext = isAI ? 'ai' : (f.file_extension || 'file');
-                const footerContent = isAI 
-                    ? '<i class="fas fa-copy"></i> Copy' 
-                    : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>' + formatCount(f.total_downloads || 0);
-                
-                return '<div class="file-card">' +
-                    badgeHTML +
-                    '<img src="' + cardThumb + '" class="card-thumb" onerror="this.onerror=null;this.src=\'https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png\'" onclick="openLightbox(this.src); event.stopPropagation();">' +
-                    '<div class="card-body" onclick="navigateTo(\'/file/' + f.id + '\')">' +
-                        '<div class="card-title">' + escapeHtmlUser(f.title || 'Untitled') + '</div>' +
-                        '<div class="card-footer">' +
-                            '<span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>' + truncateExt(ext) + '</span>' +
-                            '<span class="meta-pill">' + footerContent + '</span>' +
-                        '</div>' +
-                    '</div>' +
-                '</div>';
-            }).join('') : '<p style="text-align:center;color:var(--text-sub);grid-column:1/-1">No items found.</p>';
+            // Build Category Sections
+            let sectionsHTML = '';
 
-            app.innerHTML = bannerHTML +
-                '<div class="section-header">' +
-                    '<svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21z"/></svg>' +
-                    '<h2>Latest Resources</h2>' +
-                '</div>' +
-                '<div class="file-grid">' + filesHTML + '</div>';
+            // Section 1: APK Apps
+            if (apkFiles.length > 0) {
+                sectionsHTML += 
+                    '<div class="section-header">' +
+                        '<svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 18H7V5h10v14z"/></svg>' +
+                        '<h2>📱 APK Apps</h2>' +
+                        '<span class="section-count">' + apkFiles.length + '</span>' +
+                    '</div>' +
+                    '<div class="file-grid">' + apkFiles.map(buildFileCardHTML).join('') + '</div>';
+            }
+
+            // Section 2: Other Files (zip, rar, html, php, pdf, etc.)
+            if (otherFiles.length > 0) {
+                sectionsHTML += 
+                    '<div class="section-header">' +
+                        '<svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/></svg>' +
+                        '<h2>📦 Files & Documents</h2>' +
+                        '<span class="section-count">' + otherFiles.length + '</span>' +
+                    '</div>' +
+                    '<div class="file-grid">' + otherFiles.map(buildFileCardHTML).join('') + '</div>';
+            }
+
+            // Section 3: AI Prompts
+            if (aiPromptFiles.length > 0) {
+                sectionsHTML += 
+                    '<div class="section-header">' +
+                        '<svg class="section-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z"/></svg>' +
+                        '<h2>🎨 AI Image Prompts</h2>' +
+                        '<span class="section-count">' + aiPromptFiles.length + '</span>' +
+                    '</div>' +
+                    '<div class="file-grid">' + aiPromptFiles.map(buildFileCardHTML).join('') + '</div>';
+            }
+
+            // Empty state
+            if (apkFiles.length === 0 && otherFiles.length === 0 && aiPromptFiles.length === 0) {
+                sectionsHTML = '<p style="text-align:center;color:var(--text-sub);padding:40px;grid-column:1/-1;">No items found.</p>';
+            }
+
+            app.innerHTML = bannerHTML + sectionsHTML;
 
             if(allBanners.length > 1) initCarousel('homeInner', 'homeDots', allBanners.length, true);
         } catch (e) {
