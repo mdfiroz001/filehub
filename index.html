@@ -28,7 +28,7 @@
     <link rel="apple-touch-icon" href="https://i.postimg.cc/VkCqsjD1/file-00000000fa18821191576f156d4e3bfe.png">
     <title>FileHub - Secure File Sharing</title>
     
-    <!-- Adsterra Global Scripts (Social Bar / Popunder) -->
+    <!-- Adsterra Global Scripts -->
     <script data-cfasync="false" src="https://bauval.org/14/12c581abd9e7089666194369024aad62"></script>
     <script data-cfasync="false" src="https://abscloud.org/1/aa518407278d008068a3326ddbdce51e"></script>
 
@@ -73,8 +73,6 @@
             --chat-user-text: #ffffff;
             --chat-ai-bg: #f1f5f9;
             --chat-ai-text: #0f172a;
-            --skeleton-base: #e2e8f0;
-            --skeleton-highlight: #f1f5f9;
         }
 
         [data-theme="dark"] {
@@ -95,8 +93,6 @@
             --chat-user-text: #0f172a;
             --chat-ai-bg: #334155;
             --chat-ai-text: #f8fafc;
-            --skeleton-base: #1e293b;
-            --skeleton-highlight: #334155;
         }
 
         * {
@@ -186,7 +182,75 @@
         .notice-action-btn { color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,.8); padding: 5px 14px; border-radius: 999px; font-size: .8rem; white-space: nowrap; flex-shrink: 0; transition: 0.2s; font-weight: 600; }
         .notice-action-btn:hover { background: rgba(255,255,255,0.25); }
 
-        /* ==================== প্রিমিয়াম ওয়েলকাম পপ-আপ ==================== */
+        /* ==================== AI সুন্দর ইনলাইন কার্ড ডিজাইন ==================== */
+        .ai-file-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 14px 18px;
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+        .ai-file-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+            box-shadow: 0 6px 20px var(--primary-glow);
+        }
+        .ai-file-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .ai-file-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .ai-file-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.98rem;
+            color: var(--text-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 4px;
+        }
+        .ai-file-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8rem;
+        }
+        .ai-file-ext {
+            background: var(--bg);
+            color: var(--text-sub);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: 1px solid var(--border);
+        }
+        .ai-file-cta {
+            color: var(--primary);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* ==================== ওয়েলকাম পপ-আপ ==================== */
         .welcome-overlay {
             position: fixed; inset: 0; background: rgba(15, 23, 42, 0.72);
             backdrop-filter: blur(10px); z-index: 5000; display: none;
@@ -218,7 +282,7 @@
         .welcome-secondary { color: var(--text-main); background: var(--bg); border: 1px solid var(--border) !important; }
         .welcome-secondary:hover { background: var(--border); }
 
-        /* ==================== প্রোফাইল ডিজাইন ==================== */
+        /* ==================== প্রোফাইল ও অন্যান্য ডিজাইন ==================== */
         .profile-container { max-width: 900px; margin: 0 auto; }
         .profile-card-modern {
             background: var(--surface); border-radius: 28px; overflow: hidden;
@@ -233,9 +297,7 @@
             padding: 0 26px 26px; display: flex; flex-direction: column;
             align-items: flex-start; position: relative; margin-top: -55px;
         }
-        .profile-avatar-wrap {
-            position: relative; display: inline-block;
-        }
+        .profile-avatar-wrap { position: relative; display: inline-block; }
         .profile-avatar {
             width: 105px; height: 105px; border-radius: 50%;
             border: 4px solid var(--surface); object-fit: cover;
@@ -882,7 +944,6 @@
     let bannerInterval, detailInterval;
     let notifListener = null;
 
-    // ১০ সেকেন্ডের নিয়ম
     const AD_REQUIRED_SECONDS = 10;
     let pendingAdFileId = null;
     let pendingAdType = null;
@@ -1345,16 +1406,31 @@
         } catch(e) { console.error(e); }
     }
 
+    // AI উত্তর থেকে Markdown লিংক বা [FILE:id|title|ext] পার্স করে সুন্দর কার্ড তৈরি করার ফাংশন
     function parseFileLinks(text) {
         if (!text) return '';
+        
+        // ট্যাগ ফরম্যাট: [FILE:id|title|ext]
         const fileRegex = /\[FILE:([^|\]]+)\|([^|\]]+)\|([^\]]+)\]/g;
         let processed = text.replace(fileRegex, function(match, id, title, ext) {
             const cleanId = id.trim();
             const cleanTitle = title.trim();
             const cleanExt = ext.trim();
             const safeTitle = String(cleanTitle).replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-            return '\n\n<div class="ai-file-card" data-file-id="' + cleanId + '" data-file-ext="' + cleanExt + '"><div class="ai-file-icon">' + getExtIcon(cleanExt) + '</div><div class="ai-file-info"><div class="ai-file-title">' + safeTitle + '</div><div class="ai-file-meta"><span class="ai-file-ext">' + cleanExt + '</span><span class="ai-file-cta">Click to open →</span></div></div></div>\n\n';
+            return '\n\n<div class="ai-file-card" data-file-id="' + cleanId + '" data-file-ext="' + cleanExt + '"><div class="ai-file-icon">' + getExtIcon(cleanExt) + '</div><div class="ai-file-info"><div class="ai-file-title">' + safeTitle + '</div><div class="ai-file-meta"><span class="ai-file-ext">' + cleanExt + '</span><span class="ai-file-cta">View Item →</span></div></div></div>\n\n';
         });
+
+        // সাধারণ Markdown লিংক যেমন [Title](https://.../file/XYZ) বা সাইটের লিংক থাকলে সেটিকেও সুন্দর কার্ড বা ইনলাইন বাটনে রূপান্তর
+        const mdLinkRegex = /\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g;
+        processed = processed.replace(mdLinkRegex, function(match, title, url) {
+            if (url.includes('/file/') || url.includes('/banner/')) {
+                const parts = url.split('/');
+                const fileId = parts[parts.length - 1];
+                return '\n\n<div class="ai-file-card" data-file-id="' + fileId + '" data-file-ext="link"><div class="ai-file-icon">🔗</div><div class="ai-file-info"><div class="ai-file-title">' + escapeHtmlUser(title) + '</div><div class="ai-file-meta"><span class="ai-file-ext">FileHub</span><span class="ai-file-cta">Open Link →</span></div></div></div>\n\n';
+            }
+            return '<a href="' + url + '" target="_blank" rel="noopener" style="color:var(--primary); font-weight:600; text-decoration:underline;">' + title + '</a>';
+        });
+
         processed = processed.replace(/\n{3,}/g, '\n\n');
         return processed;
     }
@@ -1379,7 +1455,7 @@
         
         if (role === 'ai') {
             const processedText = parseFileLinks(text);
-            const parsed = DOMPurify.sanitize(marked.parse(processedText), { ADD_ATTR: ['data-file-id', 'data-file-ext', 'target'] });
+            const parsed = DOMPurify.sanitize(marked.parse(processedText), { ADD_ATTR: ['data-file-id', 'data-file-ext', 'target', 'href'] });
             const avatarUrl = getAiAvatarUrl(document.documentElement.getAttribute('data-theme'));
             div.innerHTML = '<img src="' + avatarUrl + '" class="ai-avatar"><div class="ai-content">' + parsed + '</div>';
             
@@ -1450,21 +1526,14 @@
             const aiPromptFiles = getAIPromptFiles();
             const aiPromptsList = aiPromptFiles.map(function(p) { return { id: p.id, title: p.title, extension: '.ai', category: 'ai-prompt', status: 'approved', url: window.location.origin + '/file/' + encodeURIComponent(p.id) }; });
 
-            const apkFiles = allFilesList.filter(function(f) { return f.category === 'apk'; });
-            const otherFiles = allFilesList.filter(function(f) { return f.category === 'file'; });
-
             const websiteName = (settingsVal.app && settingsVal.app.appName) || 'FileHub';
             const registrationUrl = (aiSettings.registrationUrl || (window.location.origin + '/register')).trim();
             const siteDescription = 'FileHub is a secure file sharing platform offering premium APK mods, files, and AI prompts.';
 
             const systemPrompt = "You are FileHub AI, a friendly and capable assistant for " + websiteName + ". Speak Bengali (বাংলা) unless the user asks in English.\n" +
-                "You may answer any normal question: FileHub questions, file searches, technical questions, general knowledge, and how-to questions. Be clear and helpful.\n" +
-                "REGISTRATION RULE: When the user asks how to register, sign up, create an account, or asks to visit the website, provide the official FileHub website registration link inline: [FileHub-এ রেজিস্ট্রেশন করুন](" + registrationUrl + "). Use only this configured official registration URL for registration.\n" +
-                "FILE AND AI PROMPT LINK RULE: When mentioning any matching file or AI Prompt from the supplied list, always include its exact inline Markdown link using the item's title and url, for example [Item title](item url). Never invent a URL. You may provide these FileHub file/prompt links as needed.\n" +
-                "INLINE LINK RULE: Keep every website, file, and AI Prompt link inline inside the relevant sentence. Do not put links in a separate list, raw URL line, or unrelated paragraph.\n" +
-                "You can answer any normal question, including FileHub, file search, AI Prompt, technical, general knowledge, and how-to questions. Do not expose admin social-media links unless the user explicitly asks about the administrator.\n" +
-                "FileHub description: " + siteDescription + "\n" +
-                "Files and AI Prompts (use these exact URLs when linking): " + JSON.stringify(allFilesList.concat(aiPromptsList));
+                "INLINE CARD & LINK RULE: When mentioning any file, APK, or AI Prompt from the supplied list, ALWAYS provide its link in the Markdown format: [Item Title](Item URL). The system will automatically convert this into a stunning interactive card button for the user.\n" +
+                "REGISTRATION RULE: When the user asks how to register, sign up, or create an account, provide the official registration link: [FileHub-এ রেজিস্ট্রেশন করুন](" + registrationUrl + ").\n" +
+                "Available Files and Prompts: " + JSON.stringify(allFilesList.concat(aiPromptsList));
 
             const apiResponse = await fetch(apiUrl, {
                 method: "POST",
@@ -1805,7 +1874,6 @@
         const link = (appSettings.ads && appSettings.ads.adsterraDirectLink) || '';
         adPopupBtn.disabled = true;
         
-        // অ্যাড লিংক ওপেন করা
         window.open(link, '_blank');
 
         adTaskActive = true; adSecondsElapsed = 0;
@@ -1828,17 +1896,14 @@
         }, 1000);
     };
 
-    // ট্যাব পরিবর্তন বা ব্যাক করার ডিটেকশন (১০ সেকেন্ডের আগে আসলে ফেইল ধরা হবে)
     document.addEventListener("visibilitychange", function() {
         if (document.hidden && adTaskActive) {
-            // ইউজার ট্যাব থেকে দূরে গেছে (অ্যাড লিংকে গেছে)
+            // Away
         } else if (!document.hidden && adTaskActive) {
-            // ইউজার ১০ সেকেন্ডের আগেই ব্যাক করে এসেছে!
             if (adSecondsElapsed < AD_REQUIRED_SECONDS) {
                 clearInterval(adTimerInterval);
                 adTaskActive = false;
                 
-                // পপআপে ওয়ার্নিং দেখানো
                 adWarning.classList.add('show');
                 adWarning.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ১০ সেকেন্ডের আগে ব্যাক করায় এই স্টেপ অসম্পূর্ণ হয়েছে। আবার চেষ্টা করুন!';
                 adTimerDisplay.style.display = 'none';
